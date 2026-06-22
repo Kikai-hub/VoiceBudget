@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_dashboard">Главная</string>
+    <string name="nav_transactions">Транзакции</string>
+    <string name="nav_statistics">Статистика</string>
+    <string name="nav_settings">Настройки</string>
+    <string name="nav_record_transaction">Записать транзакцию</string>
+
+    <string name="dashboard_recent_transactions">Последние транзакции</string>
+    <string name="dashboard_empty">Транзакций пока нет. Нажмите на микрофон, чтобы добавить.</string>
+    <string name="this_month">Этот месяц</string>
+    <string name="income">Доход</string>
+    <string name="expenses">Расходы</string>
+    <string name="balance">Баланс</string>
+
+    <string name="settings_currency">Валюта</string>
+    <string name="settings_language">Язык</string>
+    <string name="settings_theme">Тема</string>
+    <string name="settings_data">Данные</string>
+    <string name="settings_export_csv">Экспорт базы данных (CSV)</string>
+    <string name="settings_import_csv">Импорт базы данных (CSV)</string>
+    <string name="settings_clear_all_data">Очистить все данные</string>
+    <string name="dialog_clear_all_data_title">Очистить все данные?</string>
+    <string name="dialog_clear_all_data_message">Это безвозвратно удалит все транзакции. Действие нельзя отменить.</string>
+
+    <string name="action_clear">Очистить</string>
+    <string name="action_cancel">Отмена</string>
+    <string name="action_delete">Удалить</string>
+    <string name="action_save">Сохранить</string>
+    <string name="action_retry">Повторить</string>
+    <string name="action_try_again">Попробовать снова</string>
+
+    <string name="theme_light">Светлая</string>
+    <string name="theme_dark">Тёмная</string>
+    <string name="theme_system">Системная</string>
+
+    <string name="msg_all_data_cleared">Все данные очищены.</string>
+    <string name="msg_export_success">Экспорт выполнен успешно.</string>
+    <string name="msg_export_failed">Ошибка экспорта: %1$s</string>
+    <string name="msg_import_success">Импортировано транзакций: %1$d.</string>
+    <string name="msg_import_failed">Ошибка импорта: %1$s</string>
+
+    <string name="transactions_empty_filtered">Нет транзакций, соответствующих фильтрам.</string>
+    <string name="dialog_delete_transaction_title">Удалить транзакцию?</string>
+    <string name="dialog_delete_transaction_message">"«%1$s» будет удалено без возможности восстановления."</string>
+    <string name="category_all">Все категории</string>
+    <string name="date_range_all_time">Всё время</string>
+    <string name="date_range_last_month">Прошлый месяц</string>
+    <string name="date_range_last_7_days">Последние 7 дней</string>
+    <string name="edit_transaction_title">Редактировать транзакцию</string>
+    <string name="confirm_transaction_title">Подтвердите транзакцию</string>
+
+    <string name="voice_start_recording">Начать запись</string>
+    <string name="voice_tap_to_speak">Нажмите, чтобы говорить</string>
+    <string name="voice_listening_desc">Слушаю</string>
+    <string name="voice_listening">Слушаю…</string>
+    <string name="voice_saving">Сохранение…</string>
+
+    <string name="field_amount">Сумма</string>
+    <string name="field_category">Категория</string>
+    <string name="field_description">Описание</string>
+    <string name="type_expense">Расход</string>
+
+    <string name="stats_expense_breakdown">Расходы по категориям (этот месяц)</string>
+    <string name="stats_no_expenses">В этом месяце расходов не зафиксировано.</string>
+    <string name="stats_income_vs_expenses">Доходы и расходы (последние 6 месяцев)</string>
+
+    <string name="error_invalid_amount">Введите корректную сумму.</string>
+    <string name="error_no_speech_match">Не удалось разобрать речь. Попробуйте снова.</string>
+    <string name="error_amount_not_found">"Не удалось найти сумму в «%1$s». Попробуйте снова."</string>
+    <string name="error_recognition_unavailable">Распознавание речи недоступно на этом устройстве</string>
+    <string name="error_speech_timeout">Речь не обнаружена. Попробуйте снова.</string>
+    <string name="error_mic_permission">Требуется разрешение на использование микрофона.</string>
+    <string name="error_network">Ошибка сети при распознавании.</string>
+    <string name="error_audio">Ошибка записи звука.</string>
+    <string name="error_recognizer_busy">Распознаватель занят. Попробуйте снова.</string>
+    <string name="error_recognition_generic">Ошибка распознавания (%1$d).</string>
+
+    <string name="category_food">Еда</string>
+    <string name="category_cafe">Кафе</string>
+    <string name="category_transport">Транспорт</string>
+    <string name="category_shopping">Покупки</string>
+    <string name="category_health">Здоровье</string>
+    <string name="category_utilities">Коммунальные услуги</string>
+    <string name="category_entertainment">Развлечения</string>
+    <string name="category_other">Другое</string>
+    <string name="category_salary">Зарплата</string>
+    <string name="category_freelance">Фриланс</string>
+    <string name="category_bonus">Премия</string>
+    <string name="category_gift">Подарок</string>
+</resources>
