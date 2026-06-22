@@ -97,6 +97,30 @@ class TransactionParserTest {
     }
 
     @Test
+    fun `parses word-form millions in Russian as recognized by speech-to-text`() {
+        val transaction = parseSuccess("Зарплата 2 миллиона")
+        assertEquals(2000000.0, transaction.amount, 0.0)
+    }
+
+    @Test
+    fun `parses word-form millions in English as recognized by speech-to-text`() {
+        val transaction = parseSuccess("Salary 2 million")
+        assertEquals(2000000.0, transaction.amount, 0.0)
+    }
+
+    @Test
+    fun `parses word-form thousands in Russian as recognized by speech-to-text`() {
+        val transaction = parseSuccess("Зарплата 5 тысяч")
+        assertEquals(5000.0, transaction.amount, 0.0)
+    }
+
+    @Test
+    fun `does not apply scale word when it is not adjacent to the amount`() {
+        val transaction = parseSuccess("Coffee 350 рублей миллион")
+        assertEquals(350.0, transaction.amount, 0.0)
+    }
+
+    @Test
     fun `parses Freelance 45000 as income freelance`() {
         val transaction = parseSuccess("Freelance 45000")
         assertEquals(TransactionType.INCOME, transaction.type)

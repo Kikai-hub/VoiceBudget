@@ -1,22 +1,34 @@
 package com.voicebudget.presentation.navigation
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -26,6 +38,8 @@ import com.voicebudget.R
 import com.voicebudget.presentation.dashboard.DashboardScreen
 import com.voicebudget.presentation.settings.SettingsScreen
 import com.voicebudget.presentation.statistics.StatisticsScreen
+import com.voicebudget.presentation.theme.Emerald700
+import com.voicebudget.presentation.theme.EmeraldHeroGradient
 import com.voicebudget.presentation.transactions.TransactionsScreen
 import com.voicebudget.presentation.voice.AddTransactionScreen
 
@@ -38,6 +52,8 @@ private val bottomNavItems = listOf(
     BottomNavItem(Routes.Settings, R.string.nav_settings, Icons.Filled.Settings),
 )
 
+private val NavBarShape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
+
 @Composable
 fun VoiceBudgetNavHost(navController: NavHostController = rememberNavController()) {
     val backStackEntry by navController.currentBackStackEntryAsState()
@@ -45,7 +61,11 @@ fun VoiceBudgetNavHost(navController: NavHostController = rememberNavController(
 
     Scaffold(
         bottomBar = {
-            NavigationBar {
+            NavigationBar(
+                modifier = Modifier.clip(NavBarShape),
+                containerColor = MaterialTheme.colorScheme.surface,
+                tonalElevation = 0.dp,
+            ) {
                 bottomNavItems.forEach { item ->
                     NavigationBarItem(
                         selected = currentRoute == item.route.route,
@@ -56,15 +76,18 @@ fun VoiceBudgetNavHost(navController: NavHostController = rememberNavController(
                         },
                         icon = { Icon(item.icon, contentDescription = stringResource(item.labelRes)) },
                         label = { },
+                        colors = NavigationBarItemDefaults.colors(
+                            selectedIconColor = MaterialTheme.colorScheme.primary,
+                            indicatorColor = MaterialTheme.colorScheme.primaryContainer,
+                            unselectedIconColor = MaterialTheme.colorScheme.onSurfaceVariant,
+                        ),
                     )
                 }
             }
         },
         floatingActionButton = {
             if (currentRoute == Routes.Dashboard.route) {
-                FloatingActionButton(onClick = { navController.navigate(Routes.AddTransaction.route) }) {
-                    Icon(Icons.Filled.Mic, contentDescription = stringResource(R.string.nav_record_transaction))
-                }
+                GradientMicFab(onClick = { navController.navigate(Routes.AddTransaction.route) })
             }
         },
     ) { contentPadding ->
@@ -81,5 +104,25 @@ fun VoiceBudgetNavHost(navController: NavHostController = rememberNavController(
                 AddTransactionScreen(onDone = { navController.popBackStack() })
             }
         }
+    }
+}
+
+@Composable
+private fun GradientMicFab(onClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .size(64.dp)
+            .shadow(elevation = 10.dp, shape = CircleShape, ambientColor = Emerald700, spotColor = Emerald700)
+            .clip(CircleShape)
+            .background(EmeraldHeroGradient)
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            Icons.Filled.Mic,
+            contentDescription = stringResource(R.string.nav_record_transaction),
+            tint = Color.White,
+            modifier = Modifier.size(28.dp),
+        )
     }
 }

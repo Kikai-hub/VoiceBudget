@@ -14,11 +14,11 @@ class TransactionParser @Inject constructor() {
         val text = rawText.trim()
         if (text.isEmpty()) return ParseResult.Failure(ParseFailureReason.EMPTY_INPUT)
 
-        val amount = AMOUNT_REGEX.find(text)
-            ?.value
-            ?.let(::normalizeAmount)
-            ?.toDoubleOrNull()
+        val amountMatch = AMOUNT_REGEX.find(text)
             ?: return ParseResult.Failure(ParseFailureReason.AMOUNT_NOT_FOUND)
+        val baseAmount = normalizeAmount(amountMatch.value).toDoubleOrNull()
+            ?: return ParseResult.Failure(ParseFailureReason.AMOUNT_NOT_FOUND)
+        val amount = baseAmount * scaleAfter(text, amountMatch.range.last + 1)
 
         val tokens = WORD_REGEX.findAll(text).map { it.value }.toList()
         val lowerTokens = tokens.map { it.lowercase() }
@@ -77,10 +77,38 @@ class TransactionParser @Inject constructor() {
         return if (last.length == 3) groups.joinToString("") else groups.dropLast(1).joinToString("") + "." + last
     }
 
+    /**
+     * Speech recognition often spells out the magnitude of large numbers as a word
+     * instead of digits (e.g. "2 million" / "2 миллиона" rather than "2000000").
+     * If the word immediately following the matched amount is a known scale word,
+     * its multiplier is applied to the amount.
+     */
+    private fun scaleAfter(text: String, fromIndex: Int): Double {
+        if (fromIndex > text.length) return 1.0
+        val nextWord = SCALE_LOOKAHEAD_REGEX.find(text.substring(fromIndex)) ?: return 1.0
+        return SCALE_WORDS[nextWord.groupValues[1].lowercase()] ?: 1.0
+    }
+
     private companion object {
         private const val SEPARATOR_CLASS = "[\\s\u00A0.,]"
         val AMOUNT_REGEX = Regex("\\d+(?:$SEPARATOR_CLASS\\d+)*")
         val GROUP_SEPARATOR_REGEX = Regex(SEPARATOR_CLASS)
         val WORD_REGEX = Regex("""\p{L}+""")
+        val SCALE_LOOKAHEAD_REGEX = Regex("""^[\s\u00A0]*(\p{L}+)""")
+
+        val SCALE_WORDS: Map<String, Double> = mapOf(
+            "thousand" to 1_000.0,
+            "тысяча" to 1_000.0,
+            "тысячи" to 1_000.0,
+            "тысяч" to 1_000.0,
+            "million" to 1_000_000.0,
+            "миллион" to 1_000_000.0,
+            "миллиона" to 1_000_000.0,
+            "миллионов" to 1_000_000.0,
+            "billion" to 1_000_000_000.0,
+            "миллиард" to 1_000_000_000.0,
+            "миллиарда" to 1_000_000_000.0,
+            "миллиардов" to 1_000_000_000.0,
+        )
     }
 }

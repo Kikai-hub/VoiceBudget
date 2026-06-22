@@ -1,14 +1,20 @@
 package com.voicebudget.presentation.dashboard
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Card
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDownward
+import androidx.compose.material.icons.filled.ArrowUpward
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -16,6 +22,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,6 +36,9 @@ import com.voicebudget.domain.model.TransactionType
 import com.voicebudget.presentation.components.EmptyState
 import com.voicebudget.presentation.components.LoadingState
 import com.voicebudget.presentation.components.TransactionItem
+import com.voicebudget.presentation.theme.EmeraldHeroGradient
+import com.voicebudget.presentation.theme.HeroCardShape
+import com.voicebudget.presentation.theme.PillShape
 import com.voicebudget.presentation.theme.VoiceBudgetTheme
 import com.voicebudget.utils.formatAmount
 
@@ -68,7 +78,10 @@ private fun DashboardContent(uiState: DashboardUiState, modifier: Modifier = Mod
         if (uiState.recentTransactions.isEmpty()) {
             EmptyState(message = stringResource(R.string.dashboard_empty))
         } else {
-            LazyColumn {
+            LazyColumn(
+                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
                 items(uiState.recentTransactions, key = { it.id }) { transaction ->
                     TransactionItem(transaction = transaction, currencySymbol = uiState.currencySymbol)
                 }
@@ -85,29 +98,34 @@ private fun SummaryCard(
     currencySymbol: String,
     modifier: Modifier = Modifier,
 ) {
-    Card(modifier = modifier) {
-        Column(modifier = Modifier.padding(16.dp)) {
-            Text(stringResource(R.string.this_month), style = MaterialTheme.typography.titleMedium)
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(top = 12.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-            ) {
-                SummaryColumn(
+    Box(
+        modifier = modifier
+            .clip(HeroCardShape)
+            .background(EmeraldHeroGradient)
+            .padding(20.dp),
+    ) {
+        Column {
+            Text(
+                text = stringResource(R.string.this_month),
+                style = MaterialTheme.typography.titleMedium,
+                color = Color.White.copy(alpha = 0.85f),
+            )
+            Text(
+                text = formatAmount(balance, currencySymbol),
+                style = MaterialTheme.typography.displayLarge.copy(fontSize = MaterialTheme.typography.headlineLarge.fontSize),
+                color = Color.White,
+                modifier = Modifier.padding(top = 4.dp, bottom = 16.dp),
+            )
+            Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
+                StatPill(
+                    icon = Icons.Filled.ArrowUpward,
                     label = stringResource(R.string.income),
                     value = formatAmount(income, currencySymbol),
-                    color = MaterialTheme.colorScheme.secondary,
                 )
-                SummaryColumn(
+                StatPill(
+                    icon = Icons.Filled.ArrowDownward,
                     label = stringResource(R.string.expenses),
                     value = formatAmount(expense, currencySymbol),
-                    color = MaterialTheme.colorScheme.error,
-                )
-                SummaryColumn(
-                    label = stringResource(R.string.balance),
-                    value = formatAmount(balance, currencySymbol),
-                    color = MaterialTheme.colorScheme.primary,
                 )
             }
         }
@@ -115,10 +133,19 @@ private fun SummaryCard(
 }
 
 @Composable
-private fun SummaryColumn(label: String, value: String, color: Color) {
-    Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        Text(label, style = MaterialTheme.typography.bodySmall)
-        Text(value, style = MaterialTheme.typography.titleSmall, color = color)
+private fun StatPill(icon: androidx.compose.ui.graphics.vector.ImageVector, label: String, value: String) {
+    Row(
+        modifier = Modifier
+            .clip(PillShape)
+            .background(Color.White.copy(alpha = 0.16f))
+            .padding(horizontal = 12.dp, vertical = 8.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Icon(icon, contentDescription = null, tint = Color.White, modifier = Modifier.padding(end = 6.dp))
+        Column {
+            Text(label, style = MaterialTheme.typography.labelSmall, color = Color.White.copy(alpha = 0.85f))
+            Text(value, style = MaterialTheme.typography.titleSmall, color = Color.White)
+        }
     }
 }
 

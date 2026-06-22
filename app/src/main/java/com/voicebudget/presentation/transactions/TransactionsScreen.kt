@@ -1,8 +1,10 @@
 package com.voicebudget.presentation.transactions
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -80,7 +82,10 @@ private fun TransactionsContent(
         if (uiState.transactions.isEmpty()) {
             EmptyState(message = stringResource(R.string.transactions_empty_filtered))
         } else {
-            LazyColumn {
+            LazyColumn(
+                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp),
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
                 items(uiState.transactions, key = { it.id }) { transaction ->
                     TransactionItem(
                         transaction = transaction,

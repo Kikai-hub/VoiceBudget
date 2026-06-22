@@ -10,16 +10,18 @@ import androidx.compose.animation.core.animateFloat
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -29,6 +31,9 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -40,6 +45,9 @@ import com.voicebudget.R
 import com.voicebudget.domain.model.Category
 import com.voicebudget.domain.model.TransactionType
 import com.voicebudget.presentation.components.TransactionEditorDialog
+import com.voicebudget.presentation.theme.Emerald500
+import com.voicebudget.presentation.theme.Emerald700
+import com.voicebudget.presentation.theme.EmeraldHeroGradient
 import com.voicebudget.presentation.theme.VoiceBudgetTheme
 
 @Composable
@@ -127,8 +135,14 @@ private fun hasRecordAudioPermission(context: Context): Boolean =
 @Composable
 private fun IdleContent(onMicClick: () -> Unit) {
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        FilledIconButton(onClick = onMicClick, modifier = Modifier.size(96.dp)) {
-            Icon(Icons.Filled.Mic, contentDescription = stringResource(R.string.voice_start_recording), modifier = Modifier.size(48.dp))
+        Box(modifier = Modifier.size(140.dp), contentAlignment = Alignment.Center) {
+            Box(
+                modifier = Modifier
+                    .size(140.dp)
+                    .clip(CircleShape)
+                    .background(Emerald500.copy(alpha = 0.14f)),
+            )
+            GradientMicButton(onClick = onMicClick)
         }
         Text(stringResource(R.string.voice_tap_to_speak), modifier = Modifier.padding(top = 16.dp))
     }
@@ -139,20 +153,62 @@ private fun ListeningContent() {
     val transition = rememberInfiniteTransition(label = "mic-pulse")
     val scale by transition.animateFloat(
         initialValue = 1f,
-        targetValue = 1.25f,
+        targetValue = 1.1f,
         animationSpec = infiniteRepeatable(tween(durationMillis = 600), RepeatMode.Reverse),
         label = "scale",
     )
+    val rippleScale by transition.animateFloat(
+        initialValue = 1f,
+        targetValue = 1.6f,
+        animationSpec = infiniteRepeatable(tween(durationMillis = 1200), RepeatMode.Restart),
+        label = "ripple-scale",
+    )
+    val rippleAlpha by transition.animateFloat(
+        initialValue = 0.3f,
+        targetValue = 0f,
+        animationSpec = infiniteRepeatable(tween(durationMillis = 1200), RepeatMode.Restart),
+        label = "ripple-alpha",
+    )
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
-        FilledIconButton(
-            onClick = {},
-            modifier = Modifier
-                .size(96.dp)
-                .graphicsLayer(scaleX = scale, scaleY = scale),
-        ) {
-            Icon(Icons.Filled.Mic, contentDescription = stringResource(R.string.voice_listening_desc), modifier = Modifier.size(48.dp))
+        Box(modifier = Modifier.size(140.dp), contentAlignment = Alignment.Center) {
+            Box(
+                modifier = Modifier
+                    .size(140.dp)
+                    .graphicsLayer(scaleX = rippleScale, scaleY = rippleScale, alpha = rippleAlpha)
+                    .clip(CircleShape)
+                    .background(Emerald500),
+            )
+            GradientMicButton(
+                onClick = {},
+                contentDescription = stringResource(R.string.voice_listening_desc),
+                modifier = Modifier.graphicsLayer(scaleX = scale, scaleY = scale),
+            )
         }
         Text(stringResource(R.string.voice_listening), modifier = Modifier.padding(top = 16.dp))
+    }
+}
+
+@Composable
+private fun GradientMicButton(
+    onClick: () -> Unit,
+    modifier: Modifier = Modifier,
+    contentDescription: String = stringResource(R.string.voice_start_recording),
+) {
+    Box(
+        modifier = modifier
+            .size(96.dp)
+            .shadow(elevation = 12.dp, shape = CircleShape, ambientColor = Emerald700, spotColor = Emerald700)
+            .clip(CircleShape)
+            .background(EmeraldHeroGradient)
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            Icons.Filled.Mic,
+            contentDescription = contentDescription,
+            tint = Color.White,
+            modifier = Modifier.size(40.dp),
+        )
     }
 }
 

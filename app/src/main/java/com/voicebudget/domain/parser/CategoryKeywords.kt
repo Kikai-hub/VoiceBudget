@@ -73,5 +73,8 @@ internal object CategoryKeywords {
         "rubles", "ruble", "rub", "руб", "рублей", "рубля", "рубль",
         "dollars", "dollar", "usd",
         "euro", "euros", "eur",
+        "thousand", "тысяча", "тысячи", "тысяч",
+        "million", "миллион", "миллиона", "миллионов",
+        "billion", "миллиард", "миллиарда", "миллиардов",
     )
 }

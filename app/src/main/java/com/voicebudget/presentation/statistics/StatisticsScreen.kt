@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -63,24 +65,38 @@ private fun StatisticsContent(uiState: StatisticsUiState, modifier: Modifier = M
         return
     }
 
-    Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
-        Text(stringResource(R.string.stats_expense_breakdown), style = MaterialTheme.typography.titleMedium)
-        if (uiState.categoryBreakdown.isEmpty()) {
-            EmptyState(message = stringResource(R.string.stats_no_expenses), modifier = Modifier.height(200.dp))
-        } else {
-            ExpenseBreakdownChart(
-                breakdown = uiState.categoryBreakdown,
-                currencySymbol = uiState.currencySymbol,
-                modifier = Modifier.padding(vertical = 16.dp),
-            )
+    Column(
+        modifier = modifier.fillMaxSize().padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        StatisticsSection(title = stringResource(R.string.stats_expense_breakdown)) {
+            if (uiState.categoryBreakdown.isEmpty()) {
+                EmptyState(message = stringResource(R.string.stats_no_expenses), modifier = Modifier.height(200.dp))
+            } else {
+                ExpenseBreakdownChart(
+                    breakdown = uiState.categoryBreakdown,
+                    currencySymbol = uiState.currencySymbol,
+                )
+            }
         }
 
-        Text(
-            stringResource(R.string.stats_income_vs_expenses),
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(top = 24.dp),
-        )
-        MonthlyTrendChart(trend = uiState.monthlyTrend, modifier = Modifier.padding(vertical = 16.dp))
+        StatisticsSection(title = stringResource(R.string.stats_income_vs_expenses)) {
+            MonthlyTrendChart(trend = uiState.monthlyTrend)
+        }
+    }
+}
+
+@Composable
+private fun StatisticsSection(title: String, content: @Composable () -> Unit) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+    ) {
+        Column(modifier = Modifier.padding(16.dp)) {
+            Text(title, style = MaterialTheme.typography.titleMedium)
+            content()
+        }
     }
 }
 

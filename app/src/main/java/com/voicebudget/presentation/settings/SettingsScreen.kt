@@ -2,6 +2,7 @@ package com.voicebudget.presentation.settings
 
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,9 +13,10 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.SegmentedButton
@@ -86,35 +88,36 @@ private fun SettingsContent(
 ) {
     var showClearConfirm by remember { mutableStateOf(false) }
 
-    Column(modifier = modifier.fillMaxSize().padding(16.dp)) {
-        SectionTitle(stringResource(R.string.settings_currency))
-        CurrencySelector(selected = uiState.settings.currency, onSelected = onSetCurrency)
+    Column(
+        modifier = modifier.fillMaxSize().padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+    ) {
+        SettingsSection(title = stringResource(R.string.settings_currency)) {
+            CurrencySelector(selected = uiState.settings.currency, onSelected = onSetCurrency)
+        }
 
-        HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp))
+        SettingsSection(title = stringResource(R.string.settings_language)) {
+            LanguageSelector(
+                selectedTag = uiState.settings.recognitionLanguageTag,
+                onSelected = onSetRecognitionLanguage,
+            )
+        }
 
-        SectionTitle(stringResource(R.string.settings_language))
-        LanguageSelector(
-            selectedTag = uiState.settings.recognitionLanguageTag,
-            onSelected = onSetRecognitionLanguage,
-        )
+        SettingsSection(title = stringResource(R.string.settings_theme)) {
+            ThemeSelector(selected = uiState.settings.themeMode, onSelected = onSetThemeMode)
+        }
 
-        HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp))
-
-        SectionTitle(stringResource(R.string.settings_theme))
-        ThemeSelector(selected = uiState.settings.themeMode, onSelected = onSetThemeMode)
-
-        HorizontalDivider(modifier = Modifier.padding(vertical = 16.dp))
-
-        SectionTitle(stringResource(R.string.settings_data))
-        Button(onClick = onExportClick, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.settings_export_csv)) }
-        Spacer(modifier = Modifier.height(8.dp))
-        OutlinedButton(onClick = onImportClick, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.settings_import_csv)) }
-        Spacer(modifier = Modifier.height(8.dp))
-        OutlinedButton(
-            onClick = { showClearConfirm = true },
-            modifier = Modifier.fillMaxWidth(),
-            colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error),
-        ) { Text(stringResource(R.string.settings_clear_all_data)) }
+        SettingsSection(title = stringResource(R.string.settings_data)) {
+            Button(onClick = onExportClick, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.settings_export_csv)) }
+            Spacer(modifier = Modifier.height(8.dp))
+            OutlinedButton(onClick = onImportClick, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.settings_import_csv)) }
+            Spacer(modifier = Modifier.height(8.dp))
+            OutlinedButton(
+                onClick = { showClearConfirm = true },
+                modifier = Modifier.fillMaxWidth(),
+                colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error),
+            ) { Text(stringResource(R.string.settings_clear_all_data)) }
+        }
     }
 
     message?.let { text ->
@@ -144,8 +147,17 @@ private fun SettingsContent(
 }
 
 @Composable
-private fun SectionTitle(text: String) {
-    Text(text, style = MaterialTheme.typography.titleMedium)
+private fun SettingsSection(title: String, content: @Composable () -> Unit) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+        elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
+    ) {
+        Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            Text(title, style = MaterialTheme.typography.titleMedium)
+            content()
+        }
+    }
 }
 
 @Composable
