@@ -10,7 +10,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.background
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -28,9 +30,11 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.voicebudget.R
 import com.voicebudget.presentation.components.categoryLabel
+import androidx.compose.ui.text.TextStyle
 import com.patrykandpatrick.vico.compose.cartesian.CartesianChartHost
 import com.patrykandpatrick.vico.compose.cartesian.axis.HorizontalAxis
 import com.patrykandpatrick.vico.compose.cartesian.axis.VerticalAxis
+import com.patrykandpatrick.vico.compose.cartesian.axis.rememberAxisLabelComponent
 import com.patrykandpatrick.vico.compose.cartesian.data.CartesianChartModelProducer
 import com.patrykandpatrick.vico.compose.cartesian.data.columnModel
 import com.patrykandpatrick.vico.compose.cartesian.layer.ColumnCartesianLayer
@@ -66,7 +70,10 @@ private fun StatisticsContent(uiState: StatisticsUiState, modifier: Modifier = M
     }
 
     Column(
-        modifier = modifier.fillMaxSize().padding(16.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
         StatisticsSection(title = stringResource(R.string.stats_expense_breakdown)) {
@@ -158,6 +165,7 @@ private fun MonthlyTrendChart(
     val modelProducer = remember { CartesianChartModelProducer() }
     val incomeColor = MaterialTheme.colorScheme.secondary
     val expenseColor = MaterialTheme.colorScheme.error
+    val axisLabelColor = MaterialTheme.colorScheme.onSurfaceVariant
 
     LaunchedEffect(trend) {
         modelProducer.runTransaction {
@@ -174,10 +182,11 @@ private fun MonthlyTrendChart(
             LineComponent(fill = Fill(SolidColor(expenseColor))),
         ),
     )
+    val axisLabel = rememberAxisLabelComponent(style = TextStyle(color = axisLabelColor))
     val chart = rememberCartesianChart(
         columnLayer,
-        startAxis = VerticalAxis.rememberStart(),
-        bottomAxis = HorizontalAxis.rememberBottom(),
+        startAxis = VerticalAxis.rememberStart(label = axisLabel),
+        bottomAxis = HorizontalAxis.rememberBottom(label = axisLabel),
     )
 
     CartesianChartHost(
