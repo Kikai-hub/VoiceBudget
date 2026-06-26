@@ -37,7 +37,7 @@
 
 ## Контакты
 
-По вопросам, связанным с данной политикой, пишите: andrewryzhov85@gmail.com
+По вопросам, связанным с данной политикой, пишите: kikai44422@gmail.com
 
 ---
 
@@ -80,4 +80,4 @@ We may update this policy as the app's functionality changes. The current versio
 
 ## Contact
 
-For questions about this policy, contact: andrewryzhov85@gmail.com
+For questions about this policy, contact: kikai44422@gmail.com
