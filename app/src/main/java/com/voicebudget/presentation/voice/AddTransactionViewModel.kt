@@ -5,7 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.voicebudget.R
 import com.voicebudget.domain.model.AppSettings
+import com.voicebudget.domain.model.Category
 import com.voicebudget.domain.model.Transaction
+import com.voicebudget.domain.model.TransactionType
 import com.voicebudget.domain.parser.ParseFailureReason
 import com.voicebudget.domain.parser.ParseResult
 import com.voicebudget.domain.usecase.AddTransactionUseCase
@@ -52,6 +54,18 @@ class AddTransactionViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun startManualEntry() {
+        recognitionJob?.cancel()
+        _uiState.value = AddTransactionUiState.Confirming(
+            TransactionDraft(
+                amountText = "",
+                type = TransactionType.EXPENSE,
+                category = Category.OTHER_EXPENSE,
+                description = "",
+            ),
+        )
     }
 
     fun updateDraft(transform: (TransactionDraft) -> TransactionDraft) {

@@ -23,11 +23,11 @@ android {
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.voicebudget"
+        applicationId = "com.VoiceBudget"
         minSdk = 28
         targetSdk = 37
-        versionCode = 4
-        versionName = "1.2.1"
+        versionCode = 6
+        versionName = "1.3.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -49,6 +49,9 @@ android {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("release")
+            ndk {
+                debugSymbolLevel = "FULL"
+            }
         }
         debug {
             isMinifyEnabled = false

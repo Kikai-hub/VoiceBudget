@@ -56,6 +56,7 @@ import com.voicebudget.presentation.theme.VoiceBudgetTheme
 fun AddTransactionScreen(
     modifier: Modifier = Modifier,
     onDone: () -> Unit = {},
+    manualEntry: Boolean = false,
     viewModel: AddTransactionViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -73,12 +74,17 @@ fun AddTransactionScreen(
         }
     }
 
+    LaunchedEffect(Unit) {
+        if (manualEntry) viewModel.startManualEntry() else requestListening()
+    }
+
     LaunchedEffect(uiState) {
         if (uiState is AddTransactionUiState.Saved) onDone()
     }
 
     AddTransactionContent(
         uiState = uiState,
+        manualEntry = manualEntry,
         onMicClick = requestListening,
         onRetry = { viewModel.retry() },
         onCancel = onDone,
@@ -91,6 +97,7 @@ fun AddTransactionScreen(
 @Composable
 private fun AddTransactionContent(
     uiState: AddTransactionUiState,
+    manualEntry: Boolean,
     onMicClick: () -> Unit,
     onRetry: () -> Unit,
     onCancel: () -> Unit,
@@ -105,7 +112,7 @@ private fun AddTransactionContent(
         contentAlignment = Alignment.Center,
     ) {
         when (val state = uiState) {
-            is AddTransactionUiState.Idle -> IdleContent(onMicClick = onMicClick)
+            is AddTransactionUiState.Idle -> if (!manualEntry) IdleContent(onMicClick = onMicClick)
             is AddTransactionUiState.Listening -> ListeningContent()
             is AddTransactionUiState.Saving -> SavingContent()
             is AddTransactionUiState.Saved -> SavingContent()
@@ -115,9 +122,11 @@ private fun AddTransactionContent(
                 onCancel = onCancel,
             )
             is AddTransactionUiState.Confirming -> {
-                IdleContent(onMicClick = onMicClick)
+                if (!manualEntry) IdleContent(onMicClick = onMicClick)
                 TransactionEditorDialog(
-                    title = stringResource(R.string.confirm_transaction_title),
+                    title = stringResource(
+                        if (manualEntry) R.string.manual_transaction_title else R.string.confirm_transaction_title,
+                    ),
                     amountText = state.draft.amountText,
                     type = state.draft.type,
                     category = state.draft.category,
@@ -129,7 +138,7 @@ private fun AddTransactionContent(
                     onCategoryChange = { category -> onUpdateDraft { it.copy(category = category) } },
                     onDescriptionChange = { value -> onUpdateDraft { it.copy(description = value) } },
                     onConfirm = onConfirm,
-                    onDismiss = onRetry,
+                    onDismiss = if (manualEntry) onCancel else onRetry,
                 )
             }
         }
@@ -244,6 +253,7 @@ private fun AddTransactionScreenIdlePreview() {
     VoiceBudgetTheme {
         AddTransactionContent(
             uiState = AddTransactionUiState.Idle,
+            manualEntry = false,
             onMicClick = {}, onRetry = {}, onCancel = {}, onUpdateDraft = {}, onConfirm = {},
         )
     }
@@ -255,6 +265,7 @@ private fun AddTransactionScreenListeningPreview() {
     VoiceBudgetTheme {
         AddTransactionContent(
             uiState = AddTransactionUiState.Listening,
+            manualEntry = false,
             onMicClick = {}, onRetry = {}, onCancel = {}, onUpdateDraft = {}, onConfirm = {},
         )
     }
@@ -266,6 +277,7 @@ private fun AddTransactionScreenErrorPreview() {
     VoiceBudgetTheme {
         AddTransactionContent(
             uiState = AddTransactionUiState.Error("Couldn't find an amount in \"Coffee\". Please try again."),
+            manualEntry = false,
             onMicClick = {}, onRetry = {}, onCancel = {}, onUpdateDraft = {}, onConfirm = {},
         )
     }
@@ -284,6 +296,7 @@ private fun AddTransactionScreenConfirmingPreview() {
                     description = "Taxi",
                 ),
             ),
+            manualEntry = false,
             onMicClick = {}, onRetry = {}, onCancel = {}, onUpdateDraft = {}, onConfirm = {},
         )
     }

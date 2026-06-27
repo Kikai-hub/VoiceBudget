@@ -5,6 +5,7 @@
     <string name="nav_statistics">Статистика</string>
     <string name="nav_settings">Настройки</string>
     <string name="nav_record_transaction">Записать транзакцию</string>
+    <string name="nav_manual_transaction">Добавить транзакцию вручную</string>
 
     <string name="dashboard_recent_transactions">Последние транзакции</string>
     <string name="dashboard_empty">Транзакций пока нет. Нажмите на микрофон, чтобы добавить.</string>
@@ -49,6 +50,7 @@
     <string name="date_range_last_7_days">Последние 7 дней</string>
     <string name="edit_transaction_title">Редактировать транзакцию</string>
     <string name="confirm_transaction_title">Подтвердите транзакцию</string>
+    <string name="manual_transaction_title">Добавить транзакцию</string>
 
     <string name="voice_start_recording">Начать запись</string>
     <string name="voice_tap_to_speak">Нажмите, чтобы говорить</string>

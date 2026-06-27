@@ -2,13 +2,16 @@ package com.voicebudget.presentation.navigation
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.List
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Mic
@@ -87,7 +90,13 @@ fun VoiceBudgetNavHost(navController: NavHostController = rememberNavController(
         },
         floatingActionButton = {
             if (currentRoute == Routes.Dashboard.route) {
-                GradientMicFab(onClick = { navController.navigate(Routes.AddTransaction.route) })
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                ) {
+                    GradientMicFab(onClick = { navController.navigate(Routes.AddTransaction.route) })
+                    ManualEntryFab(onClick = { navController.navigate(Routes.ManualTransaction.route) })
+                }
             }
         },
     ) { contentPadding ->
@@ -102,6 +111,9 @@ fun VoiceBudgetNavHost(navController: NavHostController = rememberNavController(
             composable(Routes.Settings.route) { SettingsScreen() }
             composable(Routes.AddTransaction.route) {
                 AddTransactionScreen(onDone = { navController.popBackStack() })
+            }
+            composable(Routes.ManualTransaction.route) {
+                AddTransactionScreen(onDone = { navController.popBackStack() }, manualEntry = true)
             }
         }
     }
@@ -123,6 +135,26 @@ private fun GradientMicFab(onClick: () -> Unit) {
             contentDescription = stringResource(R.string.nav_record_transaction),
             tint = Color.White,
             modifier = Modifier.size(28.dp),
+        )
+    }
+}
+
+@Composable
+private fun ManualEntryFab(onClick: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .size(48.dp)
+            .shadow(elevation = 6.dp, shape = CircleShape)
+            .clip(CircleShape)
+            .background(MaterialTheme.colorScheme.surface)
+            .clickable(onClick = onClick),
+        contentAlignment = Alignment.Center,
+    ) {
+        Icon(
+            Icons.Filled.Add,
+            contentDescription = stringResource(R.string.nav_manual_transaction),
+            tint = MaterialTheme.colorScheme.primary,
+            modifier = Modifier.size(24.dp),
         )
     }
 }
