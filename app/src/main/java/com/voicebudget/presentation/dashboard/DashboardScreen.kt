@@ -4,19 +4,24 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDownward
 import androidx.compose.material.icons.filled.ArrowUpward
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -44,47 +49,116 @@ import com.voicebudget.utils.formatAmount
 
 @Composable
 fun DashboardScreen(
+    onNavigateToAdvisor: () -> Unit = {},
     modifier: Modifier = Modifier,
     viewModel: DashboardViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    DashboardContent(uiState = uiState, modifier = modifier)
+    DashboardContent(uiState = uiState, onNavigateToAdvisor = onNavigateToAdvisor, modifier = modifier)
 }
 
 @Composable
-private fun DashboardContent(uiState: DashboardUiState, modifier: Modifier = Modifier) {
+private fun DashboardContent(
+    uiState: DashboardUiState,
+    onNavigateToAdvisor: () -> Unit = {},
+    modifier: Modifier = Modifier,
+) {
     if (uiState.isLoading) {
         LoadingState(modifier = modifier)
         return
     }
 
-    Column(modifier = modifier.fillMaxSize()) {
-        SummaryCard(
-            income = uiState.summary.totalIncome,
-            expense = uiState.summary.totalExpense,
-            balance = uiState.summary.balance,
-            currencySymbol = uiState.currencySymbol,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
-        )
+    LazyColumn(modifier = modifier.fillMaxSize()) {
+        item {
+            SummaryCard(
+                income = uiState.summary.totalIncome,
+                expense = uiState.summary.totalExpense,
+                balance = uiState.summary.balance,
+                currencySymbol = uiState.currencySymbol,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
+            )
+        }
 
-        Text(
-            text = stringResource(R.string.dashboard_recent_transactions),
-            style = MaterialTheme.typography.titleMedium,
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
-        )
+        if (uiState.topAdvice.isNotEmpty()) {
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 4.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text = stringResource(R.string.advisor_section_title),
+                        style = MaterialTheme.typography.titleMedium,
+                    )
+                    TextButton(onClick = onNavigateToAdvisor) {
+                        Text(stringResource(R.string.advisor_view_all))
+                    }
+                }
+            }
+            items(uiState.topAdvice, key = { "advice_${it.id}" }) { advice ->
+                DashboardAdviceCard(
+                    advice = advice,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                )
+            }
+        }
+
+        item {
+            Text(
+                text = stringResource(R.string.dashboard_recent_transactions),
+                style = MaterialTheme.typography.titleMedium,
+                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            )
+        }
 
         if (uiState.recentTransactions.isEmpty()) {
-            EmptyState(message = stringResource(R.string.dashboard_empty))
+            item {
+                EmptyState(message = stringResource(R.string.dashboard_empty))
+            }
         } else {
-            LazyColumn(
-                contentPadding = PaddingValues(horizontal = 16.dp, vertical = 4.dp),
-                verticalArrangement = Arrangement.spacedBy(8.dp),
-            ) {
-                items(uiState.recentTransactions, key = { it.id }) { transaction ->
+            items(uiState.recentTransactions, key = { it.id }) { transaction ->
+                Box(modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) {
                     TransactionItem(transaction = transaction, currencySymbol = uiState.currencySymbol)
                 }
+            }
+        }
+    }
+}
+
+@Composable
+private fun DashboardAdviceCard(
+    advice: com.voicebudget.domain.advisor.FinancialAdvice,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+    ) {
+        Row(modifier = Modifier.padding(12.dp), verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                imageVector = com.voicebudget.presentation.advisor.adviceIcon(advice.icon),
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSecondaryContainer,
+                modifier = Modifier.size(20.dp),
+            )
+            Spacer(modifier = Modifier.width(10.dp))
+            Column {
+                Text(
+                    text = advice.title,
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.onSecondaryContainer,
+                )
+                Text(
+                    text = advice.description,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSecondaryContainer.copy(alpha = 0.8f),
+                    maxLines = 2,
+                )
             }
         }
     }

@@ -4,9 +4,13 @@ import app.cash.turbine.test
 import com.voicebudget.domain.model.Category
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
+import com.voicebudget.domain.advisor.FinancialAdvisor
+import com.voicebudget.domain.advisor.FinancialAnalyzer
+import com.voicebudget.domain.usecase.GetFinancialAdviceUseCase
 import com.voicebudget.domain.usecase.GetMonthlySummaryUseCase
 import com.voicebudget.domain.usecase.GetTransactionsUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
+import com.voicebudget.fakes.FakeAdvisorSettingsRepository
 import com.voicebudget.fakes.FakeSettingsRepository
 import com.voicebudget.fakes.FakeTransactionRepository
 import com.voicebudget.util.MainDispatcherRule
@@ -29,9 +33,12 @@ class DashboardViewModelTest {
                 Transaction(amount = 200.0, type = TransactionType.EXPENSE, category = Category.CAFE, description = "Coffee", createdAt = now),
             ),
         )
+        val advisorRepo = FakeAdvisorSettingsRepository()
+        val advisor = FinancialAdvisor(repository, advisorRepo, FinancialAnalyzer(emptySet()))
         val viewModel = DashboardViewModel(
             GetMonthlySummaryUseCase(repository),
             GetTransactionsUseCase(repository),
+            GetFinancialAdviceUseCase(advisor),
             ObserveSettingsUseCase(FakeSettingsRepository()),
         )
 
@@ -48,9 +55,13 @@ class DashboardViewModelTest {
 
     @Test
     fun `empty repository yields zeroed summary and empty list`() = runTest {
+        val emptyRepo = FakeTransactionRepository()
+        val advisorRepo = FakeAdvisorSettingsRepository()
+        val advisor = FinancialAdvisor(emptyRepo, advisorRepo, FinancialAnalyzer(emptySet()))
         val viewModel = DashboardViewModel(
-            GetMonthlySummaryUseCase(FakeTransactionRepository()),
-            GetTransactionsUseCase(FakeTransactionRepository()),
+            GetMonthlySummaryUseCase(emptyRepo),
+            GetTransactionsUseCase(emptyRepo),
+            GetFinancialAdviceUseCase(advisor),
             ObserveSettingsUseCase(FakeSettingsRepository()),
         )
 

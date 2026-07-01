@@ -38,6 +38,7 @@
     <string name="theme_system">System</string>
 
     <string name="msg_all_data_cleared">All data cleared.</string>
+    <string name="msg_advisor_settings_saved">Advisor settings saved.</string>
     <string name="msg_export_success">Exported successfully.</string>
     <string name="msg_export_failed">Export failed: %1$s</string>
     <string name="msg_import_success">Imported %1$d transactions.</string>
@@ -79,6 +80,27 @@
     <string name="error_audio">Audio recording error.</string>
     <string name="error_recognizer_busy">Recognizer is busy. Please try again.</string>
     <string name="error_recognition_generic">Recognition error (%1$d).</string>
+
+    <string name="nav_advisor">Advisor</string>
+
+    <string name="advisor_title">Financial Advisor</string>
+    <string name="advisor_section_title">Financial Tips</string>
+    <string name="advisor_empty">No recommendations right now. Keep tracking your transactions!</string>
+    <string name="advisor_dismiss">Dismiss</string>
+    <string name="advisor_view_all">View all</string>
+    <string name="advisor_potential_savings">Potential savings: %1$s</string>
+
+    <string name="priority_critical">Critical</string>
+    <string name="priority_high">High</string>
+    <string name="priority_medium">Medium</string>
+    <string name="priority_low">Low</string>
+
+    <string name="settings_advisor">Financial Advisor</string>
+    <string name="advisor_settings_title">Analysis Settings</string>
+    <string name="advisor_settings_small_purchase">Small purchase threshold</string>
+    <string name="advisor_settings_top_category">Top category budget share limit (%)</string>
+    <string name="advisor_settings_savings_rate">Desired savings rate (%)</string>
+    <string name="advisor_settings_period_months">Analysis period (months)</string>
 
     <string name="category_food">Food</string>
     <string name="category_cafe">Cafe</string>

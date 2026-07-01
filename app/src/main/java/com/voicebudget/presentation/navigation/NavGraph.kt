@@ -16,6 +16,7 @@ import androidx.compose.material.icons.filled.BarChart
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Mic
 import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.TipsAndUpdates
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -38,6 +39,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.voicebudget.R
+import com.voicebudget.presentation.advisor.AdvisorScreen
 import com.voicebudget.presentation.dashboard.DashboardScreen
 import com.voicebudget.presentation.settings.SettingsScreen
 import com.voicebudget.presentation.statistics.StatisticsScreen
@@ -52,6 +54,7 @@ private val bottomNavItems = listOf(
     BottomNavItem(Routes.Dashboard, R.string.nav_dashboard, Icons.Filled.Home),
     BottomNavItem(Routes.Transactions, R.string.nav_transactions, Icons.AutoMirrored.Filled.List),
     BottomNavItem(Routes.Statistics, R.string.nav_statistics, Icons.Filled.BarChart),
+    BottomNavItem(Routes.Advisor, R.string.nav_advisor, Icons.Filled.TipsAndUpdates),
     BottomNavItem(Routes.Settings, R.string.nav_settings, Icons.Filled.Settings),
 )
 
@@ -105,9 +108,12 @@ fun VoiceBudgetNavHost(navController: NavHostController = rememberNavController(
             startDestination = Routes.Dashboard.route,
             modifier = Modifier.padding(contentPadding),
         ) {
-            composable(Routes.Dashboard.route) { DashboardScreen() }
+            composable(Routes.Dashboard.route) {
+                DashboardScreen(onNavigateToAdvisor = { navController.navigate(Routes.Advisor.route) })
+            }
             composable(Routes.Transactions.route) { TransactionsScreen() }
             composable(Routes.Statistics.route) { StatisticsScreen() }
+            composable(Routes.Advisor.route) { AdvisorScreen() }
             composable(Routes.Settings.route) { SettingsScreen() }
             composable(Routes.AddTransaction.route) {
                 AddTransactionScreen(onDone = { navController.popBackStack() })

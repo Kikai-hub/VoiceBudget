@@ -36,6 +36,7 @@
     <string name="theme_system">Системная</string>
 
     <string name="msg_all_data_cleared">Все данные очищены.</string>
+    <string name="msg_advisor_settings_saved">Настройки советника сохранены.</string>
     <string name="msg_export_success">Экспорт выполнен успешно.</string>
     <string name="msg_export_failed">Ошибка экспорта: %1$s</string>
     <string name="msg_import_success">Импортировано транзакций: %1$d.</string>
@@ -77,6 +78,27 @@
     <string name="error_audio">Ошибка записи звука.</string>
     <string name="error_recognizer_busy">Распознаватель занят. Попробуйте снова.</string>
     <string name="error_recognition_generic">Ошибка распознавания (%1$d).</string>
+
+    <string name="nav_advisor">Советник</string>
+
+    <string name="advisor_title">Финансовый советник</string>
+    <string name="advisor_section_title">Финансовые советы</string>
+    <string name="advisor_empty">Рекомендаций пока нет. Продолжайте отслеживать транзакции!</string>
+    <string name="advisor_dismiss">Скрыть</string>
+    <string name="advisor_view_all">Все советы</string>
+    <string name="advisor_potential_savings">Потенциальная экономия: %1$s</string>
+
+    <string name="priority_critical">Критический</string>
+    <string name="priority_high">Высокий</string>
+    <string name="priority_medium">Средний</string>
+    <string name="priority_low">Низкий</string>
+
+    <string name="settings_advisor">Финансовый советник</string>
+    <string name="advisor_settings_title">Параметры анализа</string>
+    <string name="advisor_settings_small_purchase">Порог мелких покупок</string>
+    <string name="advisor_settings_top_category">Порог доли категории в расходах (%)</string>
+    <string name="advisor_settings_savings_rate">Желаемая норма сбережений (%)</string>
+    <string name="advisor_settings_period_months">Период анализа (месяцев)</string>
 
     <string name="category_food">Еда</string>
     <string name="category_cafe">Кафе</string>

@@ -23,13 +23,24 @@ android {
     compileSdk = 37
 
     defaultConfig {
-        applicationId = "com.VoiceBudget"
         minSdk = 28
         targetSdk = 37
-        versionCode = 6
-        versionName = "1.3.0"
+        versionCode = 7
+        versionName = "1.4.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    flavorDimensions += "store"
+    productFlavors {
+        create("rustore") {
+            dimension = "store"
+            applicationId = "com.voicebudget"
+        }
+        create("play") {
+            dimension = "store"
+            applicationId = "com.VoiceBudget"
+        }
     }
 
     signingConfigs {
@@ -134,7 +145,7 @@ dependencies {
 }
 
 tasks.register<JacocoReport>("jacocoTestReport") {
-    dependsOn("testDebugUnitTest")
+    dependsOn("testRustoreDebugUnitTest")
     group = "Reporting"
     description = "Generates a JaCoCo coverage report for the debug unit tests."
 
@@ -170,12 +181,12 @@ tasks.register<JacocoReport>("jacocoTestReport") {
     )
 
     val buildDirectory = layout.buildDirectory.get().asFile
-    val javaClasses = fileTree("$buildDirectory/intermediates/javac/debug/compileDebugJavaWithJavac/classes") { exclude(excluded) }
-    val kotlinClasses = fileTree("$buildDirectory/intermediates/built_in_kotlinc/debug/compileDebugKotlin/classes") { exclude(excluded) }
+    val javaClasses = fileTree("$buildDirectory/intermediates/javac/rustoreDebug/compileRustoreDebugJavaWithJavac/classes") { exclude(excluded) }
+    val kotlinClasses = fileTree("$buildDirectory/intermediates/built_in_kotlinc/rustoreDebug/compileRustoreDebugKotlin/classes") { exclude(excluded) }
 
     classDirectories.setFrom(files(javaClasses, kotlinClasses))
     sourceDirectories.setFrom(files("$projectDir/src/main/java"))
     executionData.setFrom(
-        fileTree(buildDirectory) { include("outputs/unit_test_code_coverage/debugUnitTest/testDebugUnitTest.exec") },
+        fileTree(buildDirectory) { include("outputs/unit_test_code_coverage/rustoreDebugUnitTest/testRustoreDebugUnitTest.exec") },
     )
 }

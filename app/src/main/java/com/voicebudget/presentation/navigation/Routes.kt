@@ -6,5 +6,6 @@ sealed class Routes(val route: String) {
     data object ManualTransaction : Routes("manual_transaction")
     data object Transactions : Routes("transactions")
     data object Statistics : Routes("statistics")
+    data object Advisor : Routes("advisor")
     data object Settings : Routes("settings")
 }
