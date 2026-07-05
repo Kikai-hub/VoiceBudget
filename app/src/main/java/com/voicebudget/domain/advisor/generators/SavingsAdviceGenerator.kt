@@ -1,5 +1,7 @@
 package com.voicebudget.domain.advisor.generators
 
+import android.content.Context
+import com.voicebudget.R
 import com.voicebudget.domain.advisor.AdviceGenerator
 import com.voicebudget.domain.advisor.AdviceIcon
 import com.voicebudget.domain.advisor.AdvicePriority
@@ -9,12 +11,14 @@ import com.voicebudget.domain.advisor.FinancialAdvice
 import com.voicebudget.domain.advisor.calculators.MonthlyExpenseCalculator
 import com.voicebudget.domain.advisor.calculators.MonthlyIncomeCalculator
 import com.voicebudget.domain.advisor.calculators.SavingsCalculator
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.roundToInt
 
 private const val POSITIVE_THRESHOLD_PERCENT = 20.0
 
 class SavingsAdviceGenerator @Inject constructor(
+    @param:ApplicationContext private val androidContext: Context,
     private val incomeCalculator: MonthlyIncomeCalculator,
     private val expenseCalculator: MonthlyExpenseCalculator,
     private val savingsCalculator: SavingsCalculator,
@@ -42,9 +46,13 @@ class SavingsAdviceGenerator @Inject constructor(
         val desired = income * context.settings.desiredSavingsRatePercent / 100.0
         return FinancialAdvice(
             id = id,
-            title = "Low savings rate",
-            description = "Your savings rate is ${rate.roundToInt()}% — below your ${context.settings.desiredSavingsRatePercent.roundToInt()}% goal. " +
-                "Try reducing expenses by ${(desired - (income - expenses)).toLong()}.",
+            title = androidContext.getString(R.string.advice_savings_low_title),
+            description = androidContext.getString(
+                R.string.advice_savings_low_desc,
+                rate.roundToInt(),
+                context.settings.desiredSavingsRatePercent.roundToInt(),
+                (desired - (income - expenses)).toLong(),
+            ),
             priority = AdvicePriority.HIGH,
             icon = AdviceIcon.SAVINGS,
             type = AdviceType.LOW_SAVINGS,
@@ -58,8 +66,8 @@ class SavingsAdviceGenerator @Inject constructor(
         val id = "savings_positive_${context.currentMonth}"
         return FinancialAdvice(
             id = id,
-            title = "Great savings!",
-            description = "You saved ${rate.roundToInt()}% of your income this month. Keep it up!",
+            title = androidContext.getString(R.string.advice_savings_positive_title),
+            description = androidContext.getString(R.string.advice_savings_positive_desc, rate.roundToInt()),
             priority = AdvicePriority.LOW,
             icon = AdviceIcon.POSITIVE,
             type = AdviceType.POSITIVE_PROGRESS,

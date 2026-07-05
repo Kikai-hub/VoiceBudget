@@ -7,6 +7,7 @@ import com.voicebudget.domain.advisor.calculators.CategoryAnalyzer
 import com.voicebudget.domain.model.Category
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
+import com.voicebudget.fakes.fakeAndroidContext
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -15,7 +16,7 @@ import java.time.ZoneId
 
 class CategoryGrowthAdviceGeneratorTest {
 
-    private val generator = CategoryGrowthAdviceGenerator(CategoryAnalyzer())
+    private val generator = CategoryGrowthAdviceGenerator(fakeAndroidContext(), CategoryAnalyzer())
 
     private fun epochMillis(year: Int, month: Int): Long =
         YearMonth.of(year, month).atDay(15).atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()

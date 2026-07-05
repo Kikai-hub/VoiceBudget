@@ -34,12 +34,13 @@ class DashboardViewModelTest {
             ),
         )
         val advisorRepo = FakeAdvisorSettingsRepository()
-        val advisor = FinancialAdvisor(repository, advisorRepo, FinancialAnalyzer(emptySet()))
+        val settingsRepo = FakeSettingsRepository()
+        val advisor = FinancialAdvisor(repository, advisorRepo, settingsRepo, FinancialAnalyzer(emptySet()))
         val viewModel = DashboardViewModel(
             GetMonthlySummaryUseCase(repository),
             GetTransactionsUseCase(repository),
             GetFinancialAdviceUseCase(advisor),
-            ObserveSettingsUseCase(FakeSettingsRepository()),
+            ObserveSettingsUseCase(settingsRepo),
         )
 
         viewModel.uiState.test {
@@ -57,12 +58,13 @@ class DashboardViewModelTest {
     fun `empty repository yields zeroed summary and empty list`() = runTest {
         val emptyRepo = FakeTransactionRepository()
         val advisorRepo = FakeAdvisorSettingsRepository()
-        val advisor = FinancialAdvisor(emptyRepo, advisorRepo, FinancialAnalyzer(emptySet()))
+        val settingsRepo = FakeSettingsRepository()
+        val advisor = FinancialAdvisor(emptyRepo, advisorRepo, settingsRepo, FinancialAnalyzer(emptySet()))
         val viewModel = DashboardViewModel(
             GetMonthlySummaryUseCase(emptyRepo),
             GetTransactionsUseCase(emptyRepo),
             GetFinancialAdviceUseCase(advisor),
-            ObserveSettingsUseCase(FakeSettingsRepository()),
+            ObserveSettingsUseCase(settingsRepo),
         )
 
         viewModel.uiState.test {

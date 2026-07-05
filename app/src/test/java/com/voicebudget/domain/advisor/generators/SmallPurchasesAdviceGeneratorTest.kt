@@ -7,6 +7,7 @@ import com.voicebudget.domain.advisor.calculators.SmallPurchaseAnalyzer
 import com.voicebudget.domain.model.Category
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
+import com.voicebudget.fakes.fakeAndroidContext
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -15,7 +16,7 @@ import java.time.ZoneId
 
 class SmallPurchasesAdviceGeneratorTest {
 
-    private val generator = SmallPurchasesAdviceGenerator(SmallPurchaseAnalyzer())
+    private val generator = SmallPurchasesAdviceGenerator(fakeAndroidContext(), SmallPurchaseAnalyzer())
     private val month = YearMonth.of(2024, 1)
 
     private fun epochMillis() = month.atDay(15).atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()

@@ -8,6 +8,7 @@ import com.voicebudget.domain.advisor.calculators.MonthlyExpenseCalculator
 import com.voicebudget.domain.model.Category
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
+import com.voicebudget.fakes.fakeAndroidContext
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -16,7 +17,7 @@ import java.time.ZoneId
 
 class HighSpendingAdviceGeneratorTest {
 
-    private val generator = HighSpendingAdviceGenerator(MonthlyExpenseCalculator())
+    private val generator = HighSpendingAdviceGenerator(fakeAndroidContext(), MonthlyExpenseCalculator())
 
     private fun epochMillis(year: Int, month: Int): Long =
         YearMonth.of(year, month).atDay(15).atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()

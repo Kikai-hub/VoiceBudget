@@ -10,6 +10,7 @@ import com.voicebudget.domain.advisor.calculators.SavingsCalculator
 import com.voicebudget.domain.model.Category
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
+import com.voicebudget.fakes.fakeAndroidContext
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -19,6 +20,7 @@ import java.time.ZoneId
 class MonthlySummaryAdviceGeneratorTest {
 
     private val generator = MonthlySummaryAdviceGenerator(
+        fakeAndroidContext(),
         MonthlyIncomeCalculator(),
         MonthlyExpenseCalculator(),
         CategoryAnalyzer(),

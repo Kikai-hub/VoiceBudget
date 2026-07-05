@@ -45,7 +45,7 @@ class AdvisorViewModelTest {
         val settingsRepo = FakeSettingsRepository()
 
         val analyzer = FinancialAnalyzer(emptySet())
-        val advisor = FinancialAdvisor(transactionRepo, advisorRepo, analyzer)
+        val advisor = FinancialAdvisor(transactionRepo, advisorRepo, settingsRepo, analyzer)
 
         return AdvisorViewModel(
             getFinancialAdviceUseCase = GetFinancialAdviceUseCase(advisor),

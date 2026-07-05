@@ -1,5 +1,7 @@
 package com.voicebudget.domain.advisor.generators
 
+import android.content.Context
+import com.voicebudget.R
 import com.voicebudget.domain.advisor.AdviceGenerator
 import com.voicebudget.domain.advisor.AdviceIcon
 import com.voicebudget.domain.advisor.AdvicePriority
@@ -8,7 +10,8 @@ import com.voicebudget.domain.advisor.AnalysisContext
 import com.voicebudget.domain.advisor.FinancialAdvice
 import com.voicebudget.domain.advisor.calculators.CategoryAnalyzer
 import com.voicebudget.domain.advisor.calculators.MonthlyExpenseCalculator
-import com.voicebudget.domain.model.Category
+import com.voicebudget.domain.model.categoryLabelRes
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.roundToInt
 import kotlin.math.roundToLong
@@ -21,6 +24,7 @@ private const val MONTHS_IN_YEAR = 12
  * and suggests reducing it by 30%, showing the annual saving potential.
  */
 class TopCategoryBudgetAdviceGenerator @Inject constructor(
+    @param:ApplicationContext private val androidContext: Context,
     private val categoryAnalyzer: CategoryAnalyzer,
     private val expenseCalculator: MonthlyExpenseCalculator,
 ) : AdviceGenerator {
@@ -38,13 +42,19 @@ class TopCategoryBudgetAdviceGenerator @Inject constructor(
         val yearlySaving = top.amount * REDUCTION_FACTOR * MONTHS_IN_YEAR
         val id = "top_category_${top.category.name}_${context.currentMonth}"
         val priority = if (sharePercent >= 50.0) AdvicePriority.HIGH else AdvicePriority.MEDIUM
+        val displayName = androidContext.getString(categoryLabelRes(top.category))
 
         return listOf(
             FinancialAdvice(
                 id = id,
-                title = "Biggest expense: ${categoryDisplayName(top.category)}",
-                description = "${categoryDisplayName(top.category)} takes ${sharePercent.roundToInt()}% of your budget. " +
-                    "Reducing it by ${(REDUCTION_FACTOR * 100).toInt()}% could save ~${yearlySaving.roundToLong()} per year.",
+                title = androidContext.getString(R.string.advice_top_category_title, displayName),
+                description = androidContext.getString(
+                    R.string.advice_top_category_desc,
+                    displayName,
+                    sharePercent.roundToInt(),
+                    (REDUCTION_FACTOR * 100).toInt(),
+                    yearlySaving.roundToLong(),
+                ),
                 priority = priority,
                 icon = AdviceIcon.TRENDING_UP,
                 type = AdviceType.CATEGORY_GROWTH,
@@ -54,7 +64,4 @@ class TopCategoryBudgetAdviceGenerator @Inject constructor(
             ),
         )
     }
-
-    private fun categoryDisplayName(category: Category): String =
-        category.name.replace('_', ' ').lowercase().replaceFirstChar { it.uppercase() }
 }

@@ -1,7 +1,9 @@
 package com.voicebudget.di
 
+import com.voicebudget.data.repository.GoalRepositoryImpl
 import com.voicebudget.data.repository.SettingsRepositoryImpl
 import com.voicebudget.data.repository.TransactionRepositoryImpl
+import com.voicebudget.domain.repository.GoalRepository
 import com.voicebudget.domain.repository.SettingsRepository
 import com.voicebudget.domain.repository.TransactionRepository
 import dagger.Binds
@@ -21,4 +23,8 @@ abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindSettingsRepository(impl: SettingsRepositoryImpl): SettingsRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindGoalRepository(impl: GoalRepositoryImpl): GoalRepository
 }

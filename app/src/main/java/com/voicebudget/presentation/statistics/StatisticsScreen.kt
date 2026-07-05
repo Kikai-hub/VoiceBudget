@@ -49,6 +49,7 @@ import com.patrykandpatrick.vico.compose.pie.data.PieChartModelProducer
 import com.patrykandpatrick.vico.compose.pie.data.pieSeries
 import com.voicebudget.presentation.components.EmptyState
 import com.voicebudget.presentation.components.LoadingState
+import com.voicebudget.presentation.goals.GoalsSection
 import com.voicebudget.presentation.theme.VoiceBudgetTheme
 import com.voicebudget.utils.formatAmount
 import androidx.compose.runtime.LaunchedEffect
@@ -76,6 +77,8 @@ private fun StatisticsContent(uiState: StatisticsUiState, modifier: Modifier = M
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
+        GoalsSection()
+
         StatisticsSection(title = stringResource(R.string.stats_expense_breakdown)) {
             if (uiState.categoryBreakdown.isEmpty()) {
                 EmptyState(message = stringResource(R.string.stats_no_expenses), modifier = Modifier.height(200.dp))

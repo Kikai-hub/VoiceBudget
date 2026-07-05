@@ -1,5 +1,7 @@
 package com.voicebudget.domain.advisor.generators
 
+import android.content.Context
+import com.voicebudget.R
 import com.voicebudget.domain.advisor.AdviceGenerator
 import com.voicebudget.domain.advisor.AdviceIcon
 import com.voicebudget.domain.advisor.AdvicePriority
@@ -7,6 +9,7 @@ import com.voicebudget.domain.advisor.AdviceType
 import com.voicebudget.domain.advisor.AnalysisContext
 import com.voicebudget.domain.advisor.FinancialAdvice
 import com.voicebudget.domain.advisor.calculators.MonthlyExpenseCalculator
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.roundToInt
 
@@ -14,6 +17,7 @@ private const val THRESHOLD_PERCENT = 20.0
 private const val CRITICAL_THRESHOLD_PERCENT = 50.0
 
 class HighSpendingAdviceGenerator @Inject constructor(
+    @param:ApplicationContext private val androidContext: Context,
     private val expenseCalculator: MonthlyExpenseCalculator,
 ) : AdviceGenerator {
 
@@ -38,8 +42,11 @@ class HighSpendingAdviceGenerator @Inject constructor(
         return listOf(
             FinancialAdvice(
                 id = id,
-                title = "High spending this month",
-                description = "You spent ${changePercent.roundToInt()}% more this month than last month.",
+                title = androidContext.getString(R.string.advice_high_spending_title),
+                description = androidContext.getString(
+                    R.string.advice_high_spending_desc,
+                    changePercent.roundToInt(),
+                ),
                 priority = priority,
                 icon = AdviceIcon.TRENDING_UP,
                 type = AdviceType.HIGH_SPENDING,

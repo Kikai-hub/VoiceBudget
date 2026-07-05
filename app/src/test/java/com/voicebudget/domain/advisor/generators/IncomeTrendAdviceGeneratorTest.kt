@@ -8,6 +8,7 @@ import com.voicebudget.domain.advisor.calculators.MonthlyIncomeCalculator
 import com.voicebudget.domain.model.Category
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
+import com.voicebudget.fakes.fakeAndroidContext
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -16,7 +17,8 @@ import java.time.ZoneId
 
 class IncomeTrendAdviceGeneratorTest {
 
-    private val generator = IncomeTrendAdviceGenerator(MonthlyIncomeCalculator(), IncomeTrendAnalyzer())
+    private val generator =
+        IncomeTrendAdviceGenerator(fakeAndroidContext(), MonthlyIncomeCalculator(), IncomeTrendAnalyzer())
 
     private fun epochMillis(year: Int, month: Int): Long =
         YearMonth.of(year, month).atDay(15).atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()

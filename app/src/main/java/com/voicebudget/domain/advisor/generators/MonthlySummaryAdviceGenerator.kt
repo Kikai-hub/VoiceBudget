@@ -1,5 +1,7 @@
 package com.voicebudget.domain.advisor.generators
 
+import android.content.Context
+import com.voicebudget.R
 import com.voicebudget.domain.advisor.AdviceGenerator
 import com.voicebudget.domain.advisor.AdviceIcon
 import com.voicebudget.domain.advisor.AdvicePriority
@@ -10,11 +12,13 @@ import com.voicebudget.domain.advisor.calculators.CategoryAnalyzer
 import com.voicebudget.domain.advisor.calculators.MonthlyExpenseCalculator
 import com.voicebudget.domain.advisor.calculators.MonthlyIncomeCalculator
 import com.voicebudget.domain.advisor.calculators.SavingsCalculator
-import com.voicebudget.domain.model.Category
+import com.voicebudget.domain.model.categoryLabelRes
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.roundToLong
 
 class MonthlySummaryAdviceGenerator @Inject constructor(
+    @param:ApplicationContext private val androidContext: Context,
     private val incomeCalculator: MonthlyIncomeCalculator,
     private val expenseCalculator: MonthlyExpenseCalculator,
     private val categoryAnalyzer: CategoryAnalyzer,
@@ -37,7 +41,7 @@ class MonthlySummaryAdviceGenerator @Inject constructor(
         return listOf(
             FinancialAdvice(
                 id = id,
-                title = "Monthly summary",
+                title = androidContext.getString(R.string.advice_monthly_summary_title),
                 description = description,
                 priority = AdvicePriority.LOW,
                 icon = AdviceIcon.SUMMARY,
@@ -55,16 +59,22 @@ class MonthlySummaryAdviceGenerator @Inject constructor(
         topCategory: com.voicebudget.domain.model.CategoryAmount?,
         savingsRate: Double?,
     ): String = buildString {
-        append("Income: ${income.roundToLong()}, Expenses: ${expenses.roundToLong()}.")
+        append(androidContext.getString(R.string.advice_monthly_summary_base, income.roundToLong(), expenses.roundToLong()))
         topCategory?.let {
-            append(" Largest category: ${categoryDisplayName(it.category)} (${it.amount.roundToLong()}).")
+            append(" ")
+            append(
+                androidContext.getString(
+                    R.string.advice_monthly_summary_top_category,
+                    androidContext.getString(categoryLabelRes(it.category)),
+                    it.amount.roundToLong(),
+                ),
+            )
         }
         savingsRate?.let {
-            val opportunity = if (it < 10) " Try to save more next month." else ""
-            append("$opportunity")
+            if (it < 10) {
+                append(" ")
+                append(androidContext.getString(R.string.advice_monthly_summary_save_more))
+            }
         }
     }
-
-    private fun categoryDisplayName(category: Category): String =
-        category.name.replace('_', ' ').lowercase().replaceFirstChar { it.uppercase() }
 }

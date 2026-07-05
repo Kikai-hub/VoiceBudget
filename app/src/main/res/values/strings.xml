@@ -70,6 +70,30 @@
     <string name="stats_no_expenses">No expenses recorded this month.</string>
     <string name="stats_income_vs_expenses">Income vs expenses (last 6 months)</string>
 
+    <string name="goals_title">Financial Goals</string>
+    <string name="goals_add_goal">Add goal</string>
+    <string name="goals_empty">No goals yet. Tap \"Add goal\" to start planning your savings!</string>
+    <string name="goals_field_name">Goal name</string>
+    <string name="goals_field_amount">Target amount</string>
+    <string name="goals_field_month">Month</string>
+    <string name="goals_field_year">Year</string>
+    <string name="goals_dialog_add_title">Add financial goal</string>
+    <string name="goals_months_remaining">%1$d months remaining</string>
+    <string name="goals_required_monthly">Required: %1$s/month</string>
+    <string name="goals_current_monthly">Current: %1$s/month</string>
+    <string name="goals_on_track">On track</string>
+    <string name="goals_off_track">Off track</string>
+    <string name="goals_delete_title">Delete goal?</string>
+    <string name="goals_delete_message">"\"%1$s\" will be permanently removed."</string>
+
+    <string name="goal_on_track_desc">At your current pace (~%4$d/month) you\'re on track to reach \"%1$s\" (%2$d) by %3$s.</string>
+    <string name="goal_off_track_desc">To reach \"%1$s\" (%2$d) by %3$s you need to save ~%4$d/month — your current pace is ~%5$d/month.</string>
+    <string name="goal_suggestion_desc">Try cutting %1$s spending by %2$d%% (~%3$d/month) to help close the gap.</string>
+
+    <string name="error_goal_invalid_name">Please enter a goal name.</string>
+    <string name="error_goal_invalid_amount">Please enter a valid target amount.</string>
+    <string name="error_goal_deadline_past">Deadline must be in the future.</string>
+
     <string name="error_invalid_amount">Please enter a valid amount.</string>
     <string name="error_no_speech_match">Didn\'t catch that. Please try again.</string>
     <string name="error_amount_not_found">"Couldn't find an amount in \"%1$s\". Please try again."</string>
@@ -101,6 +125,35 @@
     <string name="advisor_settings_top_category">Top category budget share limit (%)</string>
     <string name="advisor_settings_savings_rate">Desired savings rate (%)</string>
     <string name="advisor_settings_period_months">Analysis period (months)</string>
+
+    <string name="advice_high_spending_title">High spending this month</string>
+    <string name="advice_high_spending_desc">You spent %1$d%% more this month than last month.</string>
+
+    <string name="advice_category_growth_title">%1$s expenses grew</string>
+    <string name="advice_category_growth_desc">%1$s expenses increased by %2$d%%.</string>
+
+    <string name="advice_small_purchases_title">Many small purchases</string>
+    <string name="advice_small_purchases_desc">You made %1$d purchases under %2$d this month.</string>
+
+    <string name="advice_savings_low_title">Low savings rate</string>
+    <string name="advice_savings_low_desc">Your savings rate is %1$d%% — below your %2$d%% goal. Try reducing expenses by %3$d.</string>
+
+    <string name="advice_savings_positive_title">Great savings!</string>
+    <string name="advice_savings_positive_desc">You saved %1$d%% of your income this month. Keep it up!</string>
+
+    <string name="advice_recurring_title">Recurring payment detected</string>
+    <string name="advice_recurring_desc">You have a recurring %1$s payment of ~%2$d for %3$d consecutive months.</string>
+
+    <string name="advice_income_trend_title">Declining income</string>
+    <string name="advice_income_trend_desc">Your income has been declining for %1$d consecutive months (%2$d%% change).</string>
+
+    <string name="advice_monthly_summary_title">Monthly summary</string>
+    <string name="advice_monthly_summary_base">Income: %1$d, Expenses: %2$d.</string>
+    <string name="advice_monthly_summary_top_category">Largest category: %1$s (%2$d).</string>
+    <string name="advice_monthly_summary_save_more">Try to save more next month.</string>
+
+    <string name="advice_top_category_title">Biggest expense: %1$s</string>
+    <string name="advice_top_category_desc">%1$s takes %2$d%% of your budget. Reducing it by %3$d%% could save ~%4$d per year.</string>
 
     <string name="category_food">Food</string>
     <string name="category_cafe">Cafe</string>

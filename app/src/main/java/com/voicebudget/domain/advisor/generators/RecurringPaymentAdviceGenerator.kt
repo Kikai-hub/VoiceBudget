@@ -1,5 +1,7 @@
 package com.voicebudget.domain.advisor.generators
 
+import android.content.Context
+import com.voicebudget.R
 import com.voicebudget.domain.advisor.AdviceGenerator
 import com.voicebudget.domain.advisor.AdviceIcon
 import com.voicebudget.domain.advisor.AdvicePriority
@@ -7,11 +9,13 @@ import com.voicebudget.domain.advisor.AdviceType
 import com.voicebudget.domain.advisor.AnalysisContext
 import com.voicebudget.domain.advisor.FinancialAdvice
 import com.voicebudget.domain.advisor.calculators.RecurringPaymentDetector
-import com.voicebudget.domain.model.Category
+import com.voicebudget.domain.model.categoryLabelRes
+import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.roundToLong
 
 class RecurringPaymentAdviceGenerator @Inject constructor(
+    @param:ApplicationContext private val androidContext: Context,
     private val detector: RecurringPaymentDetector,
 ) : AdviceGenerator {
 
@@ -26,9 +30,13 @@ class RecurringPaymentAdviceGenerator @Inject constructor(
             val id = "recurring_${payment.category.name}_${context.currentMonth}"
             FinancialAdvice(
                 id = id,
-                title = "Recurring payment detected",
-                description = "You have a recurring ${categoryDisplayName(payment.category)} payment " +
-                    "of ~${payment.typicalAmount.roundToLong()} for ${payment.monthsSeen} consecutive months.",
+                title = androidContext.getString(R.string.advice_recurring_title),
+                description = androidContext.getString(
+                    R.string.advice_recurring_desc,
+                    androidContext.getString(categoryLabelRes(payment.category)),
+                    payment.typicalAmount.roundToLong(),
+                    payment.monthsSeen,
+                ),
                 priority = AdvicePriority.LOW,
                 icon = AdviceIcon.REPEAT,
                 type = AdviceType.RECURRING_EXPENSE,
@@ -38,7 +46,4 @@ class RecurringPaymentAdviceGenerator @Inject constructor(
             )
         }
     }
-
-    private fun categoryDisplayName(category: Category): String =
-        category.name.replace('_', ' ').lowercase()
 }
