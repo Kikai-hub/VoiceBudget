@@ -10,6 +10,7 @@ fun FinancialGoalEntity.toDomain(): FinancialGoal = FinancialGoal(
     targetAmount = targetAmount,
     targetMonth = YearMonth.of(targetYear, targetMonth),
     createdAt = createdAt,
+    savedAmount = savedAmount,
 )
 
 fun FinancialGoal.toEntity(): FinancialGoalEntity = FinancialGoalEntity(
@@ -19,4 +20,5 @@ fun FinancialGoal.toEntity(): FinancialGoalEntity = FinancialGoalEntity(
     targetYear = targetMonth.year,
     targetMonth = targetMonth.monthValue,
     createdAt = createdAt,
+    savedAmount = savedAmount,
 )

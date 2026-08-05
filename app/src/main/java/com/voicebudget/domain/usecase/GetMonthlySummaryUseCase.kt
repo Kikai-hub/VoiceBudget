@@ -2,6 +2,7 @@ package com.voicebudget.domain.usecase
 
 import com.voicebudget.domain.model.MonthlySummary
 import com.voicebudget.domain.model.TransactionType
+import com.voicebudget.domain.model.isGoalContribution
 import com.voicebudget.domain.repository.TransactionRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -16,7 +17,9 @@ class GetMonthlySummaryUseCase @Inject constructor(
             val monthly = transactions.filter { it.isInMonth(referenceMonth) }
             MonthlySummary(
                 totalIncome = monthly.filter { it.type == TransactionType.INCOME }.sumOf { it.amount },
-                totalExpense = monthly.filter { it.type == TransactionType.EXPENSE }.sumOf { it.amount },
+                totalExpense = monthly
+                    .filter { it.type == TransactionType.EXPENSE && !it.isGoalContribution }
+                    .sumOf { it.amount },
             )
         }
     }

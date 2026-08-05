@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="Theme.VoiceBudget" parent="Theme.AppCompat.DayNight.NoActionBar" />
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--
+      MainActivity handles edge-to-edge itself via enableEdgeToEdge() + Compose insets, so the
+      legacy bar-coloring attributes AppCompat's base theme still carries (which Android 15
+      deprecates and Play Console's pre-launch report flags: setStatusBarColor/
+      setNavigationBarColor/LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES) are neutralized here rather
+      than left to inherit non-transparent defaults.
+    -->
+    <style name="Theme.VoiceBudget" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowDrawsSystemBarBackgrounds">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLayoutInDisplayCutoutMode" tools:targetApi="r">always</item>
+    </style>
 </resources>

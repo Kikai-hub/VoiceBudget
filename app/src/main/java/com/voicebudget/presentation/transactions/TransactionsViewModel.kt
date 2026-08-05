@@ -6,6 +6,7 @@ import com.voicebudget.domain.model.Category
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.usecase.DeleteTransactionUseCase
 import com.voicebudget.domain.usecase.GetTransactionsUseCase
+import com.voicebudget.domain.usecase.ObserveCustomCategoriesUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
 import com.voicebudget.domain.usecase.UpdateTransactionUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -22,6 +23,7 @@ import javax.inject.Inject
 class TransactionsViewModel @Inject constructor(
     getTransactionsUseCase: GetTransactionsUseCase,
     observeSettingsUseCase: ObserveSettingsUseCase,
+    observeCustomCategoriesUseCase: ObserveCustomCategoriesUseCase,
     private val updateTransactionUseCase: UpdateTransactionUseCase,
     private val deleteTransactionUseCase: DeleteTransactionUseCase,
 ) : ViewModel() {
@@ -34,7 +36,8 @@ class TransactionsViewModel @Inject constructor(
         filters,
         editingTransaction,
         observeSettingsUseCase(),
-    ) { transactions, currentFilters, editing, settings ->
+        observeCustomCategoriesUseCase(),
+    ) { transactions, currentFilters, editing, settings, customCategories ->
         val range = currentFilters.dateRange.toTimeRange()
         val filtered = transactions.filter { transaction ->
             (currentFilters.category == null || transaction.category == currentFilters.category) &&
@@ -46,6 +49,7 @@ class TransactionsViewModel @Inject constructor(
             filters = currentFilters,
             editingTransaction = editing,
             currencySymbol = settings.currency.symbol,
+            customCategories = customCategories,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), TransactionsUiState())
 

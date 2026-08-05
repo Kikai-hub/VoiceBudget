@@ -14,6 +14,8 @@ class TransactionRepositoryImpl @Inject constructor(
     override fun getAll(): Flow<List<Transaction>> =
         dao.getAll().map { entities -> entities.map { it.toDomain() } }
 
+    override suspend fun getById(id: Long): Transaction? = dao.getById(id)?.toDomain()
+
     override suspend fun add(transaction: Transaction): Long = dao.insert(transaction.toEntity())
 
     override suspend fun update(transaction: Transaction) = dao.update(transaction.toEntity())
@@ -21,4 +23,10 @@ class TransactionRepositoryImpl @Inject constructor(
     override suspend fun delete(transaction: Transaction) = dao.delete(transaction.toEntity())
 
     override suspend fun clearAll() = dao.deleteAll()
+
+    override suspend fun clearCustomCategory(categoryId: Long) = dao.clearCustomCategory(categoryId)
+
+    override suspend fun clearGoal(goalId: Long) = dao.clearGoal(goalId)
+
+    override suspend fun getLastTransactionTime(): Long? = dao.getLastTransactionTime()
 }

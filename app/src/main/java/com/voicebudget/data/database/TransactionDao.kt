@@ -27,4 +27,13 @@ interface TransactionDao {
 
     @Query("DELETE FROM transactions")
     suspend fun deleteAll()
+
+    @Query("UPDATE transactions SET customCategoryId = NULL WHERE customCategoryId = :categoryId")
+    suspend fun clearCustomCategory(categoryId: Long)
+
+    @Query("UPDATE transactions SET goalId = NULL WHERE goalId = :goalId")
+    suspend fun clearGoal(goalId: Long)
+
+    @Query("SELECT MAX(createdAt) FROM transactions")
+    suspend fun getLastTransactionTime(): Long?
 }

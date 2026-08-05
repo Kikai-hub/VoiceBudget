@@ -2,18 +2,21 @@ package com.voicebudget.presentation.goals
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Savings
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -26,11 +29,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.voicebudget.R
 import com.voicebudget.domain.goals.FinancialGoal
 import com.voicebudget.domain.goals.GoalWithStrategy
+import com.voicebudget.presentation.components.GoalContributionDialog
 import com.voicebudget.presentation.components.GoalEditorDialog
 import com.voicebudget.utils.formatAmount
 
@@ -42,13 +47,26 @@ fun GoalsSection(
     val uiState by viewModel.uiState.collectAsState()
     val dialogState by viewModel.dialogState.collectAsState()
     var pendingDelete by remember { mutableStateOf<FinancialGoal?>(null) }
+    var showContributionDialog by remember { mutableStateOf(false) }
 
     GoalsSectionContent(
         uiState = uiState,
         onAddClick = viewModel::openAddDialog,
+        onSetAsideClick = { showContributionDialog = true },
         onDeleteClick = { pendingDelete = it },
         modifier = modifier,
     )
+
+    if (showContributionDialog) {
+        GoalContributionDialog(
+            goals = uiState.goals.map { it.goal },
+            onConfirm = { goalId, amount ->
+                viewModel.contributeToGoal(goalId, amount)
+                showContributionDialog = false
+            },
+            onDismiss = { showContributionDialog = false },
+        )
+    }
 
     val dialog = dialogState
     if (dialog is GoalDialogState.Editing) {
@@ -90,6 +108,7 @@ fun GoalsSection(
 private fun GoalsSectionContent(
     uiState: GoalsUiState,
     onAddClick: () -> Unit,
+    onSetAsideClick: () -> Unit,
     onDeleteClick: (FinancialGoal) -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -99,15 +118,24 @@ private fun GoalsSectionContent(
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
+            Text(
+                text = stringResource(R.string.goals_title),
+                style = MaterialTheme.typography.titleMedium,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.fillMaxWidth(),
+            )
+            FlowRow(
+                horizontalArrangement = Arrangement.End,
+                verticalArrangement = Arrangement.Center,
                 modifier = Modifier.fillMaxWidth(),
             ) {
-                Text(
-                    text = stringResource(R.string.goals_title),
-                    style = MaterialTheme.typography.titleMedium,
-                    modifier = Modifier.weight(1f),
-                )
+                if (uiState.goals.isNotEmpty()) {
+                    TextButton(onClick = onSetAsideClick) {
+                        Icon(Icons.Filled.Savings, contentDescription = null)
+                        Text(stringResource(R.string.goals_set_aside))
+                    }
+                }
                 TextButton(onClick = onAddClick) {
                     Icon(Icons.Filled.Add, contentDescription = null)
                     Text(stringResource(R.string.goals_add_goal))
@@ -165,7 +193,11 @@ private fun GoalCard(
                 }
                 Text(
                     text = stringResource(
-                        if (item.strategy.onTrack) R.string.goals_on_track else R.string.goals_off_track,
+                        when {
+                            item.strategy.progressPercent >= 100 -> R.string.goals_completed
+                            item.strategy.onTrack -> R.string.goals_on_track
+                            else -> R.string.goals_off_track
+                        },
                     ),
                     style = MaterialTheme.typography.labelSmall,
                     color = if (item.strategy.onTrack) {
@@ -178,6 +210,23 @@ private fun GoalCard(
                     Icon(Icons.Filled.Close, contentDescription = stringResource(R.string.action_delete))
                 }
             }
+
+            LinearProgressIndicator(
+                progress = { item.strategy.progressPercent / 100f },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 8.dp),
+            )
+            Text(
+                text = stringResource(
+                    R.string.goals_saved_of_target,
+                    formatAmount(item.strategy.savedAmount, currencySymbol),
+                    formatAmount(item.goal.targetAmount, currencySymbol),
+                    item.strategy.progressPercent,
+                ),
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.padding(top = 4.dp),
+            )
 
             HorizontalDivider(modifier = Modifier.padding(vertical = 8.dp))
 

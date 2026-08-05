@@ -16,15 +16,20 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDownward
 import androidx.compose.material.icons.filled.ArrowUpward
+import androidx.compose.material.icons.filled.Savings
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,11 +39,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.voicebudget.R
+import com.voicebudget.domain.goals.GoalWithStrategy
 import com.voicebudget.domain.model.Category
 import com.voicebudget.domain.model.MonthlySummary
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
 import com.voicebudget.presentation.components.EmptyState
+import com.voicebudget.presentation.components.GoalContributionDialog
 import com.voicebudget.presentation.components.LoadingState
 import com.voicebudget.presentation.components.TransactionItem
 import com.voicebudget.presentation.theme.EmeraldHeroGradient
@@ -54,13 +61,32 @@ fun DashboardScreen(
     viewModel: DashboardViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    DashboardContent(uiState = uiState, onNavigateToAdvisor = onNavigateToAdvisor, modifier = modifier)
+    var showContributionDialog by remember { mutableStateOf(false) }
+
+    DashboardContent(
+        uiState = uiState,
+        onNavigateToAdvisor = onNavigateToAdvisor,
+        onSetAsideClick = { showContributionDialog = true },
+        modifier = modifier,
+    )
+
+    if (showContributionDialog) {
+        GoalContributionDialog(
+            goals = uiState.goals.map { it.goal },
+            onConfirm = { goalId, amount ->
+                viewModel.contributeToGoal(goalId, amount)
+                showContributionDialog = false
+            },
+            onDismiss = { showContributionDialog = false },
+        )
+    }
 }
 
 @Composable
 private fun DashboardContent(
     uiState: DashboardUiState,
     onNavigateToAdvisor: () -> Unit = {},
+    onSetAsideClick: () -> Unit = {},
     modifier: Modifier = Modifier,
 ) {
     if (uiState.isLoading) {
@@ -79,6 +105,34 @@ private fun DashboardContent(
                     .fillMaxWidth()
                     .padding(16.dp),
             )
+        }
+
+        if (uiState.goals.isNotEmpty()) {
+            item {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 4.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(
+                        text = stringResource(R.string.goals_title),
+                        style = MaterialTheme.typography.titleMedium,
+                    )
+                    TextButton(onClick = onSetAsideClick) {
+                        Icon(Icons.Filled.Savings, contentDescription = null)
+                        Text(stringResource(R.string.goals_set_aside))
+                    }
+                }
+            }
+            items(uiState.goals, key = { "goal_${it.goal.id}" }) { goal ->
+                DashboardGoalRow(
+                    item = goal,
+                    currencySymbol = uiState.currencySymbol,
+                    modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp),
+                )
+            }
         }
 
         if (uiState.topAdvice.isNotEmpty()) {
@@ -122,9 +176,57 @@ private fun DashboardContent(
         } else {
             items(uiState.recentTransactions, key = { it.id }) { transaction ->
                 Box(modifier = Modifier.padding(horizontal = 16.dp, vertical = 4.dp)) {
-                    TransactionItem(transaction = transaction, currencySymbol = uiState.currencySymbol)
+                    TransactionItem(
+                        transaction = transaction,
+                        currencySymbol = uiState.currencySymbol,
+                        customCategories = uiState.customCategories,
+                    )
                 }
             }
+        }
+    }
+}
+
+@Composable
+private fun DashboardGoalRow(
+    item: GoalWithStrategy,
+    currencySymbol: String,
+    modifier: Modifier = Modifier,
+) {
+    Card(
+        modifier = modifier.fillMaxWidth(),
+        elevation = CardDefaults.cardElevation(defaultElevation = 1.dp),
+    ) {
+        Column(modifier = Modifier.padding(12.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.fillMaxWidth()) {
+                Text(
+                    text = item.goal.name,
+                    style = MaterialTheme.typography.titleSmall,
+                    modifier = Modifier.weight(1f),
+                )
+                Text(
+                    text = "${item.strategy.progressPercent}%",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.primary,
+                )
+            }
+            LinearProgressIndicator(
+                progress = { item.strategy.progressPercent / 100f },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 6.dp),
+            )
+            Text(
+                text = stringResource(
+                    R.string.goals_saved_of_target,
+                    formatAmount(item.strategy.savedAmount, currencySymbol),
+                    formatAmount(item.goal.targetAmount, currencySymbol),
+                    item.strategy.progressPercent,
+                ),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(top = 4.dp),
+            )
         }
     }
 }

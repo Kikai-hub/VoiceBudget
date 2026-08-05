@@ -6,10 +6,14 @@ import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
 import com.voicebudget.domain.usecase.DeleteTransactionUseCase
 import com.voicebudget.domain.usecase.GetTransactionsUseCase
+import com.voicebudget.domain.usecase.ObserveCustomCategoriesUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
 import com.voicebudget.domain.usecase.UpdateTransactionUseCase
+import com.voicebudget.fakes.FakeCustomCategoryRepository
+import com.voicebudget.fakes.FakeGoalRepository
 import com.voicebudget.fakes.FakeSettingsRepository
 import com.voicebudget.fakes.FakeTransactionRepository
+import com.voicebudget.fakes.FakeTransactionRunner
 import com.voicebudget.util.MainDispatcherRule
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
@@ -31,8 +35,9 @@ class TransactionsViewModelTest {
     private fun buildViewModel(repository: FakeTransactionRepository): TransactionsViewModel = TransactionsViewModel(
         GetTransactionsUseCase(repository),
         ObserveSettingsUseCase(FakeSettingsRepository()),
-        UpdateTransactionUseCase(repository),
-        DeleteTransactionUseCase(repository),
+        ObserveCustomCategoriesUseCase(FakeCustomCategoryRepository()),
+        UpdateTransactionUseCase(repository, FakeGoalRepository()),
+        DeleteTransactionUseCase(repository, FakeGoalRepository(), FakeTransactionRunner()),
     )
 
     @Test

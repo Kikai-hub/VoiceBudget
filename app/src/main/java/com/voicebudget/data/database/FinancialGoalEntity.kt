@@ -12,4 +12,5 @@ data class FinancialGoalEntity(
     val targetYear: Int,
     val targetMonth: Int,
     val createdAt: Long,
+    val savedAmount: Double = 0.0,
 )

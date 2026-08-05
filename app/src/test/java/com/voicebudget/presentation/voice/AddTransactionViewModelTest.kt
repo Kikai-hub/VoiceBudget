@@ -8,8 +8,10 @@ import com.voicebudget.domain.model.Category
 import com.voicebudget.domain.model.TransactionType
 import com.voicebudget.domain.parser.TransactionParser
 import com.voicebudget.domain.usecase.AddTransactionUseCase
+import com.voicebudget.domain.usecase.ObserveCustomCategoriesUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
 import com.voicebudget.domain.usecase.ParseVoiceInputUseCase
+import com.voicebudget.fakes.FakeCustomCategoryRepository
 import com.voicebudget.fakes.FakeSettingsRepository
 import com.voicebudget.fakes.FakeTransactionRepository
 import com.voicebudget.util.MainDispatcherRule
@@ -49,6 +51,7 @@ class AddTransactionViewModelTest {
             ParseVoiceInputUseCase(TransactionParser()),
             AddTransactionUseCase(repository),
             ObserveSettingsUseCase(settingsRepository),
+            ObserveCustomCategoriesUseCase(FakeCustomCategoryRepository()),
         )
         return viewModel to voiceService
     }

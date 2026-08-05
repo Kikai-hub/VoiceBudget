@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.voicebudget.R
 import com.voicebudget.domain.goals.FinancialGoal
 import com.voicebudget.domain.usecase.AddGoalUseCase
+import com.voicebudget.domain.usecase.ContributeToGoalUseCase
 import com.voicebudget.domain.usecase.DeleteGoalUseCase
 import com.voicebudget.domain.usecase.GetGoalsWithStrategyUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
@@ -27,6 +28,7 @@ class GoalsViewModel @Inject constructor(
     getGoalsWithStrategyUseCase: GetGoalsWithStrategyUseCase,
     private val addGoalUseCase: AddGoalUseCase,
     private val deleteGoalUseCase: DeleteGoalUseCase,
+    private val contributeToGoalUseCase: ContributeToGoalUseCase,
     observeSettingsUseCase: ObserveSettingsUseCase,
 ) : ViewModel() {
 
@@ -89,5 +91,9 @@ class GoalsViewModel @Inject constructor(
 
     fun deleteGoal(goal: FinancialGoal) {
         viewModelScope.launch { deleteGoalUseCase(goal) }
+    }
+
+    fun contributeToGoal(goalId: Long, amount: Double) {
+        viewModelScope.launch { contributeToGoalUseCase(goalId, amount) }
     }
 }

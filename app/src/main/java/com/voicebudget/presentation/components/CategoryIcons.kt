@@ -11,6 +11,7 @@ import androidx.compose.material.icons.filled.LocalHospital
 import androidx.compose.material.icons.filled.Movie
 import androidx.compose.material.icons.filled.MoreHoriz
 import androidx.compose.material.icons.filled.Restaurant
+import androidx.compose.material.icons.filled.Savings
 import androidx.compose.material.icons.filled.ShoppingBag
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -25,6 +26,7 @@ fun categoryIcon(category: Category): ImageVector = when (category) {
     Category.HEALTH -> Icons.Filled.LocalHospital
     Category.UTILITIES -> Icons.Filled.Bolt
     Category.ENTERTAINMENT -> Icons.Filled.Movie
+    Category.SAVINGS -> Icons.Filled.Savings
     Category.OTHER_EXPENSE -> Icons.Filled.MoreHoriz
     Category.SALARY -> Icons.Filled.AccountBalanceWallet
     Category.FREELANCE -> Icons.Filled.Laptop

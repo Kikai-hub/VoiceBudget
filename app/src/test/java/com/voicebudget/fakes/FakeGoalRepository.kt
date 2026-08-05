@@ -14,6 +14,8 @@ class FakeGoalRepository(
 
     override fun observeAll(): Flow<List<FinancialGoal>> = goalsFlow
 
+    override suspend fun getById(goalId: Long): FinancialGoal? = goalsFlow.value.find { it.id == goalId }
+
     override suspend fun add(goal: FinancialGoal): Long {
         val id = nextId++
         goalsFlow.value = goalsFlow.value + goal.copy(id = id)
@@ -22,5 +24,11 @@ class FakeGoalRepository(
 
     override suspend fun delete(goal: FinancialGoal) {
         goalsFlow.value = goalsFlow.value.filterNot { it.id == goal.id }
+    }
+
+    override suspend fun contribute(goalId: Long, amount: Double) {
+        goalsFlow.value = goalsFlow.value.map { goal ->
+            if (goal.id == goalId) goal.copy(savedAmount = goal.savedAmount + amount) else goal
+        }
     }
 }

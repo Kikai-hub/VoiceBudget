@@ -9,6 +9,7 @@ enum class Category(val type: TransactionType) {
     UTILITIES(TransactionType.EXPENSE),
     ENTERTAINMENT(TransactionType.EXPENSE),
     OTHER_EXPENSE(TransactionType.EXPENSE),
+    SAVINGS(TransactionType.EXPENSE),
 
     SALARY(TransactionType.INCOME),
     FREELANCE(TransactionType.INCOME),

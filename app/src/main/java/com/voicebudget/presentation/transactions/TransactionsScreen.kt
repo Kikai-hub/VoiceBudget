@@ -33,11 +33,13 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.voicebudget.R
 import com.voicebudget.domain.model.Category
+import com.voicebudget.domain.model.CustomCategory
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
 import com.voicebudget.presentation.components.EmptyState
 import com.voicebudget.presentation.components.TransactionEditorDialog
 import com.voicebudget.presentation.components.TransactionItem
+import com.voicebudget.presentation.components.transactionDisplayDescription
 import com.voicebudget.presentation.components.categoryLabel
 import com.voicebudget.presentation.theme.VoiceBudgetTheme
 
@@ -90,6 +92,7 @@ private fun TransactionsContent(
                     TransactionItem(
                         transaction = transaction,
                         currencySymbol = uiState.currencySymbol,
+                        customCategories = uiState.customCategories,
                         onClick = onStartEditing,
                         onDelete = { pendingDelete = it },
                     )
@@ -101,6 +104,7 @@ private fun TransactionsContent(
     uiState.editingTransaction?.let { editing ->
         EditTransactionDialog(
             transaction = editing,
+            customCategories = uiState.customCategories,
             onSave = onSaveEdit,
             onDismiss = onCancelEditing,
         )
@@ -110,7 +114,14 @@ private fun TransactionsContent(
         AlertDialog(
             onDismissRequest = { pendingDelete = null },
             title = { Text(stringResource(R.string.dialog_delete_transaction_title)) },
-            text = { Text(stringResource(R.string.dialog_delete_transaction_message, transaction.description)) },
+            text = {
+                Text(
+                    stringResource(
+                        R.string.dialog_delete_transaction_message,
+                        transactionDisplayDescription(transaction),
+                    ),
+                )
+            },
             confirmButton = {
                 Button(onClick = {
                     onDelete(transaction)
@@ -187,12 +198,14 @@ private fun dateRangeLabel(range: DateRangeFilter): String = stringResource(
 @Composable
 private fun EditTransactionDialog(
     transaction: Transaction,
+    customCategories: List<CustomCategory>,
     onSave: (Transaction) -> Unit,
     onDismiss: () -> Unit,
 ) {
     var amountText by remember(transaction.id) { mutableStateOf(transaction.amount.toPlainString()) }
     var type by remember(transaction.id) { mutableStateOf(transaction.type) }
     var category by remember(transaction.id) { mutableStateOf(transaction.category) }
+    var customCategoryId by remember(transaction.id) { mutableStateOf(transaction.customCategoryId) }
     var description by remember(transaction.id) { mutableStateOf(transaction.description) }
 
     TransactionEditorDialog(
@@ -201,17 +214,29 @@ private fun EditTransactionDialog(
         type = type,
         category = category,
         description = description,
+        customCategoryId = customCategoryId,
+        customCategories = customCategories,
         onAmountChange = { amountText = it },
         onTypeChange = { newType ->
             type = newType
             category = Category.other(newType)
+            customCategoryId = null
         },
         onCategoryChange = { category = it },
+        onCustomCategoryChange = { customCategoryId = it },
         onDescriptionChange = { description = it },
         onConfirm = {
             val amount = amountText.replace(',', '.').toDoubleOrNull()
             if (amount != null && amount > 0.0) {
-                onSave(transaction.copy(amount = amount, type = type, category = category, description = description))
+                onSave(
+                    transaction.copy(
+                        amount = amount,
+                        type = type,
+                        category = category,
+                        description = description,
+                        customCategoryId = customCategoryId,
+                    ),
+                )
             }
         },
         onDismiss = onDismiss,

@@ -9,6 +9,7 @@ import com.voicebudget.R
 import androidx.lifecycle.viewModelScope
 import com.voicebudget.data.csv.TransactionCsv
 import com.voicebudget.domain.model.Currency
+import com.voicebudget.presentation.components.categoryLabel
 import com.voicebudget.domain.model.ThemeMode
 import com.voicebudget.domain.usecase.AddTransactionUseCase
 import com.voicebudget.domain.usecase.ClearAllDataUseCase
@@ -72,7 +73,7 @@ class SettingsViewModel @Inject constructor(
         viewModelScope.launch {
             runCatching {
                 val transactions = getTransactionsUseCase().first()
-                val csv = TransactionCsv.toCsv(transactions)
+                val csv = TransactionCsv.toCsv(transactions) { category -> categoryLabel(context, category) }
                 context.contentResolver.openOutputStream(uri)?.use { it.write(csv.toByteArray()) }
                     ?: error("Could not open file for writing")
             }.onSuccess {

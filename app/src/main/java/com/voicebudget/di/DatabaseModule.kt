@@ -3,8 +3,12 @@ package com.voicebudget.di
 import android.content.Context
 import androidx.room.Room
 import com.voicebudget.data.database.AppDatabase
+import com.voicebudget.data.database.CustomCategoryDao
 import com.voicebudget.data.database.FinancialGoalDao
 import com.voicebudget.data.database.MIGRATION_1_2
+import com.voicebudget.data.database.MIGRATION_2_3
+import com.voicebudget.data.database.MIGRATION_3_4
+import com.voicebudget.data.database.MIGRATION_4_5
 import com.voicebudget.data.database.TransactionDao
 import dagger.Module
 import dagger.Provides
@@ -21,7 +25,7 @@ object DatabaseModule {
     @Singleton
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase =
         Room.databaseBuilder(context, AppDatabase::class.java, AppDatabase.DATABASE_NAME)
-            .addMigrations(MIGRATION_1_2)
+            .addMigrations(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
             .build()
 
     @Provides
@@ -29,4 +33,7 @@ object DatabaseModule {
 
     @Provides
     fun provideFinancialGoalDao(database: AppDatabase): FinancialGoalDao = database.financialGoalDao()
+
+    @Provides
+    fun provideCustomCategoryDao(database: AppDatabase): CustomCategoryDao = database.customCategoryDao()
 }

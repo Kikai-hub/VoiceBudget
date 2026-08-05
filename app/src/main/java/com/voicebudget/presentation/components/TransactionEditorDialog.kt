@@ -30,6 +30,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.voicebudget.R
 import com.voicebudget.domain.model.Category
+import com.voicebudget.domain.model.CustomCategory
 import com.voicebudget.domain.model.TransactionType
 
 /**
@@ -51,8 +52,13 @@ fun TransactionEditorDialog(
     onConfirm: () -> Unit,
     onDismiss: () -> Unit,
     confirmLabel: String = stringResource(R.string.action_save),
+    customCategoryId: Long? = null,
+    customCategories: List<CustomCategory> = emptyList(),
+    onCustomCategoryChange: (Long?) -> Unit = {},
 ) {
     var categoryMenuExpanded by remember { mutableStateOf(false) }
+    val selectedCustomCategory = customCategoryId?.let { id -> customCategories.find { it.id == id } }
+    val availableCustomCategories = customCategories.filter { it.type == type }
 
     AlertDialog(
         onDismissRequest = onDismiss,
@@ -87,7 +93,7 @@ fun TransactionEditorDialog(
                     onExpandedChange = { categoryMenuExpanded = it },
                 ) {
                     OutlinedTextField(
-                        value = categoryLabel(category),
+                        value = selectedCustomCategory?.name ?: categoryLabel(category),
                         onValueChange = {},
                         readOnly = true,
                         label = { Text(stringResource(R.string.field_category)) },
@@ -105,6 +111,17 @@ fun TransactionEditorDialog(
                                 text = { Text(categoryLabel(option)) },
                                 onClick = {
                                     onCategoryChange(option)
+                                    onCustomCategoryChange(null)
+                                    categoryMenuExpanded = false
+                                },
+                            )
+                        }
+                        availableCustomCategories.forEach { custom ->
+                            DropdownMenuItem(
+                                text = { Text(custom.name) },
+                                onClick = {
+                                    onCategoryChange(Category.other(type))
+                                    onCustomCategoryChange(custom.id)
                                     categoryMenuExpanded = false
                                 },
                             )

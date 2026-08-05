@@ -9,6 +9,7 @@ data class TransactionDraft(
     val type: TransactionType,
     val category: Category,
     val description: String,
+    val customCategoryId: Long? = null,
 )
 
 fun ParsedTransaction.toDraft(): TransactionDraft = TransactionDraft(

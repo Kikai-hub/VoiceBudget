@@ -89,6 +89,7 @@ private fun SettingsContent(
     modifier: Modifier = Modifier,
 ) {
     var showClearConfirm by remember { mutableStateOf(false) }
+    var showCategoryManagement by remember { mutableStateOf(false) }
 
     Column(
         modifier = modifier
@@ -112,6 +113,12 @@ private fun SettingsContent(
             ThemeSelector(selected = uiState.settings.themeMode, onSelected = onSetThemeMode)
         }
 
+        SettingsSection(title = stringResource(R.string.settings_categories)) {
+            OutlinedButton(onClick = { showCategoryManagement = true }, modifier = Modifier.fillMaxWidth()) {
+                Text(stringResource(R.string.settings_manage_categories))
+            }
+        }
+
         SettingsSection(title = stringResource(R.string.settings_data)) {
             Button(onClick = onExportClick, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.settings_export_csv)) }
             Spacer(modifier = Modifier.height(8.dp))
@@ -123,6 +130,10 @@ private fun SettingsContent(
                 colors = ButtonDefaults.outlinedButtonColors(contentColor = MaterialTheme.colorScheme.error),
             ) { Text(stringResource(R.string.settings_clear_all_data)) }
         }
+    }
+
+    if (showCategoryManagement) {
+        CategoryManagementHost(onDismiss = { showCategoryManagement = false })
     }
 
     message?.let { text ->

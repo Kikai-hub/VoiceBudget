@@ -1,6 +1,7 @@
 package com.voicebudget.presentation.transactions
 
 import com.voicebudget.domain.model.Category
+import com.voicebudget.domain.model.CustomCategory
 import com.voicebudget.domain.model.Transaction
 
 enum class DateRangeFilter {
@@ -21,4 +22,5 @@ data class TransactionsUiState(
     val filters: TransactionFilters = TransactionFilters(),
     val editingTransaction: Transaction? = null,
     val currencySymbol: String = "₽",
+    val customCategories: List<CustomCategory> = emptyList(),
 )

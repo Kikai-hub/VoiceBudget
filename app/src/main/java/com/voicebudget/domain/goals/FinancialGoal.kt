@@ -8,4 +8,5 @@ data class FinancialGoal(
     val targetAmount: Double,
     val targetMonth: YearMonth,
     val createdAt: Long,
+    val savedAmount: Double = 0.0,
 )

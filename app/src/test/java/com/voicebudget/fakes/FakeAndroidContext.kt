@@ -42,6 +42,7 @@ private val templates: Map<Int, String> = mapOf(
     R.string.category_health to "Health",
     R.string.category_utilities to "Utilities",
     R.string.category_entertainment to "Entertainment",
+    R.string.category_savings to "Savings",
     R.string.category_other to "Other",
     R.string.category_salary to "Salary",
     R.string.category_freelance to "Freelance",
@@ -51,6 +52,7 @@ private val templates: Map<Int, String> = mapOf(
         "At your current pace (~%4\$d/month) you're on track to reach \"%1\$s\" (%2\$d) by %3\$s.",
     R.string.goal_off_track_desc to
         "To reach \"%1\$s\" (%2\$d) by %3\$s you need to save ~%4\$d/month — your current pace is ~%5\$d/month.",
+    R.string.goal_completed_desc to "You've already set aside enough for \"%1\$s\" — goal reached!",
     R.string.goal_suggestion_desc to "Try cutting %1\$s spending by %2\$d%% (~%3\$d/month) to help close the gap.",
     R.string.error_goal_invalid_name to "Please enter a goal name.",
     R.string.error_goal_invalid_amount to "Please enter a valid target amount.",

@@ -31,4 +31,14 @@ class FakeTransactionDao : TransactionDao {
     override suspend fun deleteAll() {
         state.value = emptyList()
     }
+
+    override suspend fun clearCustomCategory(categoryId: Long) {
+        state.value = state.value.map { if (it.customCategoryId == categoryId) it.copy(customCategoryId = null) else it }
+    }
+
+    override suspend fun clearGoal(goalId: Long) {
+        state.value = state.value.map { if (it.goalId == goalId) it.copy(goalId = null) else it }
+    }
+
+    override suspend fun getLastTransactionTime(): Long? = state.value.maxOfOrNull { it.createdAt }
 }

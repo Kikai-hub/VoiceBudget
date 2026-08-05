@@ -12,6 +12,8 @@ fun TransactionEntity.toDomain(): Transaction = Transaction(
     category = Category.valueOf(category),
     description = description,
     createdAt = createdAt,
+    goalId = goalId,
+    customCategoryId = customCategoryId,
 )
 
 fun Transaction.toEntity(): TransactionEntity = TransactionEntity(
@@ -21,4 +23,6 @@ fun Transaction.toEntity(): TransactionEntity = TransactionEntity(
     category = category.name,
     description = description,
     createdAt = createdAt,
+    goalId = goalId,
+    customCategoryId = customCategoryId,
 )

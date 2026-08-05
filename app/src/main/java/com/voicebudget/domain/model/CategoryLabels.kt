@@ -12,6 +12,7 @@ fun categoryLabelRes(category: Category): Int = when (category) {
     Category.HEALTH -> R.string.category_health
     Category.UTILITIES -> R.string.category_utilities
     Category.ENTERTAINMENT -> R.string.category_entertainment
+    Category.SAVINGS -> R.string.category_savings
     Category.OTHER_EXPENSE, Category.OTHER_INCOME -> R.string.category_other
     Category.SALARY -> R.string.category_salary
     Category.FREELANCE -> R.string.category_freelance

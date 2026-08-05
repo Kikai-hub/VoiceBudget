@@ -25,8 +25,8 @@ android {
     defaultConfig {
         minSdk = 28
         targetSdk = 37
-        versionCode = 8
-        versionName = "1.5.0"
+        versionCode = 11
+        versionName = "1.6.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -58,6 +58,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
             signingConfig = signingConfigs.getByName("release")
             ndk {
@@ -127,6 +128,10 @@ dependencies {
 
     implementation(libs.datastore.preferences)
 
+    implementation(libs.work.runtime.ktx)
+    implementation(libs.hilt.work)
+    ksp(libs.hilt.work.compiler)
+
     implementation(libs.kotlinx.coroutines.android)
 
     implementation(libs.vico.compose)
@@ -177,6 +182,7 @@ tasks.register<JacocoReport>("jacocoTestReport") {
         "**/presentation/components/**",
         "**/presentation/navigation/**",
         "**/presentation/voice/AndroidVoiceRecognizerService*.*",
+        "**/presentation/notifications/**",
         "**/ComposableSingletons*.*",
     )
 

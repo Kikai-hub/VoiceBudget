@@ -18,6 +18,8 @@ class FakeTransactionRepository(initial: List<Transaction> = emptyList()) : Tran
 
     override fun getAll() = state
 
+    override suspend fun getById(id: Long): Transaction? = state.value.find { it.id == id }
+
     override suspend fun add(transaction: Transaction): Long {
         val withId = if (transaction.id == 0L) transaction.copy(id = nextId++) else transaction
         state.value = (state.value + withId).sortedByDescending { it.createdAt }
@@ -35,4 +37,14 @@ class FakeTransactionRepository(initial: List<Transaction> = emptyList()) : Tran
     override suspend fun clearAll() {
         state.value = emptyList()
     }
+
+    override suspend fun clearCustomCategory(categoryId: Long) {
+        state.value = state.value.map { if (it.customCategoryId == categoryId) it.copy(customCategoryId = null) else it }
+    }
+
+    override suspend fun clearGoal(goalId: Long) {
+        state.value = state.value.map { if (it.goalId == goalId) it.copy(goalId = null) else it }
+    }
+
+    override suspend fun getLastTransactionTime(): Long? = state.value.maxOfOrNull { it.createdAt }
 }

@@ -26,9 +26,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.voicebudget.R
+import com.voicebudget.domain.model.CustomCategory
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
-import com.voicebudget.presentation.statistics.colorForCategory
 import com.voicebudget.presentation.theme.IncomeGreen
 import com.voicebudget.utils.formatAmount
 import java.text.SimpleDateFormat
@@ -39,11 +39,12 @@ import java.util.Locale
 fun TransactionItem(
     transaction: Transaction,
     currencySymbol: String = "₽",
+    customCategories: List<CustomCategory> = emptyList(),
     onClick: (Transaction) -> Unit = {},
     onDelete: ((Transaction) -> Unit)? = null,
     modifier: Modifier = Modifier,
 ) {
-    val categoryColor = colorForCategory(transaction.category)
+    val categoryColor = transactionCategoryColor(transaction, customCategories)
 
     Card(
         onClick = { onClick(transaction) },
@@ -69,7 +70,7 @@ fun TransactionItem(
                         .background(categoryColor.copy(alpha = 0.16f)),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Icon(categoryIcon(transaction.category), contentDescription = null, tint = categoryColor)
+                    Icon(transactionCategoryIcon(transaction, customCategories), contentDescription = null, tint = categoryColor)
                 }
 
                 Column(
@@ -78,13 +79,13 @@ fun TransactionItem(
                         .weight(1f, fill = false),
                 ) {
                     Text(
-                        transaction.description,
+                        transactionDisplayDescription(transaction, customCategories),
                         style = MaterialTheme.typography.bodyLarge,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
                     )
                     Text(
-                        text = "${categoryLabel(transaction.category)} · ${formatDate(transaction.createdAt)}",
+                        text = "${transactionCategoryLabel(transaction, customCategories)} · ${formatDate(transaction.createdAt)}",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         maxLines = 1,

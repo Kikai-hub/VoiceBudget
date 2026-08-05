@@ -14,7 +14,11 @@ class GoalRepositoryImpl @Inject constructor(
     override fun observeAll(): Flow<List<FinancialGoal>> =
         dao.getAll().map { entities -> entities.map { it.toDomain() } }
 
+    override suspend fun getById(goalId: Long): FinancialGoal? = dao.getById(goalId)?.toDomain()
+
     override suspend fun add(goal: FinancialGoal): Long = dao.insert(goal.toEntity())
 
     override suspend fun delete(goal: FinancialGoal) = dao.delete(goal.toEntity())
+
+    override suspend fun contribute(goalId: Long, amount: Double) = dao.contribute(goalId, amount)
 }

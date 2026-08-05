@@ -45,6 +45,7 @@ import androidx.core.content.ContextCompat
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.voicebudget.R
 import com.voicebudget.domain.model.Category
+import com.voicebudget.domain.model.CustomCategory
 import com.voicebudget.domain.model.TransactionType
 import com.voicebudget.presentation.components.TransactionEditorDialog
 import com.voicebudget.presentation.theme.Emerald500
@@ -60,6 +61,7 @@ fun AddTransactionScreen(
     viewModel: AddTransactionViewModel = hiltViewModel(),
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val customCategories by viewModel.customCategories.collectAsState()
     val context = LocalContext.current
 
     val permissionLauncher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) { granted ->
@@ -85,6 +87,7 @@ fun AddTransactionScreen(
     AddTransactionContent(
         uiState = uiState,
         manualEntry = manualEntry,
+        customCategories = customCategories,
         onMicClick = requestListening,
         onRetry = { viewModel.retry() },
         onCancel = onDone,
@@ -103,6 +106,7 @@ private fun AddTransactionContent(
     onCancel: () -> Unit,
     onUpdateDraft: ((TransactionDraft) -> TransactionDraft) -> Unit,
     onConfirm: () -> Unit,
+    customCategories: List<CustomCategory> = emptyList(),
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -131,11 +135,14 @@ private fun AddTransactionContent(
                     type = state.draft.type,
                     category = state.draft.category,
                     description = state.draft.description,
+                    customCategoryId = state.draft.customCategoryId,
+                    customCategories = customCategories,
                     onAmountChange = { value -> onUpdateDraft { it.copy(amountText = value) } },
                     onTypeChange = { type ->
-                        onUpdateDraft { it.copy(type = type, category = Category.other(type)) }
+                        onUpdateDraft { it.copy(type = type, category = Category.other(type), customCategoryId = null) }
                     },
                     onCategoryChange = { category -> onUpdateDraft { it.copy(category = category) } },
+                    onCustomCategoryChange = { id -> onUpdateDraft { it.copy(customCategoryId = id) } },
                     onDescriptionChange = { value -> onUpdateDraft { it.copy(description = value) } },
                     onConfirm = onConfirm,
                     onDismiss = if (manualEntry) onCancel else onRetry,

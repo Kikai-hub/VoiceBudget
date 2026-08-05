@@ -12,9 +12,15 @@ interface FinancialGoalDao {
     @Query("SELECT * FROM financial_goals ORDER BY createdAt DESC")
     fun getAll(): Flow<List<FinancialGoalEntity>>
 
+    @Query("SELECT * FROM financial_goals WHERE id = :goalId LIMIT 1")
+    suspend fun getById(goalId: Long): FinancialGoalEntity?
+
     @Insert
     suspend fun insert(goal: FinancialGoalEntity): Long
 
     @Delete
     suspend fun delete(goal: FinancialGoalEntity)
+
+    @Query("UPDATE financial_goals SET savedAmount = savedAmount + :amount WHERE id = :goalId")
+    suspend fun contribute(goalId: Long, amount: Double)
 }

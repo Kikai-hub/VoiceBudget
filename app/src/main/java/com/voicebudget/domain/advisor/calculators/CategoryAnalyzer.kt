@@ -5,6 +5,7 @@ import com.voicebudget.domain.model.Category
 import com.voicebudget.domain.model.CategoryAmount
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
+import com.voicebudget.domain.model.isGoalContribution
 import java.time.YearMonth
 import javax.inject.Inject
 
@@ -16,7 +17,7 @@ class CategoryAnalyzer @Inject constructor() {
         type: TransactionType = TransactionType.EXPENSE,
     ): List<CategoryAmount> =
         transactions
-            .filter { it.type == type && it.createdAt.toYearMonth() == month }
+            .filter { it.type == type && !it.isGoalContribution && it.createdAt.toYearMonth() == month }
             .groupBy { it.category }
             .map { (category, items) -> CategoryAmount(category, items.sumOf { it.amount }) }
             .sortedByDescending { it.amount }

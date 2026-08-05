@@ -7,12 +7,14 @@ import com.voicebudget.domain.advisor.calculators.MonthlyIncomeCalculator
 import com.voicebudget.domain.goals.GoalAdvisor
 import com.voicebudget.domain.goals.GoalStrategyBuilder
 import com.voicebudget.domain.usecase.AddGoalUseCase
+import com.voicebudget.domain.usecase.ContributeToGoalUseCase
 import com.voicebudget.domain.usecase.DeleteGoalUseCase
 import com.voicebudget.domain.usecase.GetGoalsWithStrategyUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
 import com.voicebudget.fakes.FakeGoalRepository
 import com.voicebudget.fakes.FakeSettingsRepository
 import com.voicebudget.fakes.FakeTransactionRepository
+import com.voicebudget.fakes.FakeTransactionRunner
 import com.voicebudget.fakes.fakeAndroidContext
 import com.voicebudget.util.MainDispatcherRule
 import kotlinx.coroutines.test.runTest
@@ -44,7 +46,8 @@ class GoalsViewModelTest {
             context = fakeAndroidContext(),
             getGoalsWithStrategyUseCase = GetGoalsWithStrategyUseCase(advisor),
             addGoalUseCase = AddGoalUseCase(goalRepo),
-            deleteGoalUseCase = DeleteGoalUseCase(goalRepo),
+            deleteGoalUseCase = DeleteGoalUseCase(goalRepo, transactionRepo, FakeTransactionRunner()),
+            contributeToGoalUseCase = ContributeToGoalUseCase(goalRepo, transactionRepo, FakeTransactionRunner()),
             observeSettingsUseCase = ObserveSettingsUseCase(settingsRepo),
         )
     }
@@ -136,6 +139,28 @@ class GoalsViewModelTest {
             viewModel.deleteGoal(afterAdd.goals[0].goal)
             val afterDelete = awaitItem()
             assertTrue(afterDelete.goals.isEmpty())
+        }
+    }
+
+    @Test
+    fun `contributeToGoal increases the saved amount and progress`() = runTest {
+        val viewModel = buildViewModel()
+        val future = YearMonth.now().plusMonths(2)
+
+        viewModel.uiState.test {
+            skipItems(1)
+
+            viewModel.openAddDialog()
+            viewModel.updateDraft {
+                it.copy(name = "Vacation", amountText = "1000", month = future.month, year = future.year)
+            }
+            viewModel.confirmAdd()
+            val afterAdd = awaitItem()
+
+            viewModel.contributeToGoal(afterAdd.goals[0].goal.id, 250.0)
+            val afterContribution = awaitItem()
+            assertEquals(250.0, afterContribution.goals[0].strategy.savedAmount, 0.001)
+            assertEquals(25, afterContribution.goals[0].strategy.progressPercent)
         }
     }
 }

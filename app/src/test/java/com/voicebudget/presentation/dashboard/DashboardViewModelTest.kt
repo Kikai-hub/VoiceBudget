@@ -6,13 +6,25 @@ import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
 import com.voicebudget.domain.advisor.FinancialAdvisor
 import com.voicebudget.domain.advisor.FinancialAnalyzer
+import com.voicebudget.domain.advisor.calculators.CategoryAnalyzer
+import com.voicebudget.domain.advisor.calculators.MonthlyExpenseCalculator
+import com.voicebudget.domain.advisor.calculators.MonthlyIncomeCalculator
+import com.voicebudget.domain.goals.GoalAdvisor
+import com.voicebudget.domain.goals.GoalStrategyBuilder
+import com.voicebudget.domain.usecase.ContributeToGoalUseCase
 import com.voicebudget.domain.usecase.GetFinancialAdviceUseCase
+import com.voicebudget.domain.usecase.GetGoalsWithStrategyUseCase
 import com.voicebudget.domain.usecase.GetMonthlySummaryUseCase
 import com.voicebudget.domain.usecase.GetTransactionsUseCase
+import com.voicebudget.domain.usecase.ObserveCustomCategoriesUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
 import com.voicebudget.fakes.FakeAdvisorSettingsRepository
+import com.voicebudget.fakes.FakeCustomCategoryRepository
+import com.voicebudget.fakes.FakeGoalRepository
 import com.voicebudget.fakes.FakeSettingsRepository
 import com.voicebudget.fakes.FakeTransactionRepository
+import com.voicebudget.fakes.FakeTransactionRunner
+import com.voicebudget.fakes.fakeAndroidContext
 import com.voicebudget.util.MainDispatcherRule
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
@@ -35,12 +47,22 @@ class DashboardViewModelTest {
         )
         val advisorRepo = FakeAdvisorSettingsRepository()
         val settingsRepo = FakeSettingsRepository()
+        val goalRepo = FakeGoalRepository()
         val advisor = FinancialAdvisor(repository, advisorRepo, settingsRepo, FinancialAnalyzer(emptySet()))
+        val goalAdvisor = GoalAdvisor(
+            goalRepo,
+            repository,
+            settingsRepo,
+            GoalStrategyBuilder(fakeAndroidContext(), MonthlyIncomeCalculator(), MonthlyExpenseCalculator(), CategoryAnalyzer()),
+        )
         val viewModel = DashboardViewModel(
             GetMonthlySummaryUseCase(repository),
             GetTransactionsUseCase(repository),
             GetFinancialAdviceUseCase(advisor),
+            GetGoalsWithStrategyUseCase(goalAdvisor),
             ObserveSettingsUseCase(settingsRepo),
+            ObserveCustomCategoriesUseCase(FakeCustomCategoryRepository()),
+            ContributeToGoalUseCase(goalRepo, repository, FakeTransactionRunner()),
         )
 
         viewModel.uiState.test {
@@ -59,12 +81,22 @@ class DashboardViewModelTest {
         val emptyRepo = FakeTransactionRepository()
         val advisorRepo = FakeAdvisorSettingsRepository()
         val settingsRepo = FakeSettingsRepository()
+        val goalRepo = FakeGoalRepository()
         val advisor = FinancialAdvisor(emptyRepo, advisorRepo, settingsRepo, FinancialAnalyzer(emptySet()))
+        val goalAdvisor = GoalAdvisor(
+            goalRepo,
+            emptyRepo,
+            settingsRepo,
+            GoalStrategyBuilder(fakeAndroidContext(), MonthlyIncomeCalculator(), MonthlyExpenseCalculator(), CategoryAnalyzer()),
+        )
         val viewModel = DashboardViewModel(
             GetMonthlySummaryUseCase(emptyRepo),
             GetTransactionsUseCase(emptyRepo),
             GetFinancialAdviceUseCase(advisor),
+            GetGoalsWithStrategyUseCase(goalAdvisor),
             ObserveSettingsUseCase(settingsRepo),
+            ObserveCustomCategoriesUseCase(FakeCustomCategoryRepository()),
+            ContributeToGoalUseCase(goalRepo, emptyRepo, FakeTransactionRunner()),
         )
 
         viewModel.uiState.test {

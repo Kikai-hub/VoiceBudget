@@ -24,12 +24,27 @@
     <string name="dialog_clear_all_data_title">Очистить все данные?</string>
     <string name="dialog_clear_all_data_message">Это безвозвратно удалит все транзакции. Действие нельзя отменить.</string>
 
+    <string name="settings_categories">Категории</string>
+    <string name="settings_manage_categories">Управление категориями</string>
+    <string name="categories_add_new">Добавить категорию</string>
+    <string name="categories_add_title">Новая категория</string>
+    <string name="categories_edit_title">Редактировать категорию</string>
+    <string name="categories_empty">Вы ещё не добавили ни одной своей категории.</string>
+    <string name="categories_field_name">Название категории</string>
+    <string name="categories_field_icon">Иконка</string>
+    <string name="categories_field_color">Цвет</string>
+    <string name="categories_delete_title">Удалить категорию?</string>
+    <string name="categories_delete_message">"«%1$s» будет удалена без возможности восстановления. Транзакции с этой категорией будут отнесены к «Другое»."</string>
+    <string name="error_category_name_required">Введите название категории.</string>
+
     <string name="action_clear">Очистить</string>
     <string name="action_cancel">Отмена</string>
     <string name="action_delete">Удалить</string>
+    <string name="action_edit">Изменить</string>
     <string name="action_save">Сохранить</string>
     <string name="action_retry">Повторить</string>
     <string name="action_try_again">Попробовать снова</string>
+    <string name="action_close">Закрыть</string>
 
     <string name="theme_light">Светлая</string>
     <string name="theme_dark">Тёмная</string>
@@ -81,11 +96,20 @@
     <string name="goals_current_monthly">Сейчас откладываете: %1$s/мес.</string>
     <string name="goals_on_track">По плану</string>
     <string name="goals_off_track">Отстаёте от плана</string>
+    <string name="goals_completed">Достигнута</string>
     <string name="goals_delete_title">Удалить цель?</string>
     <string name="goals_delete_message">"«%1$s» будет удалена без возможности восстановления."</string>
+    <string name="goals_saved_of_target">%1$s из %2$s (%3$d%%)</string>
+
+    <string name="goals_set_aside">Отложить</string>
+    <string name="goals_set_aside_dialog_title">Отложить деньги</string>
+    <string name="goals_set_aside_field_goal">Цель</string>
+    <string name="goals_set_aside_field_amount">Сумма</string>
+    <string name="error_goal_contribution_invalid_amount">Введите корректную сумму.</string>
 
     <string name="goal_on_track_desc">При вашем текущем темпе (~%4$d/мес.) вы успеваете накопить на «%1$s» (%2$d) к %3$s.</string>
     <string name="goal_off_track_desc">Чтобы накопить на «%1$s» (%2$d) к %3$s, нужно откладывать ~%4$d/мес. — сейчас вы откладываете ~%5$d/мес.</string>
+    <string name="goal_completed_desc">Вы уже отложили достаточно на «%1$s» — цель достигнута!</string>
     <string name="goal_suggestion_desc">Попробуйте сократить расходы на «%1$s» на %2$d%% (~%3$d/мес.), чтобы сократить разрыв.</string>
 
     <string name="error_goal_invalid_name">Введите название цели.</string>
@@ -153,6 +177,11 @@
     <string name="advice_top_category_title">Крупнейшая статья расходов: %1$s</string>
     <string name="advice_top_category_desc">«%1$s» занимает %2$d%% вашего бюджета. Сокращение на %3$d%% может сэкономить ~%4$d в год.</string>
 
+    <string name="notification_channel_name">Напоминания об активности</string>
+    <string name="notification_channel_description">Напоминает добавить доходы и расходы, если вы не пользовались приложением несколько дней.</string>
+    <string name="notification_reminder_title">Не забудьте вести бюджет</string>
+    <string name="notification_reminder_text">Вы не добавляли доходы или расходы последние 3 дня. Нажмите, чтобы добавить сегодняшние транзакции.</string>
+
     <string name="category_food">Еда</string>
     <string name="category_cafe">Кафе</string>
     <string name="category_transport">Транспорт</string>
@@ -160,6 +189,7 @@
     <string name="category_health">Здоровье</string>
     <string name="category_utilities">Коммунальные услуги</string>
     <string name="category_entertainment">Развлечения</string>
+    <string name="category_savings">Отложено</string>
     <string name="category_other">Другое</string>
     <string name="category_salary">Зарплата</string>
     <string name="category_freelance">Фриланс</string>

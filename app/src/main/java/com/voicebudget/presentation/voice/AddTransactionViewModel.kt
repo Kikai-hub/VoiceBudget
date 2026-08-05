@@ -6,14 +6,15 @@ import androidx.lifecycle.viewModelScope
 import com.voicebudget.R
 import com.voicebudget.domain.model.AppSettings
 import com.voicebudget.domain.model.Category
+import com.voicebudget.domain.model.CustomCategory
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
 import com.voicebudget.domain.parser.ParseFailureReason
 import com.voicebudget.domain.parser.ParseResult
 import com.voicebudget.domain.usecase.AddTransactionUseCase
+import com.voicebudget.domain.usecase.ObserveCustomCategoriesUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
 import com.voicebudget.domain.usecase.ParseVoiceInputUseCase
-import com.voicebudget.presentation.components.categoryLabel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Job
@@ -32,6 +33,7 @@ class AddTransactionViewModel @Inject constructor(
     private val parseVoiceInputUseCase: ParseVoiceInputUseCase,
     private val addTransactionUseCase: AddTransactionUseCase,
     observeSettingsUseCase: ObserveSettingsUseCase,
+    observeCustomCategoriesUseCase: ObserveCustomCategoriesUseCase,
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<AddTransactionUiState>(AddTransactionUiState.Idle)
@@ -39,6 +41,9 @@ class AddTransactionViewModel @Inject constructor(
 
     private val settings: StateFlow<AppSettings> = observeSettingsUseCase()
         .stateIn(viewModelScope, SharingStarted.Eagerly, AppSettings())
+
+    val customCategories: StateFlow<List<CustomCategory>> = observeCustomCategoriesUseCase()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     private var recognitionJob: Job? = null
 
@@ -91,8 +96,9 @@ class AddTransactionViewModel @Inject constructor(
                     amount = amount,
                     type = current.draft.type,
                     category = current.draft.category,
-                    description = current.draft.description.ifBlank { categoryLabel(context, current.draft.category) },
+                    description = current.draft.description,
                     createdAt = System.currentTimeMillis(),
+                    customCategoryId = current.draft.customCategoryId,
                 ),
             )
             _uiState.value = AddTransactionUiState.Saved

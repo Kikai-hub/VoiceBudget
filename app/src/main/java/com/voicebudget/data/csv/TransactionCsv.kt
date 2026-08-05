@@ -18,8 +18,12 @@ object TransactionCsv {
     private const val HEADER = "Date,Type,Category,Description,Amount"
     private val DATE_FORMATTER: DateTimeFormatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME
 
-    fun toCsv(transactions: List<Transaction>): String {
-        val rows = transactions.joinToString(separator = "\n") { toRow(it) }
+    /**
+     * [categoryLabel] resolves the same blank-description fallback the transaction list shows
+     * (defaults to the raw enum name so this stays usable without an Android [android.content.Context]).
+     */
+    fun toCsv(transactions: List<Transaction>, categoryLabel: (Category) -> String = { it.name }): String {
+        val rows = transactions.joinToString(separator = "\n") { toRow(it, categoryLabel) }
         return if (rows.isEmpty()) HEADER else "$HEADER\n$rows"
     }
 
@@ -30,13 +34,13 @@ object TransactionCsv {
         .mapNotNull { runCatching { parseRow(it) }.getOrNull() }
         .toList()
 
-    private fun toRow(transaction: Transaction): String {
+    private fun toRow(transaction: Transaction, categoryLabel: (Category) -> String): String {
         val date = Instant.ofEpochMilli(transaction.createdAt).atZone(ZoneId.systemDefault()).toLocalDateTime()
         return listOf(
             date.format(DATE_FORMATTER),
             transaction.type.name,
             transaction.category.name,
-            escape(transaction.description),
+            escape(transaction.description.ifBlank { categoryLabel(transaction.category) }),
             String.format(Locale.US, "%.2f", transaction.amount),
         ).joinToString(",")
     }

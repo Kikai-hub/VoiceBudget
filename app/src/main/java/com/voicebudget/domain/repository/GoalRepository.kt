@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.Flow
 
 interface GoalRepository {
     fun observeAll(): Flow<List<FinancialGoal>>
+    suspend fun getById(goalId: Long): FinancialGoal?
     suspend fun add(goal: FinancialGoal): Long
     suspend fun delete(goal: FinancialGoal)
+    suspend fun contribute(goalId: Long, amount: Double)
 }

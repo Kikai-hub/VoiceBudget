@@ -12,4 +12,6 @@ data class TransactionEntity(
     val category: String,
     val description: String,
     val createdAt: Long,
+    val goalId: Long? = null,
+    val customCategoryId: Long? = null,
 )
