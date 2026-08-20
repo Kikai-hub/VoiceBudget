@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="nav_dashboard">डैशबोर्ड</string>
+    <string name="nav_transactions">लेन-देन</string>
+    <string name="nav_statistics">आँकड़े</string>
+    <string name="nav_settings">सेटिंग्स</string>
+    <string name="nav_record_transaction">लेन-देन रिकॉर्ड करें</string>
+    <string name="nav_manual_transaction">मैन्युअल रूप से लेन-देन जोड़ें</string>
+
+    <string name="dashboard_recent_transactions">हाल के लेन-देन</string>
+    <string name="dashboard_empty">अभी तक कोई लेन-देन नहीं है। जोड़ने के लिए माइक्रोफ़ोन पर टैप करें।</string>
+    <string name="this_month">इस महीने</string>
+    <string name="income">आय</string>
+    <string name="expenses">खर्च</string>
+    <string name="balance">बैलेंस</string>
+
+    <string name="settings_currency">मुद्रा</string>
+    <string name="settings_language">भाषा</string>
+    <string name="settings_theme">थीम</string>
+    <string name="settings_data">डेटा</string>
+    <string name="settings_export_csv">डेटाबेस निर्यात करें (CSV)</string>
+    <string name="settings_import_csv">डेटाबेस आयात करें (CSV)</string>
+    <string name="settings_clear_all_data">सभी डेटा साफ़ करें</string>
+    <string name="dialog_clear_all_data_title">सभी डेटा साफ़ करें?</string>
+    <string name="dialog_clear_all_data_message">इससे सभी लेन-देन स्थायी रूप से हट जाएँगे। इसे पूर्ववत नहीं किया जा सकता।</string>
+
+    <string name="settings_categories">श्रेणियाँ</string>
+    <string name="settings_manage_categories">श्रेणियाँ प्रबंधित करें</string>
+    <string name="categories_add_new">श्रेणी जोड़ें</string>
+    <string name="categories_add_title">नई श्रेणी</string>
+    <string name="categories_edit_title">श्रेणी संपादित करें</string>
+    <string name="categories_empty">आपने अभी तक कोई कस्टम श्रेणी नहीं जोड़ी है।</string>
+    <string name="categories_field_name">श्रेणी का नाम</string>
+    <string name="categories_field_icon">आइकन</string>
+    <string name="categories_field_color">रंग</string>
+    <string name="categories_delete_title">श्रेणी हटाएँ?</string>
+    <string name="categories_delete_message">"\"%1$s\" को स्थायी रूप से हटा दिया जाएगा। इसका उपयोग करने वाले लेन-देन \"अन्य\" में बदल जाएँगे।"</string>
+    <string name="error_category_name_required">कृपया एक श्रेणी का नाम दर्ज करें।</string>
+
+    <string name="action_clear">साफ़ करें</string>
+    <string name="action_cancel">रद्द करें</string>
+    <string name="action_delete">हटाएँ</string>
+    <string name="action_edit">संपादित करें</string>
+    <string name="action_save">सहेजें</string>
+    <string name="action_retry">पुनः प्रयास करें</string>
+    <string name="action_try_again">फिर से प्रयास करें</string>
+    <string name="action_close">बंद करें</string>
+
+    <string name="theme_light">लाइट</string>
+    <string name="theme_dark">डार्क</string>
+    <string name="theme_system">सिस्टम</string>
+
+    <string name="msg_all_data_cleared">सभी डेटा साफ़ कर दिया गया।</string>
+    <string name="msg_advisor_settings_saved">सलाहकार सेटिंग्स सहेज ली गईं।</string>
+    <string name="msg_export_success">सफलतापूर्वक निर्यात किया गया।</string>
+    <string name="msg_export_failed">निर्यात विफल: %1$s</string>
+    <string name="msg_import_success">%1$d लेन-देन आयात किए गए।</string>
+    <string name="msg_import_failed">आयात विफल: %1$s</string>
+
+    <string name="transactions_empty_filtered">इन फ़िल्टर से मेल खाने वाला कोई लेन-देन नहीं है।</string>
+    <string name="dialog_delete_transaction_title">लेन-देन हटाएँ?</string>
+    <string name="dialog_delete_transaction_message">"\"%1$s\" को स्थायी रूप से हटा दिया जाएगा।"</string>
+    <string name="category_all">सभी श्रेणियाँ</string>
+    <string name="date_range_all_time">सभी समय</string>
+    <string name="date_range_last_month">पिछला महीना</string>
+    <string name="date_range_last_7_days">पिछले 7 दिन</string>
+    <string name="edit_transaction_title">लेन-देन संपादित करें</string>
+    <string name="confirm_transaction_title">लेन-देन की पुष्टि करें</string>
+    <string name="manual_transaction_title">लेन-देन जोड़ें</string>
+
+    <string name="voice_start_recording">रिकॉर्डिंग शुरू करें</string>
+    <string name="voice_tap_to_speak">बोलने के लिए टैप करें</string>
+    <string name="voice_listening_desc">सुन रहा है</string>
+    <string name="voice_listening">सुन रहा है…</string>
+    <string name="voice_saving">सहेजा जा रहा है…</string>
+
+    <string name="field_amount">राशि</string>
+    <string name="field_category">श्रेणी</string>
+    <string name="field_description">विवरण</string>
+    <string name="type_expense">खर्च</string>
+
+    <string name="stats_expense_breakdown">खर्च का विवरण (इस महीने)</string>
+    <string name="stats_no_expenses">इस महीने कोई खर्च दर्ज नहीं किया गया।</string>
+    <string name="stats_income_vs_expenses">आय बनाम खर्च (पिछले 6 महीने)</string>
+
+    <string name="goals_title">वित्तीय लक्ष्य</string>
+    <string name="goals_add_goal">लक्ष्य जोड़ें</string>
+    <string name="goals_empty">अभी तक कोई लक्ष्य नहीं है। अपनी बचत की योजना बनाने के लिए \"लक्ष्य जोड़ें\" पर टैप करें!</string>
+    <string name="goals_field_name">लक्ष्य का नाम</string>
+    <string name="goals_field_amount">लक्ष्य राशि</string>
+    <string name="goals_field_month">महीना</string>
+    <string name="goals_field_year">वर्ष</string>
+    <string name="goals_dialog_add_title">वित्तीय लक्ष्य जोड़ें</string>
+    <string name="goals_months_remaining">%1$d महीने शेष</string>
+    <string name="goals_required_monthly">आवश्यक: %1$s/माह</string>
+    <string name="goals_current_monthly">वर्तमान: %1$s/माह</string>
+    <string name="goals_on_track">सही दिशा में</string>
+    <string name="goals_off_track">लक्ष्य से पीछे</string>
+    <string name="goals_completed">पूर्ण</string>
+    <string name="goals_delete_title">लक्ष्य हटाएँ?</string>
+    <string name="goals_delete_message">"\"%1$s\" को स्थायी रूप से हटा दिया जाएगा।"</string>
+    <string name="goals_saved_of_target">%2$s में से %1$s बचाए गए (%3$d%%)</string>
+
+    <string name="goals_set_aside">अलग रखें</string>
+    <string name="goals_set_aside_dialog_title">पैसे अलग रखें</string>
+    <string name="goals_set_aside_field_goal">लक्ष्य</string>
+    <string name="goals_set_aside_field_amount">राशि</string>
+    <string name="error_goal_contribution_invalid_amount">कृपया एक मान्य राशि दर्ज करें।</string>
+
+    <string name="goal_on_track_desc">अपनी मौजूदा गति (~%4$d/माह) पर आप %3$s तक \"%1$s\" (%2$d) तक पहुँचने की राह पर हैं।</string>
+    <string name="goal_off_track_desc">%3$s तक \"%1$s\" (%2$d) तक पहुँचने के लिए आपको ~%4$d/माह बचाने होंगे — आपकी मौजूदा गति ~%5$d/माह है।</string>
+    <string name="goal_completed_desc">आपने \"%1$s\" के लिए पहले ही पर्याप्त राशि अलग रख ली है — लक्ष्य पूरा हुआ!</string>
+    <string name="goal_suggestion_desc">अंतर को पाटने में मदद के लिए %1$s पर खर्च %2$d%% (~%3$d/माह) तक घटाने का प्रयास करें।</string>
+
+    <string name="error_goal_invalid_name">कृपया लक्ष्य का नाम दर्ज करें।</string>
+    <string name="error_goal_invalid_amount">कृपया एक मान्य लक्ष्य राशि दर्ज करें।</string>
+    <string name="error_goal_deadline_past">समय सीमा भविष्य में होनी चाहिए।</string>
+
+    <string name="error_invalid_amount">कृपया एक मान्य राशि दर्ज करें।</string>
+    <string name="error_no_speech_match">समझ नहीं आया। कृपया फिर से प्रयास करें।</string>
+    <string name="error_amount_not_found">"\"%1$s\" में कोई राशि नहीं मिली। कृपया फिर से प्रयास करें।"</string>
+    <string name="error_recognition_unavailable">इस डिवाइस पर वाक् पहचान उपलब्ध नहीं है</string>
+    <string name="error_speech_timeout">कोई आवाज़ नहीं मिली। कृपया फिर से प्रयास करें।</string>
+    <string name="error_mic_permission">माइक्रोफ़ोन अनुमति आवश्यक है।</string>
+    <string name="error_network">पहचान के दौरान नेटवर्क त्रुटि हुई।</string>
+    <string name="error_audio">ऑडियो रिकॉर्डिंग त्रुटि।</string>
+    <string name="error_recognizer_busy">पहचानकर्ता व्यस्त है। कृपया फिर से प्रयास करें।</string>
+    <string name="error_recognition_generic">पहचान त्रुटि (%1$d)।</string>
+
+    <string name="nav_advisor">सलाहकार</string>
+
+    <string name="advisor_title">वित्तीय सलाहकार</string>
+    <string name="advisor_section_title">वित्तीय सुझाव</string>
+    <string name="advisor_empty">अभी कोई सिफ़ारिश नहीं है। अपने लेन-देन दर्ज करते रहें!</string>
+    <string name="advisor_dismiss">खारिज करें</string>
+    <string name="advisor_view_all">सभी देखें</string>
+    <string name="advisor_potential_savings">संभावित बचत: %1$s</string>
+
+    <string name="priority_critical">गंभीर</string>
+    <string name="priority_high">उच्च</string>
+    <string name="priority_medium">मध्यम</string>
+    <string name="priority_low">निम्न</string>
+
+    <string name="settings_advisor">वित्तीय सलाहकार</string>
+    <string name="advisor_settings_title">विश्लेषण सेटिंग्स</string>
+    <string name="advisor_settings_small_purchase">छोटी खरीद सीमा</string>
+    <string name="advisor_settings_top_category">शीर्ष श्रेणी बजट हिस्सा सीमा (%)</string>
+    <string name="advisor_settings_savings_rate">वांछित बचत दर (%)</string>
+    <string name="advisor_settings_period_months">विश्लेषण अवधि (महीने)</string>
+
+    <string name="advice_high_spending_title">इस महीने अधिक खर्च</string>
+    <string name="advice_high_spending_desc">आपने इस महीने पिछले महीने की तुलना में %1$d%% अधिक खर्च किया।</string>
+
+    <string name="advice_category_growth_title">%1$s खर्च बढ़ा</string>
+    <string name="advice_category_growth_desc">%1$s खर्च %2$d%% बढ़ गया।</string>
+
+    <string name="advice_small_purchases_title">कई छोटी खरीदारियाँ</string>
+    <string name="advice_small_purchases_desc">आपने इस महीने %2$d से कम की %1$d खरीदारियाँ कीं।</string>
+
+    <string name="advice_savings_low_title">कम बचत दर</string>
+    <string name="advice_savings_low_desc">आपकी बचत दर %1$d%% है — जो आपके %2$d%% लक्ष्य से कम है। खर्च %3$d तक कम करने का प्रयास करें।</string>
+
+    <string name="advice_savings_positive_title">बेहतरीन बचत!</string>
+    <string name="advice_savings_positive_desc">आपने इस महीने अपनी आय का %1$d%% बचाया। ऐसे ही जारी रखें!</string>
+
+    <string name="advice_recurring_title">आवर्ती भुगतान का पता चला</string>
+    <string name="advice_recurring_desc">आपका लगातार %3$d महीनों से ~%2$d का आवर्ती %1$s भुगतान है।</string>
+
+    <string name="advice_income_trend_title">घटती आय</string>
+    <string name="advice_income_trend_desc">आपकी आय लगातार %1$d महीनों से घट रही है (%2$d%% परिवर्तन)।</string>
+
+    <string name="advice_monthly_summary_title">मासिक सारांश</string>
+    <string name="advice_monthly_summary_base">आय: %1$d, खर्च: %2$d।</string>
+    <string name="advice_monthly_summary_top_category">सबसे बड़ी श्रेणी: %1$s (%2$d)।</string>
+    <string name="advice_monthly_summary_save_more">अगले महीने अधिक बचत करने का प्रयास करें।</string>
+
+    <string name="advice_top_category_title">सबसे बड़ा खर्च: %1$s</string>
+    <string name="advice_top_category_desc">%1$s आपके बजट का %2$d%% लेता है। इसे %3$d%% कम करने से सालाना ~%4$d की बचत हो सकती है।</string>
+
+    <string name="notification_channel_name">गतिविधि अनुस्मारक</string>
+    <string name="notification_channel_description">जब आप कुछ दिनों से निष्क्रिय हों तो आय और खर्च दर्ज करने की याद दिलाता है।</string>
+    <string name="notification_reminder_title">अपना बजट ट्रैक करना न भूलें</string>
+    <string name="notification_reminder_text">आपने पिछले 3 दिनों में कोई आय या खर्च नहीं जोड़ा है। आज के लेन-देन जोड़ने के लिए टैप करें।</string>
+
+    <string name="category_food">भोजन</string>
+    <string name="category_cafe">कैफ़े</string>
+    <string name="category_transport">परिवहन</string>
+    <string name="category_shopping">खरीदारी</string>
+    <string name="category_health">स्वास्थ्य</string>
+    <string name="category_utilities">उपयोगिताएँ</string>
+    <string name="category_entertainment">मनोरंजन</string>
+    <string name="category_savings">बचत</string>
+    <string name="category_other">अन्य</string>
+    <string name="category_salary">वेतन</string>
+    <string name="category_freelance">फ्रीलांस</string>
+    <string name="category_bonus">बोनस</string>
+    <string name="category_gift">उपहार</string>
+
+    <string name="onboarding_welcome_title">VoiceBudget में आपका स्वागत है</string>
+    <string name="onboarding_language_step_title">अपनी भाषा चुनें</string>
+    <string name="onboarding_currency_step_title">अपनी मुद्रा चुनें</string>
+    <string name="onboarding_wallet_step_title">अपना पहला वॉलेट बनाएँ</string>
+    <string name="onboarding_wallet_name_hint">वॉलेट का नाम</string>
+    <string name="action_next">अगला</string>
+    <string name="action_create_wallet">वॉलेट बनाएँ</string>
+
+    <string name="settings_wallets">वॉलेट</string>
+    <string name="wallets_screen_title">वॉलेट</string>
+    <string name="wallets_add_button">वॉलेट जोड़ें</string>
+    <string name="wallets_max_reached">आपके पास अधिकतम 2 वॉलेट हो सकते हैं</string>
+    <string name="wallets_active_badge">सक्रिय</string>
+    <string name="wallets_new_dialog_title">नया वॉलेट</string>
+    <string name="wallets_field_name">नाम</string>
+    <string name="wallets_field_currency">मुद्रा</string>
+    <string name="wallet_default_name">वॉलेट %1$d</string>
+
+    <string name="category_transfer">ट्रांसफ़र</string>
+    <string name="transaction_transfer_to">\"%1$s\" में ट्रांसफ़र</string>
+    <string name="transaction_transfer_from">\"%1$s\" से ट्रांसफ़र</string>
+    <string name="wallets_transfer_button">वॉलेट के बीच ट्रांसफ़र</string>
+    <string name="transfer_dialog_title">वॉलेट के बीच ट्रांसफ़र</string>
+    <string name="transfer_field_from_amount">भेजी जाने वाली राशि (%1$s)</string>
+    <string name="transfer_field_to_amount">प्राप्त होने वाली राशि (%1$s)</string>
+    <string name="transfer_swap_direction">दिशा बदलें</string>
+    <string name="transfer_confirm_button">ट्रांसफ़र करें</string>
+    <string name="transfer_rate_unavailable">विनिमय दर उपलब्ध नहीं है — राशि मैन्युअल रूप से दर्ज करें</string>
+
+    <string name="dashboard_combined_balance_label">सभी वॉलेट का कुल योग</string>
+    <string name="dashboard_combined_balance_unavailable">कुछ वॉलेट कन्वर्ट नहीं हो सके (विनिमय दर उपलब्ध नहीं)</string>
+
+    <string name="settings_exchange_rate">विनिमय दर</string>
+    <string name="settings_exchange_rate_updated">%1$s को अपडेट किया गया</string>
+    <string name="settings_exchange_rate_never">अभी तक लोड नहीं हुआ</string>
+    <string name="settings_exchange_rate_refresh">रीफ़्रेश करें</string>
+
+    <string name="settings_budget_limits">बजट सीमाएँ</string>
+    <string name="budget_limits_screen_title">बजट सीमाएँ</string>
+    <string name="budget_limits_add_button">सीमा जोड़ें</string>
+    <string name="budget_limits_empty">अभी तक कोई सीमा सेट नहीं की गई</string>
+    <string name="budget_limit_dialog_title">बजट सीमा सेट करें</string>
+    <string name="budget_limit_field_category">श्रेणी</string>
+    <string name="budget_limit_field_amount">मासिक सीमा</string>
+    <string name="budget_limit_save_button">सहेजें</string>
+
+    <string name="settings_recurring_transactions">आवर्ती भुगतान</string>
+    <string name="recurring_screen_title">आवर्ती भुगतान</string>
+    <string name="recurring_add_button">आवर्ती भुगतान जोड़ें</string>
+    <string name="recurring_empty">अभी तक कोई आवर्ती भुगतान नहीं</string>
+    <string name="recurring_dialog_title">नया आवर्ती भुगतान</string>
+    <string name="recurring_field_amount">राशि</string>
+    <string name="recurring_field_description">विवरण</string>
+    <string name="recurring_field_category">श्रेणी</string>
+    <string name="recurring_field_frequency">आवृत्ति</string>
+    <string name="recurring_frequency_daily">रोज़ाना</string>
+    <string name="recurring_frequency_weekly">साप्ताहिक</string>
+    <string name="recurring_frequency_monthly">मासिक</string>
+    <string name="recurring_next_run">अगला: %1$s</string>
+    <string name="recurring_save_button">सहेजें</string>
+
+    <string name="settings_security">सुरक्षा</string>
+    <string name="security_pin_toggle">पिन कोड</string>
+    <string name="security_biometric_toggle">बायोमेट्रिक से अनलॉक करें</string>
+    <string name="security_set_pin_title">पिन सेट करें</string>
+    <string name="security_confirm_pin_title">पिन की पुष्टि करें</string>
+    <string name="security_enter_pin_title">पिन दर्ज करें</string>
+    <string name="security_pin_mismatch">पिन मेल नहीं खाते। फिर से कोशिश करें।</string>
+    <string name="security_wrong_pin">गलत पिन</string>
+    <string name="security_use_biometric_button">बायोमेट्रिक का उपयोग करें</string>
+    <string name="security_change_pin_button">पिन बदलें</string>
+
+    <string name="notification_budget_limit_channel_name">बजट सीमा अलर्ट</string>
+    <string name="notification_budget_limit_channel_description">जब खर्च किसी श्रेणी की बजट सीमा के करीब पहुँचे या उससे अधिक हो जाए तो सचेत करता है</string>
+    <string name="notification_budget_limit_approaching_title">बजट सीमा के करीब</string>
+    <string name="notification_budget_limit_approaching_text">आपने इस महीने \"%3$s\" की %2$s सीमा में से %1$s खर्च कर दिए हैं</string>
+    <string name="notification_budget_limit_exceeded_title">बजट सीमा पार हो गई</string>
+    <string name="notification_budget_limit_exceeded_text">आपने इस महीने \"%3$s\" की %2$s सीमा से अधिक %1$s खर्च कर दिए हैं</string>
+
+    <string name="msg_exchange_rate_refresh_failed">विनिमय दरें अपडेट नहीं हो सकीं। अपना कनेक्शन जाँचें।</string>
+
+    <string name="widget_description">बैलेंस + त्वरित वॉइस एंट्री</string>
+    <string name="widget_balance_masked">••••••</string>
+    <string name="widget_add_transaction">ट्रांज़ैक्शन जोड़ें</string>
+</resources>

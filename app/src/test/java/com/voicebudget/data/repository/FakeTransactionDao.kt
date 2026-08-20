@@ -3,6 +3,7 @@ package com.voicebudget.data.repository
 import com.voicebudget.data.database.TransactionDao
 import com.voicebudget.data.database.TransactionEntity
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.map
 
 /** In-memory stand-in for Room's generated DAO, used to unit-test [TransactionRepositoryImpl] on the JVM. */
 class FakeTransactionDao : TransactionDao {
@@ -10,7 +11,10 @@ class FakeTransactionDao : TransactionDao {
     private val state = MutableStateFlow<List<TransactionEntity>>(emptyList())
     private var nextId = 1L
 
-    override fun getAll() = state
+    override fun getAllForWallet(walletId: Long) = state.map { list -> list.filter { it.walletId == walletId } }
+
+    override suspend fun getAllForWalletOnce(walletId: Long): List<TransactionEntity> =
+        state.value.filter { it.walletId == walletId }
 
     override suspend fun getById(id: Long): TransactionEntity? = state.value.find { it.id == id }
 
@@ -41,4 +45,6 @@ class FakeTransactionDao : TransactionDao {
     }
 
     override suspend fun getLastTransactionTime(): Long? = state.value.maxOfOrNull { it.createdAt }
+
+    override suspend fun getCount(): Int = state.value.size
 }

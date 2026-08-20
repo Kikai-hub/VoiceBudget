@@ -14,7 +14,9 @@ import com.voicebudget.domain.model.ThemeMode
 import com.voicebudget.domain.usecase.AddTransactionUseCase
 import com.voicebudget.domain.usecase.ClearAllDataUseCase
 import com.voicebudget.domain.usecase.GetTransactionsUseCase
+import com.voicebudget.domain.usecase.ObserveExchangeRateLastUpdatedUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
+import com.voicebudget.domain.usecase.RefreshExchangeRatesUseCase
 import com.voicebudget.domain.usecase.UpdateCurrencyUseCase
 import com.voicebudget.domain.usecase.UpdateRecognitionLanguageUseCase
 import com.voicebudget.domain.usecase.UpdateThemeModeUseCase
@@ -24,6 +26,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
@@ -34,20 +37,44 @@ import javax.inject.Inject
 class SettingsViewModel @Inject constructor(
     @param:ApplicationContext private val context: Context,
     observeSettingsUseCase: ObserveSettingsUseCase,
+    observeExchangeRateLastUpdatedUseCase: ObserveExchangeRateLastUpdatedUseCase,
     private val updateCurrencyUseCase: UpdateCurrencyUseCase,
     private val updateThemeModeUseCase: UpdateThemeModeUseCase,
     private val updateRecognitionLanguageUseCase: UpdateRecognitionLanguageUseCase,
     private val clearAllDataUseCase: ClearAllDataUseCase,
     private val getTransactionsUseCase: GetTransactionsUseCase,
     private val addTransactionUseCase: AddTransactionUseCase,
+    private val refreshExchangeRatesUseCase: RefreshExchangeRatesUseCase,
 ) : ViewModel() {
 
-    val uiState: StateFlow<SettingsUiState> = observeSettingsUseCase()
-        .map { SettingsUiState(isLoading = false, settings = it) }
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SettingsUiState())
+    private val _isRefreshingRates = MutableStateFlow(false)
+
+    val uiState: StateFlow<SettingsUiState> = combine(
+        observeSettingsUseCase(),
+        observeExchangeRateLastUpdatedUseCase(),
+        _isRefreshingRates,
+    ) { settings, ratesUpdatedAt, isRefreshing ->
+        SettingsUiState(
+            isLoading = false,
+            settings = settings,
+            exchangeRateUpdatedAt = ratesUpdatedAt,
+            isRefreshingRates = isRefreshing,
+        )
+    }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), SettingsUiState())
 
     private val _message = MutableStateFlow<String?>(null)
     val message: StateFlow<String?> = _message.asStateFlow()
+
+    fun refreshExchangeRates() {
+        viewModelScope.launch {
+            _isRefreshingRates.value = true
+            val result = refreshExchangeRatesUseCase()
+            _isRefreshingRates.value = false
+            if (result.isFailure) {
+                _message.value = context.getString(R.string.msg_exchange_rate_refresh_failed)
+            }
+        }
+    }
 
     fun setCurrency(currency: Currency) {
         viewModelScope.launch { updateCurrencyUseCase(currency) }

@@ -18,4 +18,5 @@ fun categoryLabelRes(category: Category): Int = when (category) {
     Category.FREELANCE -> R.string.category_freelance
     Category.BONUS -> R.string.category_bonus
     Category.GIFT -> R.string.category_gift
+    Category.TRANSFER -> R.string.category_transfer
 }

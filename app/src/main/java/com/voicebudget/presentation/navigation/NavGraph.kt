@@ -24,6 +24,7 @@ import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -61,9 +62,20 @@ private val bottomNavItems = listOf(
 private val NavBarShape = RoundedCornerShape(topStart = 28.dp, topEnd = 28.dp)
 
 @Composable
-fun VoiceBudgetNavHost(navController: NavHostController = rememberNavController()) {
+fun VoiceBudgetNavHost(
+    navController: NavHostController = rememberNavController(),
+    startVoiceEntry: Boolean = false,
+    onStartVoiceEntryConsumed: () -> Unit = {},
+) {
     val backStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = backStackEntry?.destination?.route
+
+    LaunchedEffect(startVoiceEntry) {
+        if (startVoiceEntry) {
+            navController.navigate(Routes.AddTransaction.route) { launchSingleTop = true }
+            onStartVoiceEntryConsumed()
+        }
+    }
 
     Scaffold(
         bottomBar = {

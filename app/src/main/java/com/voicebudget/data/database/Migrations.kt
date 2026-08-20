@@ -48,3 +48,65 @@ val MIGRATION_4_5 = object : Migration(4, 5) {
         )
     }
 }
+
+val MIGRATION_5_6 = object : Migration(5, 6) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS `wallets` (" +
+                "`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                "`name` TEXT NOT NULL, " +
+                "`currency` TEXT NOT NULL, " +
+                "`createdAt` INTEGER NOT NULL, " +
+                "`orderIndex` INTEGER NOT NULL DEFAULT 0)",
+        )
+        db.execSQL(
+            "ALTER TABLE `transactions` ADD COLUMN `walletId` INTEGER NOT NULL DEFAULT 1",
+        )
+        db.execSQL(
+            "ALTER TABLE `financial_goals` ADD COLUMN `walletId` INTEGER NOT NULL DEFAULT 1",
+        )
+    }
+}
+
+val MIGRATION_6_7 = object : Migration(6, 7) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL(
+            "ALTER TABLE `transactions` ADD COLUMN `transferGroupId` TEXT DEFAULT NULL",
+        )
+        db.execSQL(
+            "ALTER TABLE `transactions` ADD COLUMN `transferDirection` TEXT DEFAULT NULL",
+        )
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS `exchange_rates` (" +
+                "`currencyCode` TEXT NOT NULL, " +
+                "`rateToUsd` REAL NOT NULL, " +
+                "`updatedAt` INTEGER NOT NULL, " +
+                "PRIMARY KEY(`currencyCode`))",
+        )
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS `category_budget_limits` (" +
+                "`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                "`category` TEXT DEFAULT NULL, " +
+                "`customCategoryId` INTEGER DEFAULT NULL, " +
+                "`monthlyLimit` REAL NOT NULL, " +
+                "`walletId` INTEGER NOT NULL, " +
+                "`lastNotifiedMonth` TEXT DEFAULT NULL, " +
+                "`lastNotifiedThreshold` INTEGER DEFAULT NULL)",
+        )
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS `recurring_transactions` (" +
+                "`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
+                "`amount` REAL NOT NULL, " +
+                "`type` TEXT NOT NULL, " +
+                "`category` TEXT NOT NULL, " +
+                "`customCategoryId` INTEGER DEFAULT NULL, " +
+                "`description` TEXT NOT NULL, " +
+                "`walletId` INTEGER NOT NULL, " +
+                "`frequency` TEXT NOT NULL, " +
+                "`startDate` INTEGER NOT NULL, " +
+                "`nextRunAt` INTEGER NOT NULL, " +
+                "`endDate` INTEGER DEFAULT NULL, " +
+                "`active` INTEGER NOT NULL DEFAULT 1)",
+        )
+    }
+}

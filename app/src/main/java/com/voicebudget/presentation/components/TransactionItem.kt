@@ -29,6 +29,7 @@ import com.voicebudget.R
 import com.voicebudget.domain.model.CustomCategory
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
+import com.voicebudget.domain.model.TransferDirection
 import com.voicebudget.presentation.theme.IncomeGreen
 import com.voicebudget.utils.formatAmount
 import java.text.SimpleDateFormat
@@ -95,8 +96,14 @@ fun TransactionItem(
             }
 
             Row(verticalAlignment = Alignment.CenterVertically) {
-                val sign = if (transaction.type == TransactionType.INCOME) "+" else "-"
-                val color = if (transaction.type == TransactionType.INCOME) IncomeGreen else MaterialTheme.colorScheme.error
+                val isInflow = transaction.type == TransactionType.INCOME ||
+                    (transaction.type == TransactionType.TRANSFER && transaction.transferDirection == TransferDirection.IN)
+                val sign = if (isInflow) "+" else "-"
+                val color = when {
+                    transaction.type == TransactionType.TRANSFER -> MaterialTheme.colorScheme.onSurfaceVariant
+                    isInflow -> IncomeGreen
+                    else -> MaterialTheme.colorScheme.error
+                }
                 Text(
                     text = "$sign${formatAmount(transaction.amount, currencySymbol)}",
                     color = color,

@@ -15,7 +15,9 @@ enum class Category(val type: TransactionType) {
     FREELANCE(TransactionType.INCOME),
     BONUS(TransactionType.INCOME),
     GIFT(TransactionType.INCOME),
-    OTHER_INCOME(TransactionType.INCOME);
+    OTHER_INCOME(TransactionType.INCOME),
+
+    TRANSFER(TransactionType.TRANSFER);
 
     companion object {
         fun forType(type: TransactionType): List<Category> = entries.filter { it.type == type }

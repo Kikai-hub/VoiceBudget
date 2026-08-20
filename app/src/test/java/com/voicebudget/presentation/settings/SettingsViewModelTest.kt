@@ -9,10 +9,13 @@ import com.voicebudget.domain.model.ThemeMode
 import com.voicebudget.domain.usecase.AddTransactionUseCase
 import com.voicebudget.domain.usecase.ClearAllDataUseCase
 import com.voicebudget.domain.usecase.GetTransactionsUseCase
+import com.voicebudget.domain.usecase.ObserveExchangeRateLastUpdatedUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
+import com.voicebudget.domain.usecase.RefreshExchangeRatesUseCase
 import com.voicebudget.domain.usecase.UpdateCurrencyUseCase
 import com.voicebudget.domain.usecase.UpdateRecognitionLanguageUseCase
 import com.voicebudget.domain.usecase.UpdateThemeModeUseCase
+import com.voicebudget.fakes.FakeExchangeRateRepository
 import com.voicebudget.fakes.FakeSettingsRepository
 import com.voicebudget.fakes.FakeTransactionRepository
 import com.voicebudget.util.MainDispatcherRule
@@ -46,12 +49,14 @@ class SettingsViewModelTest {
     ): SettingsViewModel = SettingsViewModel(
         context,
         ObserveSettingsUseCase(settingsRepository),
+        ObserveExchangeRateLastUpdatedUseCase(FakeExchangeRateRepository()),
         UpdateCurrencyUseCase(settingsRepository),
         UpdateThemeModeUseCase(settingsRepository),
         UpdateRecognitionLanguageUseCase(settingsRepository),
         ClearAllDataUseCase(transactionRepository),
         GetTransactionsUseCase(transactionRepository),
         AddTransactionUseCase(transactionRepository),
+        RefreshExchangeRatesUseCase(FakeExchangeRateRepository()),
     )
 
     @Test

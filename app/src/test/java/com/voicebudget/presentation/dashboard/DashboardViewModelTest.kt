@@ -12,18 +12,22 @@ import com.voicebudget.domain.advisor.calculators.MonthlyIncomeCalculator
 import com.voicebudget.domain.goals.GoalAdvisor
 import com.voicebudget.domain.goals.GoalStrategyBuilder
 import com.voicebudget.domain.usecase.ContributeToGoalUseCase
+import com.voicebudget.domain.usecase.GetCombinedBalanceUseCase
 import com.voicebudget.domain.usecase.GetFinancialAdviceUseCase
 import com.voicebudget.domain.usecase.GetGoalsWithStrategyUseCase
 import com.voicebudget.domain.usecase.GetMonthlySummaryUseCase
 import com.voicebudget.domain.usecase.GetTransactionsUseCase
 import com.voicebudget.domain.usecase.ObserveCustomCategoriesUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
+import com.voicebudget.domain.usecase.ObserveWalletsUseCase
 import com.voicebudget.fakes.FakeAdvisorSettingsRepository
 import com.voicebudget.fakes.FakeCustomCategoryRepository
+import com.voicebudget.fakes.FakeExchangeRateRepository
 import com.voicebudget.fakes.FakeGoalRepository
 import com.voicebudget.fakes.FakeSettingsRepository
 import com.voicebudget.fakes.FakeTransactionRepository
 import com.voicebudget.fakes.FakeTransactionRunner
+import com.voicebudget.fakes.FakeWalletRepository
 import com.voicebudget.fakes.fakeAndroidContext
 import com.voicebudget.util.MainDispatcherRule
 import kotlinx.coroutines.test.runTest
@@ -55,6 +59,7 @@ class DashboardViewModelTest {
             settingsRepo,
             GoalStrategyBuilder(fakeAndroidContext(), MonthlyIncomeCalculator(), MonthlyExpenseCalculator(), CategoryAnalyzer()),
         )
+        val walletRepo = FakeWalletRepository()
         val viewModel = DashboardViewModel(
             GetMonthlySummaryUseCase(repository),
             GetTransactionsUseCase(repository),
@@ -62,6 +67,8 @@ class DashboardViewModelTest {
             GetGoalsWithStrategyUseCase(goalAdvisor),
             ObserveSettingsUseCase(settingsRepo),
             ObserveCustomCategoriesUseCase(FakeCustomCategoryRepository()),
+            GetCombinedBalanceUseCase(walletRepo, repository, FakeExchangeRateRepository()),
+            ObserveWalletsUseCase(walletRepo),
             ContributeToGoalUseCase(goalRepo, repository, FakeTransactionRunner()),
         )
 
@@ -89,6 +96,7 @@ class DashboardViewModelTest {
             settingsRepo,
             GoalStrategyBuilder(fakeAndroidContext(), MonthlyIncomeCalculator(), MonthlyExpenseCalculator(), CategoryAnalyzer()),
         )
+        val walletRepo = FakeWalletRepository()
         val viewModel = DashboardViewModel(
             GetMonthlySummaryUseCase(emptyRepo),
             GetTransactionsUseCase(emptyRepo),
@@ -96,6 +104,8 @@ class DashboardViewModelTest {
             GetGoalsWithStrategyUseCase(goalAdvisor),
             ObserveSettingsUseCase(settingsRepo),
             ObserveCustomCategoriesUseCase(FakeCustomCategoryRepository()),
+            GetCombinedBalanceUseCase(walletRepo, emptyRepo, FakeExchangeRateRepository()),
+            ObserveWalletsUseCase(walletRepo),
             ContributeToGoalUseCase(goalRepo, emptyRepo, FakeTransactionRunner()),
         )
 

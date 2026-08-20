@@ -3,12 +3,14 @@ package com.voicebudget.presentation.dashboard
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.voicebudget.domain.usecase.ContributeToGoalUseCase
+import com.voicebudget.domain.usecase.GetCombinedBalanceUseCase
 import com.voicebudget.domain.usecase.GetFinancialAdviceUseCase
 import com.voicebudget.domain.usecase.GetGoalsWithStrategyUseCase
 import com.voicebudget.domain.usecase.GetMonthlySummaryUseCase
 import com.voicebudget.domain.usecase.GetTransactionsUseCase
 import com.voicebudget.domain.usecase.ObserveCustomCategoriesUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
+import com.voicebudget.domain.usecase.ObserveWalletsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -29,6 +31,8 @@ class DashboardViewModel @Inject constructor(
     getGoalsWithStrategyUseCase: GetGoalsWithStrategyUseCase,
     observeSettingsUseCase: ObserveSettingsUseCase,
     observeCustomCategoriesUseCase: ObserveCustomCategoriesUseCase,
+    getCombinedBalanceUseCase: GetCombinedBalanceUseCase,
+    observeWalletsUseCase: ObserveWalletsUseCase,
     private val contributeToGoalUseCase: ContributeToGoalUseCase,
 ) : ViewModel() {
 
@@ -43,7 +47,9 @@ class DashboardViewModel @Inject constructor(
         ) { summary, recent, topAdvice, goals -> DashboardCore(summary, recent, topAdvice, goals) },
         observeSettingsUseCase(),
         observeCustomCategoriesUseCase(),
-    ) { core, settings, customCategories ->
+        getCombinedBalanceUseCase(),
+        observeWalletsUseCase().map { it.size },
+    ) { core, settings, customCategories, combinedBalance, walletCount ->
         DashboardUiState(
             isLoading = false,
             summary = core.summary,
@@ -52,6 +58,8 @@ class DashboardViewModel @Inject constructor(
             goals = core.goals,
             currencySymbol = settings.currency.symbol,
             customCategories = customCategories,
+            combinedBalance = combinedBalance,
+            walletCount = walletCount,
         )
     }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), DashboardUiState())
 

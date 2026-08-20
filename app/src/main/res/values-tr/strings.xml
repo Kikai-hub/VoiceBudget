@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_dashboard">Panel</string>
+    <string name="nav_transactions">İşlemler</string>
+    <string name="nav_statistics">İstatistikler</string>
+    <string name="nav_settings">Ayarlar</string>
+    <string name="nav_record_transaction">İşlem kaydet</string>
+    <string name="nav_manual_transaction">İşlemi manuel ekle</string>
+
+    <string name="dashboard_recent_transactions">Son işlemler</string>
+    <string name="dashboard_empty">Henüz işlem yok. Eklemek için mikrofona dokunun.</string>
+    <string name="this_month">Bu ay</string>
+    <string name="income">Gelir</string>
+    <string name="expenses">Giderler</string>
+    <string name="balance">Bakiye</string>
+
+    <string name="settings_currency">Para birimi</string>
+    <string name="settings_language">Dil</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_data">Veri</string>
+    <string name="settings_export_csv">Veritabanını dışa aktar (CSV)</string>
+    <string name="settings_import_csv">Veritabanını içe aktar (CSV)</string>
+    <string name="settings_clear_all_data">Tüm verileri temizle</string>
+    <string name="dialog_clear_all_data_title">Tüm veriler temizlensin mi?</string>
+    <string name="dialog_clear_all_data_message">Bu işlem tüm işlemleri kalıcı olarak silecek. Bu işlem geri alınamaz.</string>
+
+    <string name="settings_categories">Kategoriler</string>
+    <string name="settings_manage_categories">Kategorileri yönet</string>
+    <string name="categories_add_new">Kategori ekle</string>
+    <string name="categories_add_title">Yeni kategori</string>
+    <string name="categories_edit_title">Kategoriyi düzenle</string>
+    <string name="categories_empty">Henüz özel kategori eklemediniz.</string>
+    <string name="categories_field_name">Kategori adı</string>
+    <string name="categories_field_icon">Simge</string>
+    <string name="categories_field_color">Renk</string>
+    <string name="categories_delete_title">Kategori silinsin mi?</string>
+    <string name="categories_delete_message">"\"%1$s\" kalıcı olarak silinecek. Bu kategoriyi kullanan işlemler \"Diğer\" kategorisine geçecek."</string>
+    <string name="error_category_name_required">Lütfen bir kategori adı girin.</string>
+
+    <string name="action_clear">Temizle</string>
+    <string name="action_cancel">İptal</string>
+    <string name="action_delete">Sil</string>
+    <string name="action_edit">Düzenle</string>
+    <string name="action_save">Kaydet</string>
+    <string name="action_retry">Tekrar dene</string>
+    <string name="action_try_again">Tekrar dene</string>
+    <string name="action_close">Kapat</string>
+
+    <string name="theme_light">Açık</string>
+    <string name="theme_dark">Koyu</string>
+    <string name="theme_system">Sistem</string>
+
+    <string name="msg_all_data_cleared">Tüm veriler temizlendi.</string>
+    <string name="msg_advisor_settings_saved">Danışman ayarları kaydedildi.</string>
+    <string name="msg_export_success">Başarıyla dışa aktarıldı.</string>
+    <string name="msg_export_failed">Dışa aktarma başarısız oldu: %1$s</string>
+    <string name="msg_import_success">%1$d işlem içe aktarıldı.</string>
+    <string name="msg_import_failed">İçe aktarma başarısız oldu: %1$s</string>
+
+    <string name="transactions_empty_filtered">Bu filtrelere uyan işlem yok.</string>
+    <string name="dialog_delete_transaction_title">İşlem silinsin mi?</string>
+    <string name="dialog_delete_transaction_message">"\"%1$s\" kalıcı olarak silinecek."</string>
+    <string name="category_all">Tüm kategoriler</string>
+    <string name="date_range_all_time">Tüm zamanlar</string>
+    <string name="date_range_last_month">Geçen ay</string>
+    <string name="date_range_last_7_days">Son 7 gün</string>
+    <string name="edit_transaction_title">İşlemi düzenle</string>
+    <string name="confirm_transaction_title">İşlemi onayla</string>
+    <string name="manual_transaction_title">İşlem ekle</string>
+
+    <string name="voice_start_recording">Kaydı başlat</string>
+    <string name="voice_tap_to_speak">Konuşmak için dokunun</string>
+    <string name="voice_listening_desc">Dinleniyor</string>
+    <string name="voice_listening">Dinleniyor…</string>
+    <string name="voice_saving">Kaydediliyor…</string>
+
+    <string name="field_amount">Tutar</string>
+    <string name="field_category">Kategori</string>
+    <string name="field_description">Açıklama</string>
+    <string name="type_expense">Gider</string>
+
+    <string name="stats_expense_breakdown">Gider dağılımı (bu ay)</string>
+    <string name="stats_no_expenses">Bu ay kaydedilmiş gider yok.</string>
+    <string name="stats_income_vs_expenses">Gelir - gider karşılaştırması (son 6 ay)</string>
+
+    <string name="goals_title">Finansal Hedefler</string>
+    <string name="goals_add_goal">Hedef ekle</string>
+    <string name="goals_empty">Henüz hedef yok. Tasarruflarınızı planlamaya başlamak için \"Hedef ekle\"ye dokunun!</string>
+    <string name="goals_field_name">Hedef adı</string>
+    <string name="goals_field_amount">Hedef tutar</string>
+    <string name="goals_field_month">Ay</string>
+    <string name="goals_field_year">Yıl</string>
+    <string name="goals_dialog_add_title">Finansal hedef ekle</string>
+    <string name="goals_months_remaining">%1$d ay kaldı</string>
+    <string name="goals_required_monthly">Gerekli: aylık %1$s</string>
+    <string name="goals_current_monthly">Mevcut: aylık %1$s</string>
+    <string name="goals_on_track">Hedefte</string>
+    <string name="goals_off_track">Hedefin gerisinde</string>
+    <string name="goals_completed">Tamamlandı</string>
+    <string name="goals_delete_title">Hedef silinsin mi?</string>
+    <string name="goals_delete_message">"\"%1$s\" kalıcı olarak silinecek."</string>
+    <string name="goals_saved_of_target">Biriktirilen: %1$s / %2$s (%3$d%%)</string>
+
+    <string name="goals_set_aside">Ayır</string>
+    <string name="goals_set_aside_dialog_title">Para ayır</string>
+    <string name="goals_set_aside_field_goal">Hedef</string>
+    <string name="goals_set_aside_field_amount">Tutar</string>
+    <string name="error_goal_contribution_invalid_amount">Lütfen geçerli bir tutar girin.</string>
+
+    <string name="goal_on_track_desc">Mevcut hızınızla (~%4$d/ay) \"%1$s\" (%2$d) hedefine %3$s tarihine kadar ulaşmanız bekleniyor.</string>
+    <string name="goal_off_track_desc">\"%1$s\" (%2$d) hedefine %3$s tarihine kadar ulaşmak için ayda ~%4$d biriktirmeniz gerekiyor — mevcut hızınız ise ayda ~%5$d.</string>
+    <string name="goal_completed_desc">\"%1$s\" için yeterince biriktirdiniz — hedefe ulaşıldı!</string>
+    <string name="goal_suggestion_desc">Açığı kapatmaya yardımcı olmak için %1$s harcamalarınızı %2$d%% (~%3$d/ay) azaltmayı deneyin.</string>
+
+    <string name="error_goal_invalid_name">Lütfen bir hedef adı girin.</string>
+    <string name="error_goal_invalid_amount">Lütfen geçerli bir hedef tutar girin.</string>
+    <string name="error_goal_deadline_past">Son tarih gelecekte bir tarih olmalıdır.</string>
+
+    <string name="error_invalid_amount">Lütfen geçerli bir tutar girin.</string>
+    <string name="error_no_speech_match">Anlaşılamadı. Lütfen tekrar deneyin.</string>
+    <string name="error_amount_not_found">"\"%1$s\" içinde bir tutar bulunamadı. Lütfen tekrar deneyin."</string>
+    <string name="error_recognition_unavailable">Bu cihazda konuşma tanıma kullanılamıyor</string>
+    <string name="error_speech_timeout">Konuşma algılanamadı. Lütfen tekrar deneyin.</string>
+    <string name="error_mic_permission">Mikrofon izni gerekli.</string>
+    <string name="error_network">Tanıma sırasında ağ hatası oluştu.</string>
+    <string name="error_audio">Ses kayıt hatası.</string>
+    <string name="error_recognizer_busy">Tanıyıcı meşgul. Lütfen tekrar deneyin.</string>
+    <string name="error_recognition_generic">Tanıma hatası (%1$d).</string>
+
+    <string name="nav_advisor">Danışman</string>
+
+    <string name="advisor_title">Finansal Danışman</string>
+    <string name="advisor_section_title">Finansal İpuçları</string>
+    <string name="advisor_empty">Şu anda öneri yok. İşlemlerinizi kaydetmeye devam edin!</string>
+    <string name="advisor_dismiss">Kapat</string>
+    <string name="advisor_view_all">Tümünü gör</string>
+    <string name="advisor_potential_savings">Potansiyel tasarruf: %1$s</string>
+
+    <string name="priority_critical">Kritik</string>
+    <string name="priority_high">Yüksek</string>
+    <string name="priority_medium">Orta</string>
+    <string name="priority_low">Düşük</string>
+
+    <string name="settings_advisor">Finansal Danışman</string>
+    <string name="advisor_settings_title">Analiz Ayarları</string>
+    <string name="advisor_settings_small_purchase">Küçük harcama eşiği</string>
+    <string name="advisor_settings_top_category">En yüksek kategori bütçe payı sınırı (%)</string>
+    <string name="advisor_settings_savings_rate">Hedeflenen tasarruf oranı (%)</string>
+    <string name="advisor_settings_period_months">Analiz dönemi (ay)</string>
+
+    <string name="advice_high_spending_title">Bu ay yüksek harcama</string>
+    <string name="advice_high_spending_desc">Bu ay geçen aya göre %1$d%% daha fazla harcadınız.</string>
+
+    <string name="advice_category_growth_title">%1$s harcamaları arttı</string>
+    <string name="advice_category_growth_desc">%1$s harcamaları %2$d%% arttı.</string>
+
+    <string name="advice_small_purchases_title">Çok sayıda küçük harcama</string>
+    <string name="advice_small_purchases_desc">Bu ay %2$d altında %1$d harcama yaptınız.</string>
+
+    <string name="advice_savings_low_title">Düşük tasarruf oranı</string>
+    <string name="advice_savings_low_desc">Tasarruf oranınız %1$d%% — %2$d%% hedefinizin altında. Harcamalarınızı %3$d azaltmayı deneyin.</string>
+
+    <string name="advice_savings_positive_title">Harika tasarruf!</string>
+    <string name="advice_savings_positive_desc">Bu ay gelirinizin %1$d%%\'ini biriktirdiniz. Böyle devam edin!</string>
+
+    <string name="advice_recurring_title">Yinelenen ödeme tespit edildi</string>
+    <string name="advice_recurring_desc">%3$d aydır arka arkaya ~%2$d tutarında yinelenen bir %1$s ödemeniz var.</string>
+
+    <string name="advice_income_trend_title">Azalan gelir</string>
+    <string name="advice_income_trend_desc">Geliriniz %1$d aydır arka arkaya azalıyor (%2$d%% değişim).</string>
+
+    <string name="advice_monthly_summary_title">Aylık özet</string>
+    <string name="advice_monthly_summary_base">Gelir: %1$d, Gider: %2$d.</string>
+    <string name="advice_monthly_summary_top_category">En büyük kategori: %1$s (%2$d).</string>
+    <string name="advice_monthly_summary_save_more">Gelecek ay daha fazla biriktirmeyi deneyin.</string>
+
+    <string name="advice_top_category_title">En büyük gider: %1$s</string>
+    <string name="advice_top_category_desc">%1$s bütçenizin %2$d%%\'ini oluşturuyor. Bunu %3$d%% azaltmak yılda ~%4$d tasarruf sağlayabilir.</string>
+
+    <string name="notification_channel_name">Etkinlik hatırlatmaları</string>
+    <string name="notification_channel_description">Birkaç gündür işlem eklemediğinizde gelir ve giderlerinizi kaydetmeniz gerektiğini hatırlatır.</string>
+    <string name="notification_reminder_title">Bütçenizi takip etmeyi unutmayın</string>
+    <string name="notification_reminder_text">Son 3 gündür herhangi bir gelir veya gider eklemediniz. Bugünün işlemlerini eklemek için dokunun.</string>
+
+    <string name="category_food">Yiyecek</string>
+    <string name="category_cafe">Kafe</string>
+    <string name="category_transport">Ulaşım</string>
+    <string name="category_shopping">Alışveriş</string>
+    <string name="category_health">Sağlık</string>
+    <string name="category_utilities">Faturalar</string>
+    <string name="category_entertainment">Eğlence</string>
+    <string name="category_savings">Tasarruf</string>
+    <string name="category_other">Diğer</string>
+    <string name="category_salary">Maaş</string>
+    <string name="category_freelance">Serbest çalışma</string>
+    <string name="category_bonus">Prim</string>
+    <string name="category_gift">Hediye</string>
+
+    <string name="onboarding_welcome_title">VoiceBudget\'a Hoş Geldiniz</string>
+    <string name="onboarding_language_step_title">Dilinizi seçin</string>
+    <string name="onboarding_currency_step_title">Para biriminizi seçin</string>
+    <string name="onboarding_wallet_step_title">İlk cüzdanınızı oluşturun</string>
+    <string name="onboarding_wallet_name_hint">Cüzdan adı</string>
+    <string name="action_next">İleri</string>
+    <string name="action_create_wallet">Cüzdan oluştur</string>
+
+    <string name="settings_wallets">Cüzdanlar</string>
+    <string name="wallets_screen_title">Cüzdanlar</string>
+    <string name="wallets_add_button">Cüzdan ekle</string>
+    <string name="wallets_max_reached">En fazla 2 cüzdanınız olabilir</string>
+    <string name="wallets_active_badge">Aktif</string>
+    <string name="wallets_new_dialog_title">Yeni cüzdan</string>
+    <string name="wallets_field_name">Ad</string>
+    <string name="wallets_field_currency">Para birimi</string>
+    <string name="wallet_default_name">Cüzdan %1$d</string>
+
+    <string name="category_transfer">Transfer</string>
+    <string name="transaction_transfer_to">\"%1$s\" hesabına transfer</string>
+    <string name="transaction_transfer_from">\"%1$s\" hesabından transfer</string>
+    <string name="wallets_transfer_button">Cüzdanlar arası transfer</string>
+    <string name="transfer_dialog_title">Cüzdanlar arası transfer</string>
+    <string name="transfer_field_from_amount">Gönderilecek tutar (%1$s)</string>
+    <string name="transfer_field_to_amount">Alınacak tutar (%1$s)</string>
+    <string name="transfer_swap_direction">Yönü değiştir</string>
+    <string name="transfer_confirm_button">Transfer et</string>
+    <string name="transfer_rate_unavailable">Döviz kuru kullanılamıyor — tutarı manuel girin</string>
+
+    <string name="dashboard_combined_balance_label">Tüm cüzdanların toplamı</string>
+    <string name="dashboard_combined_balance_unavailable">Bazı cüzdanlar dönüştürülemedi (döviz kuru kullanılamıyor)</string>
+
+    <string name="settings_exchange_rate">Döviz kuru</string>
+    <string name="settings_exchange_rate_updated">Güncellendi: %1$s</string>
+    <string name="settings_exchange_rate_never">Henüz yüklenmedi</string>
+    <string name="settings_exchange_rate_refresh">Yenile</string>
+
+    <string name="settings_budget_limits">Bütçe limitleri</string>
+    <string name="budget_limits_screen_title">Bütçe limitleri</string>
+    <string name="budget_limits_add_button">Limit ekle</string>
+    <string name="budget_limits_empty">Henüz limit belirlenmedi</string>
+    <string name="budget_limit_dialog_title">Bütçe limiti belirle</string>
+    <string name="budget_limit_field_category">Kategori</string>
+    <string name="budget_limit_field_amount">Aylık limit</string>
+    <string name="budget_limit_save_button">Kaydet</string>
+
+    <string name="settings_recurring_transactions">Tekrarlanan ödemeler</string>
+    <string name="recurring_screen_title">Tekrarlanan ödemeler</string>
+    <string name="recurring_add_button">Tekrarlanan ödeme ekle</string>
+    <string name="recurring_empty">Henüz tekrarlanan ödeme yok</string>
+    <string name="recurring_dialog_title">Yeni tekrarlanan ödeme</string>
+    <string name="recurring_field_amount">Tutar</string>
+    <string name="recurring_field_description">Açıklama</string>
+    <string name="recurring_field_category">Kategori</string>
+    <string name="recurring_field_frequency">Sıklık</string>
+    <string name="recurring_frequency_daily">Günlük</string>
+    <string name="recurring_frequency_weekly">Haftalık</string>
+    <string name="recurring_frequency_monthly">Aylık</string>
+    <string name="recurring_next_run">Sonraki: %1$s</string>
+    <string name="recurring_save_button">Kaydet</string>
+
+    <string name="settings_security">Güvenlik</string>
+    <string name="security_pin_toggle">PIN kodu</string>
+    <string name="security_biometric_toggle">Biyometri ile kilit aç</string>
+    <string name="security_set_pin_title">PIN belirle</string>
+    <string name="security_confirm_pin_title">PIN\'i onayla</string>
+    <string name="security_enter_pin_title">PIN gir</string>
+    <string name="security_pin_mismatch">PIN\'ler eşleşmiyor. Tekrar deneyin.</string>
+    <string name="security_wrong_pin">Yanlış PIN</string>
+    <string name="security_use_biometric_button">Biyometri kullan</string>
+    <string name="security_change_pin_button">PIN\'i değiştir</string>
+
+    <string name="notification_budget_limit_channel_name">Bütçe limiti uyarıları</string>
+    <string name="notification_budget_limit_channel_description">Harcamalar bir kategori bütçe limitine yaklaştığında veya aştığında uyarır</string>
+    <string name="notification_budget_limit_approaching_title">Bütçe limitine yaklaşılıyor</string>
+    <string name="notification_budget_limit_approaching_text">Bu ay \"%3$s\" için %2$s limitinizin %1$s kadarını harcadınız</string>
+    <string name="notification_budget_limit_exceeded_title">Bütçe limiti aşıldı</string>
+    <string name="notification_budget_limit_exceeded_text">Bu ay \"%3$s\" için %2$s limitinizi aşarak %1$s harcadınız</string>
+
+    <string name="msg_exchange_rate_refresh_failed">Döviz kurları güncellenemedi. Bağlantınızı kontrol edin.</string>
+
+    <string name="widget_description">Bakiye + hızlı sesli ekleme</string>
+    <string name="widget_balance_masked">••••••</string>
+    <string name="widget_add_transaction">İşlem ekle</string>
+</resources>

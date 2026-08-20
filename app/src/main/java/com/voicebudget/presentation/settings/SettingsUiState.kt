@@ -5,4 +5,6 @@ import com.voicebudget.domain.model.AppSettings
 data class SettingsUiState(
     val isLoading: Boolean = true,
     val settings: AppSettings = AppSettings(),
+    val exchangeRateUpdatedAt: Long? = null,
+    val isRefreshingRates: Boolean = false,
 )

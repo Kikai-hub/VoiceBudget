@@ -101,6 +101,7 @@ private fun DashboardContent(
                 expense = uiState.summary.totalExpense,
                 balance = uiState.summary.balance,
                 currencySymbol = uiState.currencySymbol,
+                combinedBalance = uiState.combinedBalance?.takeIf { uiState.walletCount > 1 },
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(16.dp),
@@ -272,6 +273,7 @@ private fun SummaryCard(
     expense: Double,
     balance: Double,
     currencySymbol: String,
+    combinedBalance: com.voicebudget.domain.usecase.CombinedBalance?,
     modifier: Modifier = Modifier,
 ) {
     Box(
@@ -303,6 +305,22 @@ private fun SummaryCard(
                     label = stringResource(R.string.expenses),
                     value = formatAmount(expense, currencySymbol),
                 )
+            }
+            if (combinedBalance != null) {
+                Text(
+                    text = "${stringResource(R.string.dashboard_combined_balance_label)}: " +
+                        formatAmount(combinedBalance.amount, combinedBalance.currency.symbol),
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = Color.White.copy(alpha = 0.85f),
+                    modifier = Modifier.padding(top = 12.dp),
+                )
+                if (combinedBalance.hasUnavailableConversion) {
+                    Text(
+                        text = stringResource(R.string.dashboard_combined_balance_unavailable),
+                        style = MaterialTheme.typography.bodySmall,
+                        color = Color.White.copy(alpha = 0.7f),
+                    )
+                }
             }
         }
     }

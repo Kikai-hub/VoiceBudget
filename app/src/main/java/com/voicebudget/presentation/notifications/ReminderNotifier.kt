@@ -49,6 +49,51 @@ class ReminderNotifier @Inject constructor(
         }
     }
 
+    fun showBudgetLimitApproaching(categoryLabel: String, spentText: String, limitText: String) {
+        showBudgetLimitAlert(
+            title = context.getString(R.string.notification_budget_limit_approaching_title),
+            text = context.getString(R.string.notification_budget_limit_approaching_text, spentText, limitText, categoryLabel),
+            notificationId = BUDGET_NOTIFICATION_ID_BASE + categoryLabel.hashCode(),
+        )
+    }
+
+    fun showBudgetLimitExceeded(categoryLabel: String, spentText: String, limitText: String) {
+        showBudgetLimitAlert(
+            title = context.getString(R.string.notification_budget_limit_exceeded_title),
+            text = context.getString(R.string.notification_budget_limit_exceeded_text, spentText, limitText, categoryLabel),
+            notificationId = BUDGET_NOTIFICATION_ID_BASE + categoryLabel.hashCode(),
+        )
+    }
+
+    private fun showBudgetLimitAlert(title: String, text: String, notificationId: Int) {
+        ensureBudgetLimitChannel()
+
+        val intent = Intent(context, MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+        }
+        val pendingIntent = PendingIntent.getActivity(
+            context,
+            notificationId,
+            intent,
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE,
+        )
+
+        val notification = NotificationCompat.Builder(context, BUDGET_CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_notification)
+            .setContentTitle(title)
+            .setContentText(text)
+            .setAutoCancel(true)
+            .setContentIntent(pendingIntent)
+            .build()
+
+        val hasPermission = Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU ||
+            ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS) ==
+            PackageManager.PERMISSION_GRANTED
+        if (hasPermission) {
+            NotificationManagerCompat.from(context).notify(notificationId, notification)
+        }
+    }
+
     private fun ensureChannel() {
         val channel = NotificationChannel(
             CHANNEL_ID,
@@ -60,8 +105,21 @@ class ReminderNotifier @Inject constructor(
         context.getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
     }
 
+    private fun ensureBudgetLimitChannel() {
+        val channel = NotificationChannel(
+            BUDGET_CHANNEL_ID,
+            context.getString(R.string.notification_budget_limit_channel_name),
+            NotificationManager.IMPORTANCE_DEFAULT,
+        ).apply {
+            description = context.getString(R.string.notification_budget_limit_channel_description)
+        }
+        context.getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
+    }
+
     companion object {
         private const val CHANNEL_ID = "transaction_reminders"
         private const val NOTIFICATION_ID = 1001
+        private const val BUDGET_CHANNEL_ID = "budget_limit_alerts"
+        private const val BUDGET_NOTIFICATION_ID_BASE = 2000
     }
 }

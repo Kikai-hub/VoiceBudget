@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="nav_dashboard">Dashboard</string>
+    <string name="nav_transactions">Transazioni</string>
+    <string name="nav_statistics">Statistiche</string>
+    <string name="nav_settings">Impostazioni</string>
+    <string name="nav_record_transaction">Registra transazione</string>
+    <string name="nav_manual_transaction">Aggiungi transazione manualmente</string>
+
+    <string name="dashboard_recent_transactions">Transazioni recenti</string>
+    <string name="dashboard_empty">Nessuna transazione ancora. Tocca il microfono per aggiungerne una.</string>
+    <string name="this_month">Questo mese</string>
+    <string name="income">Entrate</string>
+    <string name="expenses">Uscite</string>
+    <string name="balance">Saldo</string>
+
+    <string name="settings_currency">Valuta</string>
+    <string name="settings_language">Lingua</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_data">Dati</string>
+    <string name="settings_export_csv">Esporta database (CSV)</string>
+    <string name="settings_import_csv">Importa database (CSV)</string>
+    <string name="settings_clear_all_data">Cancella tutti i dati</string>
+    <string name="dialog_clear_all_data_title">Cancellare tutti i dati?</string>
+    <string name="dialog_clear_all_data_message">Questa azione eliminerà definitivamente tutte le transazioni. Non può essere annullata.</string>
+
+    <string name="settings_categories">Categorie</string>
+    <string name="settings_manage_categories">Gestisci categorie</string>
+    <string name="categories_add_new">Aggiungi categoria</string>
+    <string name="categories_add_title">Nuova categoria</string>
+    <string name="categories_edit_title">Modifica categoria</string>
+    <string name="categories_empty">Non hai ancora aggiunto categorie personalizzate.</string>
+    <string name="categories_field_name">Nome categoria</string>
+    <string name="categories_field_icon">Icona</string>
+    <string name="categories_field_color">Colore</string>
+    <string name="categories_delete_title">Eliminare la categoria?</string>
+    <string name="categories_delete_message">"\"%1$s\" verrà rimossa definitivamente. Le transazioni che la utilizzano torneranno a \"Altro\"."</string>
+    <string name="error_category_name_required">Inserisci un nome per la categoria.</string>
+
+    <string name="action_clear">Cancella</string>
+    <string name="action_cancel">Annulla</string>
+    <string name="action_delete">Elimina</string>
+    <string name="action_edit">Modifica</string>
+    <string name="action_save">Salva</string>
+    <string name="action_retry">Riprova</string>
+    <string name="action_try_again">Riprova</string>
+    <string name="action_close">Chiudi</string>
+
+    <string name="theme_light">Chiaro</string>
+    <string name="theme_dark">Scuro</string>
+    <string name="theme_system">Sistema</string>
+
+    <string name="msg_all_data_cleared">Tutti i dati sono stati cancellati.</string>
+    <string name="msg_advisor_settings_saved">Impostazioni del consulente salvate.</string>
+    <string name="msg_export_success">Esportazione completata.</string>
+    <string name="msg_export_failed">Esportazione non riuscita: %1$s</string>
+    <string name="msg_import_success">%1$d transazioni importate.</string>
+    <string name="msg_import_failed">Importazione non riuscita: %1$s</string>
+
+    <string name="transactions_empty_filtered">Nessuna transazione corrisponde a questi filtri.</string>
+    <string name="dialog_delete_transaction_title">Eliminare la transazione?</string>
+    <string name="dialog_delete_transaction_message">"\"%1$s\" verrà rimossa definitivamente."</string>
+    <string name="category_all">Tutte le categorie</string>
+    <string name="date_range_all_time">Sempre</string>
+    <string name="date_range_last_month">Ultimo mese</string>
+    <string name="date_range_last_7_days">Ultimi 7 giorni</string>
+    <string name="edit_transaction_title">Modifica transazione</string>
+    <string name="confirm_transaction_title">Conferma transazione</string>
+    <string name="manual_transaction_title">Aggiungi transazione</string>
+
+    <string name="voice_start_recording">Avvia registrazione</string>
+    <string name="voice_tap_to_speak">Tocca per parlare</string>
+    <string name="voice_listening_desc">In ascolto</string>
+    <string name="voice_listening">In ascolto…</string>
+    <string name="voice_saving">Salvataggio…</string>
+
+    <string name="field_amount">Importo</string>
+    <string name="field_category">Categoria</string>
+    <string name="field_description">Descrizione</string>
+    <string name="type_expense">Uscita</string>
+
+    <string name="stats_expense_breakdown">Ripartizione delle spese (questo mese)</string>
+    <string name="stats_no_expenses">Nessuna spesa registrata questo mese.</string>
+    <string name="stats_income_vs_expenses">Entrate e uscite (ultimi 6 mesi)</string>
+
+    <string name="goals_title">Obiettivi finanziari</string>
+    <string name="goals_add_goal">Aggiungi obiettivo</string>
+    <string name="goals_empty">Nessun obiettivo ancora. Tocca \"Aggiungi obiettivo\" per iniziare a pianificare i tuoi risparmi!</string>
+    <string name="goals_field_name">Nome obiettivo</string>
+    <string name="goals_field_amount">Importo target</string>
+    <string name="goals_field_month">Mese</string>
+    <string name="goals_field_year">Anno</string>
+    <string name="goals_dialog_add_title">Aggiungi obiettivo finanziario</string>
+    <string name="goals_months_remaining">%1$d mesi rimanenti</string>
+    <string name="goals_required_monthly">Richiesto: %1$s/mese</string>
+    <string name="goals_current_monthly">Attuale: %1$s/mese</string>
+    <string name="goals_on_track">In linea</string>
+    <string name="goals_off_track">Fuori linea</string>
+    <string name="goals_completed">Completato</string>
+    <string name="goals_delete_title">Eliminare l\'obiettivo?</string>
+    <string name="goals_delete_message">"\"%1$s\" verrà rimosso definitivamente."</string>
+    <string name="goals_saved_of_target">%1$s risparmiati su %2$s (%3$d%%)</string>
+
+    <string name="goals_set_aside">Accantona</string>
+    <string name="goals_set_aside_dialog_title">Accantona denaro</string>
+    <string name="goals_set_aside_field_goal">Obiettivo</string>
+    <string name="goals_set_aside_field_amount">Importo</string>
+    <string name="error_goal_contribution_invalid_amount">Inserisci un importo valido.</string>
+
+    <string name="goal_on_track_desc">Al tuo ritmo attuale (~%4$d/mese) sei sulla buona strada per raggiungere \"%1$s\" (%2$d) entro %3$s.</string>
+    <string name="goal_off_track_desc">Per raggiungere \"%1$s\" (%2$d) entro %3$s devi risparmiare ~%4$d/mese — il tuo ritmo attuale è ~%5$d/mese.</string>
+    <string name="goal_completed_desc">Hai già accantonato abbastanza per \"%1$s\" — obiettivo raggiunto!</string>
+    <string name="goal_suggestion_desc">Prova a ridurre le spese di %1$s del %2$d%% (~%3$d/mese) per colmare il divario.</string>
+
+    <string name="error_goal_invalid_name">Inserisci un nome per l\'obiettivo.</string>
+    <string name="error_goal_invalid_amount">Inserisci un importo target valido.</string>
+    <string name="error_goal_deadline_past">La scadenza deve essere nel futuro.</string>
+
+    <string name="error_invalid_amount">Inserisci un importo valido.</string>
+    <string name="error_no_speech_match">Non ho capito. Riprova.</string>
+    <string name="error_amount_not_found">"Impossibile trovare un importo in \"%1$s\". Riprova."</string>
+    <string name="error_recognition_unavailable">Il riconoscimento vocale non è disponibile su questo dispositivo</string>
+    <string name="error_speech_timeout">Nessun audio rilevato. Riprova.</string>
+    <string name="error_mic_permission">È necessario il permesso per il microfono.</string>
+    <string name="error_network">Errore di rete durante il riconoscimento.</string>
+    <string name="error_audio">Errore di registrazione audio.</string>
+    <string name="error_recognizer_busy">Il riconoscitore è occupato. Riprova.</string>
+    <string name="error_recognition_generic">Errore di riconoscimento (%1$d).</string>
+
+    <string name="nav_advisor">Consulente</string>
+
+    <string name="advisor_title">Consulente Finanziario</string>
+    <string name="advisor_section_title">Consigli finanziari</string>
+    <string name="advisor_empty">Nessun consiglio al momento. Continua a registrare le tue transazioni!</string>
+    <string name="advisor_dismiss">Ignora</string>
+    <string name="advisor_view_all">Vedi tutti</string>
+    <string name="advisor_potential_savings">Risparmio potenziale: %1$s</string>
+
+    <string name="priority_critical">Critica</string>
+    <string name="priority_high">Alta</string>
+    <string name="priority_medium">Media</string>
+    <string name="priority_low">Bassa</string>
+
+    <string name="settings_advisor">Consulente Finanziario</string>
+    <string name="advisor_settings_title">Impostazioni di analisi</string>
+    <string name="advisor_settings_small_purchase">Soglia piccoli acquisti</string>
+    <string name="advisor_settings_top_category">Limite quota budget categoria principale (%)</string>
+    <string name="advisor_settings_savings_rate">Tasso di risparmio desiderato (%)</string>
+    <string name="advisor_settings_period_months">Periodo di analisi (mesi)</string>
+
+    <string name="advice_high_spending_title">Spese elevate questo mese</string>
+    <string name="advice_high_spending_desc">Questo mese hai speso il %1$d%% in più rispetto al mese scorso.</string>
+
+    <string name="advice_category_growth_title">Le spese per %1$s sono aumentate</string>
+    <string name="advice_category_growth_desc">Le spese per %1$s sono aumentate del %2$d%%.</string>
+
+    <string name="advice_small_purchases_title">Molti piccoli acquisti</string>
+    <string name="advice_small_purchases_desc">Questo mese hai effettuato %1$d acquisti sotto %2$d.</string>
+
+    <string name="advice_savings_low_title">Tasso di risparmio basso</string>
+    <string name="advice_savings_low_desc">Il tuo tasso di risparmio è del %1$d%% — al di sotto del tuo obiettivo del %2$d%%. Prova a ridurre le spese di %3$d.</string>
+
+    <string name="advice_savings_positive_title">Ottimo risparmio!</string>
+    <string name="advice_savings_positive_desc">Questo mese hai risparmiato il %1$d%% del tuo reddito. Continua così!</string>
+
+    <string name="advice_recurring_title">Pagamento ricorrente rilevato</string>
+    <string name="advice_recurring_desc">Hai un pagamento ricorrente di %1$s di ~%2$d per %3$d mesi consecutivi.</string>
+
+    <string name="advice_income_trend_title">Reddito in calo</string>
+    <string name="advice_income_trend_desc">Il tuo reddito è in calo da %1$d mesi consecutivi (variazione del %2$d%%).</string>
+
+    <string name="advice_monthly_summary_title">Riepilogo mensile</string>
+    <string name="advice_monthly_summary_base">Entrate: %1$d, Uscite: %2$d.</string>
+    <string name="advice_monthly_summary_top_category">Categoria principale: %1$s (%2$d).</string>
+    <string name="advice_monthly_summary_save_more">Cerca di risparmiare di più il mese prossimo.</string>
+
+    <string name="advice_top_category_title">Spesa maggiore: %1$s</string>
+    <string name="advice_top_category_desc">%1$s rappresenta il %2$d%% del tuo budget. Riducendola del %3$d%% potresti risparmiare ~%4$d all\'anno.</string>
+
+    <string name="notification_channel_name">Promemoria attività</string>
+    <string name="notification_channel_description">Ti ricorda di registrare entrate e uscite quando sei inattivo da qualche giorno.</string>
+    <string name="notification_reminder_title">Non dimenticare di monitorare il tuo budget</string>
+    <string name="notification_reminder_text">Non hai aggiunto entrate o uscite negli ultimi 3 giorni. Tocca per aggiungere le transazioni di oggi.</string>
+
+    <string name="category_food">Cibo</string>
+    <string name="category_cafe">Bar</string>
+    <string name="category_transport">Trasporti</string>
+    <string name="category_shopping">Shopping</string>
+    <string name="category_health">Salute</string>
+    <string name="category_utilities">Utenze</string>
+    <string name="category_entertainment">Intrattenimento</string>
+    <string name="category_savings">Risparmi</string>
+    <string name="category_other">Altro</string>
+    <string name="category_salary">Stipendio</string>
+    <string name="category_freelance">Lavoro autonomo</string>
+    <string name="category_bonus">Bonus</string>
+    <string name="category_gift">Regalo</string>
+
+    <string name="onboarding_welcome_title">Benvenuto su VoiceBudget</string>
+    <string name="onboarding_language_step_title">Scegli la tua lingua</string>
+    <string name="onboarding_currency_step_title">Scegli la tua valuta</string>
+    <string name="onboarding_wallet_step_title">Crea il tuo primo portafoglio</string>
+    <string name="onboarding_wallet_name_hint">Nome del portafoglio</string>
+    <string name="action_next">Avanti</string>
+    <string name="action_create_wallet">Crea portafoglio</string>
+
+    <string name="settings_wallets">Portafogli</string>
+    <string name="wallets_screen_title">Portafogli</string>
+    <string name="wallets_add_button">Aggiungi portafoglio</string>
+    <string name="wallets_max_reached">Puoi avere al massimo 2 portafogli</string>
+    <string name="wallets_active_badge">Attivo</string>
+    <string name="wallets_new_dialog_title">Nuovo portafoglio</string>
+    <string name="wallets_field_name">Nome</string>
+    <string name="wallets_field_currency">Valuta</string>
+    <string name="wallet_default_name">Portafoglio %1$d</string>
+
+    <string name="category_transfer">Trasferimento</string>
+    <string name="transaction_transfer_to">Trasferimento a \"%1$s\"</string>
+    <string name="transaction_transfer_from">Trasferimento da \"%1$s\"</string>
+    <string name="wallets_transfer_button">Trasferisci tra portafogli</string>
+    <string name="transfer_dialog_title">Trasferimento tra portafogli</string>
+    <string name="transfer_field_from_amount">Importo da inviare (%1$s)</string>
+    <string name="transfer_field_to_amount">Importo da ricevere (%1$s)</string>
+    <string name="transfer_swap_direction">Inverti direzione</string>
+    <string name="transfer_confirm_button">Trasferisci</string>
+    <string name="transfer_rate_unavailable">Tasso di cambio non disponibile — inserisci l\'importo manualmente</string>
+
+    <string name="dashboard_combined_balance_label">Totale di tutti i portafogli</string>
+    <string name="dashboard_combined_balance_unavailable">Alcuni portafogli non sono stati convertiti (tasso di cambio non disponibile)</string>
+
+    <string name="settings_exchange_rate">Tasso di cambio</string>
+    <string name="settings_exchange_rate_updated">Aggiornato %1$s</string>
+    <string name="settings_exchange_rate_never">Non ancora caricato</string>
+    <string name="settings_exchange_rate_refresh">Aggiorna</string>
+
+    <string name="settings_budget_limits">Limiti di budget</string>
+    <string name="budget_limits_screen_title">Limiti di budget</string>
+    <string name="budget_limits_add_button">Aggiungi limite</string>
+    <string name="budget_limits_empty">Nessun limite impostato</string>
+    <string name="budget_limit_dialog_title">Imposta limite di budget</string>
+    <string name="budget_limit_field_category">Categoria</string>
+    <string name="budget_limit_field_amount">Limite mensile</string>
+    <string name="budget_limit_save_button">Salva</string>
+
+    <string name="settings_recurring_transactions">Pagamenti ricorrenti</string>
+    <string name="recurring_screen_title">Pagamenti ricorrenti</string>
+    <string name="recurring_add_button">Aggiungi pagamento ricorrente</string>
+    <string name="recurring_empty">Nessun pagamento ricorrente</string>
+    <string name="recurring_dialog_title">Nuovo pagamento ricorrente</string>
+    <string name="recurring_field_amount">Importo</string>
+    <string name="recurring_field_description">Descrizione</string>
+    <string name="recurring_field_category">Categoria</string>
+    <string name="recurring_field_frequency">Frequenza</string>
+    <string name="recurring_frequency_daily">Giornaliera</string>
+    <string name="recurring_frequency_weekly">Settimanale</string>
+    <string name="recurring_frequency_monthly">Mensile</string>
+    <string name="recurring_next_run">Prossimo: %1$s</string>
+    <string name="recurring_save_button">Salva</string>
+
+    <string name="settings_security">Sicurezza</string>
+    <string name="security_pin_toggle">Codice PIN</string>
+    <string name="security_biometric_toggle">Sblocca con biometria</string>
+    <string name="security_set_pin_title">Imposta PIN</string>
+    <string name="security_confirm_pin_title">Conferma PIN</string>
+    <string name="security_enter_pin_title">Inserisci PIN</string>
+    <string name="security_pin_mismatch">I PIN non corrispondono. Riprova.</string>
+    <string name="security_wrong_pin">PIN errato</string>
+    <string name="security_use_biometric_button">Usa la biometria</string>
+    <string name="security_change_pin_button">Cambia PIN</string>
+
+    <string name="notification_budget_limit_channel_name">Avvisi limite di budget</string>
+    <string name="notification_budget_limit_channel_description">Avvisa quando la spesa si avvicina o supera il limite di budget di una categoria</string>
+    <string name="notification_budget_limit_approaching_title">Limite di budget in avvicinamento</string>
+    <string name="notification_budget_limit_approaching_text">Hai speso %1$s del tuo limite di %2$s per \"%3$s\" questo mese</string>
+    <string name="notification_budget_limit_exceeded_title">Limite di budget superato</string>
+    <string name="notification_budget_limit_exceeded_text">Hai speso %1$s, oltre il tuo limite di %2$s per \"%3$s\" questo mese</string>
+
+    <string name="msg_exchange_rate_refresh_failed">Impossibile aggiornare i tassi di cambio. Controlla la tua connessione.</string>
+
+    <string name="widget_description">Saldo + aggiunta vocale rapida</string>
+    <string name="widget_balance_masked">••••••</string>
+    <string name="widget_add_transaction">Aggiungi transazione</string>
+</resources>

@@ -9,8 +9,8 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface FinancialGoalDao {
 
-    @Query("SELECT * FROM financial_goals ORDER BY createdAt DESC")
-    fun getAll(): Flow<List<FinancialGoalEntity>>
+    @Query("SELECT * FROM financial_goals WHERE walletId = :walletId ORDER BY createdAt DESC")
+    fun getAllForWallet(walletId: Long): Flow<List<FinancialGoalEntity>>
 
     @Query("SELECT * FROM financial_goals WHERE id = :goalId LIMIT 1")
     suspend fun getById(goalId: Long): FinancialGoalEntity?
@@ -23,4 +23,7 @@ interface FinancialGoalDao {
 
     @Query("UPDATE financial_goals SET savedAmount = savedAmount + :amount WHERE id = :goalId")
     suspend fun contribute(goalId: Long, amount: Double)
+
+    @Query("SELECT COUNT(*) FROM financial_goals")
+    suspend fun getCount(): Int
 }

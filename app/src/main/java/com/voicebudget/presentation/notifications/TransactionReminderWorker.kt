@@ -6,10 +6,15 @@ import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.voicebudget.domain.notifications.InactivityReminderCalculator
 import com.voicebudget.domain.repository.TransactionRepository
+import com.voicebudget.domain.usecase.BudgetLimitAlert
+import com.voicebudget.domain.usecase.CheckBudgetLimitsUseCase
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedInject
 
-/** Daily check that nudges the user when they haven't logged a transaction in a while. */
+/**
+ * Daily check that (a) nudges the user when they haven't logged a transaction in a while, and
+ * (b) sweeps every category budget limit for month-to-date overruns, per [CheckBudgetLimitsUseCase].
+ */
 @HiltWorker
 class TransactionReminderWorker @AssistedInject constructor(
     @Assisted context: Context,
@@ -17,6 +22,8 @@ class TransactionReminderWorker @AssistedInject constructor(
     private val transactionRepository: TransactionRepository,
     private val reminderCalculator: InactivityReminderCalculator,
     private val notifier: ReminderNotifier,
+    private val checkBudgetLimitsUseCase: CheckBudgetLimitsUseCase,
+    private val budgetLimitAlertPresenter: BudgetLimitAlertPresenter,
 ) : CoroutineWorker(context, params) {
 
     override suspend fun doWork(): Result {
@@ -24,6 +31,15 @@ class TransactionReminderWorker @AssistedInject constructor(
         if (reminderCalculator.shouldRemind(lastTransactionAt)) {
             notifier.showInactivityReminder()
         }
+
+        checkBudgetLimitsUseCase().forEach { alert ->
+            val (categoryLabel, spentText, limitText) = budgetLimitAlertPresenter.present(alert)
+            when (alert) {
+                is BudgetLimitAlert.Approaching -> notifier.showBudgetLimitApproaching(categoryLabel, spentText, limitText)
+                is BudgetLimitAlert.Exceeded -> notifier.showBudgetLimitExceeded(categoryLabel, spentText, limitText)
+            }
+        }
+
         return Result.success()
     }
 

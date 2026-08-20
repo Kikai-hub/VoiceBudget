@@ -4,20 +4,30 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface TransactionDao {
 
-    @Query("SELECT * FROM transactions ORDER BY createdAt DESC")
-    fun getAll(): Flow<List<TransactionEntity>>
+    @Query("SELECT * FROM transactions WHERE walletId = :walletId ORDER BY createdAt DESC")
+    fun getAllForWallet(walletId: Long): Flow<List<TransactionEntity>>
+
+    @Query("SELECT * FROM transactions WHERE walletId = :walletId")
+    suspend fun getAllForWalletOnce(walletId: Long): List<TransactionEntity>
 
     @Query("SELECT * FROM transactions WHERE id = :id")
     suspend fun getById(id: Long): TransactionEntity?
 
     @Insert
     suspend fun insert(transaction: TransactionEntity): Long
+
+    @Transaction
+    suspend fun insertTransferPair(out: TransactionEntity, into: TransactionEntity) {
+        insert(out)
+        insert(into)
+    }
 
     @Update
     suspend fun update(transaction: TransactionEntity)
@@ -36,4 +46,7 @@ interface TransactionDao {
 
     @Query("SELECT MAX(createdAt) FROM transactions")
     suspend fun getLastTransactionTime(): Long?
+
+    @Query("SELECT COUNT(*) FROM transactions")
+    suspend fun getCount(): Int
 }

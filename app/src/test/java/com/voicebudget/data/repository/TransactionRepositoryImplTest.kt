@@ -4,6 +4,7 @@ import app.cash.turbine.test
 import com.voicebudget.domain.model.Category
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
+import com.voicebudget.fakes.FakeWalletRepository
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertTrue
@@ -18,7 +19,7 @@ class TransactionRepositoryImplTest {
     @Before
     fun setUp() {
         dao = FakeTransactionDao()
-        repository = TransactionRepositoryImpl(dao)
+        repository = TransactionRepositoryImpl(dao, FakeWalletRepository())
     }
 
     private fun sampleTransaction(amount: Double = 350.0) = Transaction(

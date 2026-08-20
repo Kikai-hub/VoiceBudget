@@ -13,4 +13,16 @@ interface TransactionRepository {
     suspend fun clearCustomCategory(categoryId: Long)
     suspend fun clearGoal(goalId: Long)
     suspend fun getLastTransactionTime(): Long?
+
+    /** Inserts into a specific wallet, bypassing the active-wallet convention [add] uses. */
+    suspend fun addToWallet(transaction: Transaction, walletId: Long): Long
+
+    /** All-time transactions of one wallet, regardless of which wallet is currently active. */
+    suspend fun getAllForWallet(walletId: Long): List<Transaction>
+
+    /** Reactive version of [getAllForWallet], for a specific wallet regardless of which is active. */
+    fun observeAllForWallet(walletId: Long): Flow<List<Transaction>>
+
+    /** Atomically records both legs of a transfer between two wallets. */
+    suspend fun addTransferPair(out: Transaction, outWalletId: Long, into: Transaction, intoWalletId: Long)
 }

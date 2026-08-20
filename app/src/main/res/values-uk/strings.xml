@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_dashboard">Огляд</string>
+    <string name="nav_transactions">Транзакції</string>
+    <string name="nav_statistics">Статистика</string>
+    <string name="nav_settings">Налаштування</string>
+    <string name="nav_record_transaction">Записати транзакцію</string>
+    <string name="nav_manual_transaction">Додати транзакцію вручну</string>
+
+    <string name="dashboard_recent_transactions">Останні транзакції</string>
+    <string name="dashboard_empty">Поки що немає транзакцій. Торкніться мікрофона, щоб додати.</string>
+    <string name="this_month">Цей місяць</string>
+    <string name="income">Дохід</string>
+    <string name="expenses">Витрати</string>
+    <string name="balance">Баланс</string>
+
+    <string name="settings_currency">Валюта</string>
+    <string name="settings_language">Мова</string>
+    <string name="settings_theme">Тема</string>
+    <string name="settings_data">Дані</string>
+    <string name="settings_export_csv">Експортувати базу даних (CSV)</string>
+    <string name="settings_import_csv">Імпортувати базу даних (CSV)</string>
+    <string name="settings_clear_all_data">Очистити всі дані</string>
+    <string name="dialog_clear_all_data_title">Очистити всі дані?</string>
+    <string name="dialog_clear_all_data_message">Усі транзакції буде остаточно видалено. Це неможливо скасувати.</string>
+
+    <string name="settings_categories">Категорії</string>
+    <string name="settings_manage_categories">Керування категоріями</string>
+    <string name="categories_add_new">Додати категорію</string>
+    <string name="categories_add_title">Нова категорія</string>
+    <string name="categories_edit_title">Редагувати категорію</string>
+    <string name="categories_empty">Ви ще не додали жодної власної категорії.</string>
+    <string name="categories_field_name">Назва категорії</string>
+    <string name="categories_field_icon">Значок</string>
+    <string name="categories_field_color">Колір</string>
+    <string name="categories_delete_title">Видалити категорію?</string>
+    <string name="categories_delete_message">«%1$s» буде остаточно видалено. Транзакції з цією категорією буде перенесено до категорії «Інше».</string>
+    <string name="error_category_name_required">Будь ласка, введіть назву категорії.</string>
+
+    <string name="action_clear">Очистити</string>
+    <string name="action_cancel">Скасувати</string>
+    <string name="action_delete">Видалити</string>
+    <string name="action_edit">Редагувати</string>
+    <string name="action_save">Зберегти</string>
+    <string name="action_retry">Повторити</string>
+    <string name="action_try_again">Спробувати ще раз</string>
+    <string name="action_close">Закрити</string>
+
+    <string name="theme_light">Світла</string>
+    <string name="theme_dark">Темна</string>
+    <string name="theme_system">Системна</string>
+
+    <string name="msg_all_data_cleared">Усі дані очищено.</string>
+    <string name="msg_advisor_settings_saved">Налаштування радника збережено.</string>
+    <string name="msg_export_success">Дані успішно експортовано.</string>
+    <string name="msg_export_failed">Помилка експорту: %1$s</string>
+    <string name="msg_import_success">Імпортовано транзакцій: %1$d.</string>
+    <string name="msg_import_failed">Помилка імпорту: %1$s</string>
+
+    <string name="transactions_empty_filtered">Немає транзакцій, що відповідають цим фільтрам.</string>
+    <string name="dialog_delete_transaction_title">Видалити транзакцію?</string>
+    <string name="dialog_delete_transaction_message">«%1$s» буде остаточно видалено.</string>
+    <string name="category_all">Усі категорії</string>
+    <string name="date_range_all_time">Увесь час</string>
+    <string name="date_range_last_month">Минулий місяць</string>
+    <string name="date_range_last_7_days">Останні 7 днів</string>
+    <string name="edit_transaction_title">Редагувати транзакцію</string>
+    <string name="confirm_transaction_title">Підтвердити транзакцію</string>
+    <string name="manual_transaction_title">Додати транзакцію</string>
+
+    <string name="voice_start_recording">Почати запис</string>
+    <string name="voice_tap_to_speak">Торкніться, щоб говорити</string>
+    <string name="voice_listening_desc">Слухаю</string>
+    <string name="voice_listening">Слухаю…</string>
+    <string name="voice_saving">Збереження…</string>
+
+    <string name="field_amount">Сума</string>
+    <string name="field_category">Категорія</string>
+    <string name="field_description">Опис</string>
+    <string name="type_expense">Витрата</string>
+
+    <string name="stats_expense_breakdown">Розподіл витрат (цей місяць)</string>
+    <string name="stats_no_expenses">Цього місяця витрат не зафіксовано.</string>
+    <string name="stats_income_vs_expenses">Доходи і витрати (останні 6 місяців)</string>
+
+    <string name="goals_title">Фінансові цілі</string>
+    <string name="goals_add_goal">Додати ціль</string>
+    <string name="goals_empty">Поки що немає цілей. Торкніться «Додати ціль», щоб почати планувати заощадження!</string>
+    <string name="goals_field_name">Назва цілі</string>
+    <string name="goals_field_amount">Цільова сума</string>
+    <string name="goals_field_month">Місяць</string>
+    <string name="goals_field_year">Рік</string>
+    <string name="goals_dialog_add_title">Додати фінансову ціль</string>
+    <string name="goals_months_remaining">Залишилося місяців: %1$d</string>
+    <string name="goals_required_monthly">Потрібно: %1$s/міс.</string>
+    <string name="goals_current_monthly">Поточно: %1$s/міс.</string>
+    <string name="goals_on_track">За планом</string>
+    <string name="goals_off_track">Відстає від плану</string>
+    <string name="goals_completed">Виконано</string>
+    <string name="goals_delete_title">Видалити ціль?</string>
+    <string name="goals_delete_message">«%1$s» буде остаточно видалено.</string>
+    <string name="goals_saved_of_target">Заощаджено %1$s із %2$s (%3$d%%)</string>
+
+    <string name="goals_set_aside">Відкласти</string>
+    <string name="goals_set_aside_dialog_title">Відкласти кошти</string>
+    <string name="goals_set_aside_field_goal">Ціль</string>
+    <string name="goals_set_aside_field_amount">Сума</string>
+    <string name="error_goal_contribution_invalid_amount">Будь ласка, введіть коректну суму.</string>
+
+    <string name="goal_on_track_desc">При поточному темпі (~%4$d/міс.) ви встигаєте досягти цілі «%1$s» (%2$d) до %3$s.</string>
+    <string name="goal_off_track_desc">Щоб досягти цілі «%1$s» (%2$d) до %3$s, потрібно заощаджувати ~%4$d/міс. — ваш поточний темп ~%5$d/міс.</string>
+    <string name="goal_completed_desc">Ви вже відклали достатньо для «%1$s» — ціль досягнута!</string>
+    <string name="goal_suggestion_desc">Спробуйте скоротити витрати на %1$s на %2$d%% (~%3$d/міс.), щоб наблизитися до цілі.</string>
+
+    <string name="error_goal_invalid_name">Будь ласка, введіть назву цілі.</string>
+    <string name="error_goal_invalid_amount">Будь ласка, введіть коректну цільову суму.</string>
+    <string name="error_goal_deadline_past">Термін має бути у майбутньому.</string>
+
+    <string name="error_invalid_amount">Будь ласка, введіть коректну суму.</string>
+    <string name="error_no_speech_match">Не вдалося розпізнати. Спробуйте ще раз.</string>
+    <string name="error_amount_not_found">Не вдалося знайти суму в «%1$s». Спробуйте ще раз.</string>
+    <string name="error_recognition_unavailable">Розпізнавання мовлення недоступне на цьому пристрої</string>
+    <string name="error_speech_timeout">Мовлення не виявлено. Спробуйте ще раз.</string>
+    <string name="error_mic_permission">Потрібен дозвіл на використання мікрофона.</string>
+    <string name="error_network">Помилка мережі під час розпізнавання.</string>
+    <string name="error_audio">Помилка запису аудіо.</string>
+    <string name="error_recognizer_busy">Розпізнавач зайнятий. Спробуйте ще раз.</string>
+    <string name="error_recognition_generic">Помилка розпізнавання (%1$d).</string>
+
+    <string name="nav_advisor">Радник</string>
+
+    <string name="advisor_title">Фінансовий радник</string>
+    <string name="advisor_section_title">Фінансові поради</string>
+    <string name="advisor_empty">Наразі рекомендацій немає. Продовжуйте вести облік транзакцій!</string>
+    <string name="advisor_dismiss">Приховати</string>
+    <string name="advisor_view_all">Переглянути всі</string>
+    <string name="advisor_potential_savings">Потенційна економія: %1$s</string>
+
+    <string name="priority_critical">Критичний</string>
+    <string name="priority_high">Високий</string>
+    <string name="priority_medium">Середній</string>
+    <string name="priority_low">Низький</string>
+
+    <string name="settings_advisor">Фінансовий радник</string>
+    <string name="advisor_settings_title">Налаштування аналізу</string>
+    <string name="advisor_settings_small_purchase">Поріг дрібної покупки</string>
+    <string name="advisor_settings_top_category">Ліміт частки бюджету для основної категорії (%)</string>
+    <string name="advisor_settings_savings_rate">Бажаний рівень заощаджень (%)</string>
+    <string name="advisor_settings_period_months">Період аналізу (місяців)</string>
+
+    <string name="advice_high_spending_title">Високі витрати цього місяця</string>
+    <string name="advice_high_spending_desc">Цього місяця ви витратили на %1$d%% більше, ніж минулого.</string>
+
+    <string name="advice_category_growth_title">Витрати на «%1$s» зросли</string>
+    <string name="advice_category_growth_desc">Витрати на «%1$s» зросли на %2$d%%.</string>
+
+    <string name="advice_small_purchases_title">Багато дрібних покупок</string>
+    <string name="advice_small_purchases_desc">Цього місяця ви здійснили %1$d покупок на суму менше %2$d.</string>
+
+    <string name="advice_savings_low_title">Низький рівень заощаджень</string>
+    <string name="advice_savings_low_desc">Ваш рівень заощаджень становить %1$d%% — нижче цільового значення %2$d%%. Спробуйте скоротити витрати на %3$d.</string>
+
+    <string name="advice_savings_positive_title">Чудові заощадження!</string>
+    <string name="advice_savings_positive_desc">Цього місяця ви заощадили %1$d%% свого доходу. Так тримати!</string>
+
+    <string name="advice_recurring_title">Виявлено регулярний платіж</string>
+    <string name="advice_recurring_desc">У вас є регулярний платіж «%1$s» на суму ~%2$d протягом %3$d міс. поспіль.</string>
+
+    <string name="advice_income_trend_title">Зниження доходу</string>
+    <string name="advice_income_trend_desc">Ваш дохід знижується протягом %1$d міс. поспіль (зміна на %2$d%%).</string>
+
+    <string name="advice_monthly_summary_title">Підсумок місяця</string>
+    <string name="advice_monthly_summary_base">Дохід: %1$d, Витрати: %2$d.</string>
+    <string name="advice_monthly_summary_top_category">Найбільша категорія: %1$s (%2$d).</string>
+    <string name="advice_monthly_summary_save_more">Спробуйте заощадити більше наступного місяця.</string>
+
+    <string name="advice_top_category_title">Найбільша витрата: %1$s</string>
+    <string name="advice_top_category_desc">«%1$s» займає %2$d%% вашого бюджету. Скоротивши їх на %3$d%%, ви зможете заощаджувати ~%4$d на рік.</string>
+
+    <string name="notification_channel_name">Нагадування про активність</string>
+    <string name="notification_channel_description">Нагадує вносити доходи та витрати, якщо ви кілька днів не заходили в додаток.</string>
+    <string name="notification_reminder_title">Не забудьте внести дані про бюджет</string>
+    <string name="notification_reminder_text">Ви не додавали доходи чи витрати останні 3 дні. Торкніться, щоб додати сьогоднішні транзакції.</string>
+
+    <string name="category_food">Їжа</string>
+    <string name="category_cafe">Кафе</string>
+    <string name="category_transport">Транспорт</string>
+    <string name="category_shopping">Покупки</string>
+    <string name="category_health">Здоров\'я</string>
+    <string name="category_utilities">Комунальні послуги</string>
+    <string name="category_entertainment">Розваги</string>
+    <string name="category_savings">Заощадження</string>
+    <string name="category_other">Інше</string>
+    <string name="category_salary">Зарплата</string>
+    <string name="category_freelance">Фріланс</string>
+    <string name="category_bonus">Бонус</string>
+    <string name="category_gift">Подарунок</string>
+
+    <string name="onboarding_welcome_title">Ласкаво просимо до VoiceBudget</string>
+    <string name="onboarding_language_step_title">Виберіть мову</string>
+    <string name="onboarding_currency_step_title">Виберіть валюту</string>
+    <string name="onboarding_wallet_step_title">Створіть свій перший гаманець</string>
+    <string name="onboarding_wallet_name_hint">Назва гаманця</string>
+    <string name="action_next">Далі</string>
+    <string name="action_create_wallet">Створити гаманець</string>
+
+    <string name="settings_wallets">Гаманці</string>
+    <string name="wallets_screen_title">Гаманці</string>
+    <string name="wallets_add_button">Додати гаманець</string>
+    <string name="wallets_max_reached">Можна мати не більше 2 гаманців</string>
+    <string name="wallets_active_badge">Активний</string>
+    <string name="wallets_new_dialog_title">Новий гаманець</string>
+    <string name="wallets_field_name">Назва</string>
+    <string name="wallets_field_currency">Валюта</string>
+    <string name="wallet_default_name">Гаманець %1$d</string>
+
+    <string name="category_transfer">Переказ</string>
+    <string name="transaction_transfer_to">Переказ у «%1$s»</string>
+    <string name="transaction_transfer_from">Переказ із «%1$s»</string>
+    <string name="wallets_transfer_button">Переказ між гаманцями</string>
+    <string name="transfer_dialog_title">Переказ між гаманцями</string>
+    <string name="transfer_field_from_amount">Сума списання (%1$s)</string>
+    <string name="transfer_field_to_amount">Сума зарахування (%1$s)</string>
+    <string name="transfer_swap_direction">Змінити напрямок</string>
+    <string name="transfer_confirm_button">Переказати</string>
+    <string name="transfer_rate_unavailable">Курс обміну недоступний — введіть суму вручну</string>
+
+    <string name="dashboard_combined_balance_label">Разом за всіма гаманцями</string>
+    <string name="dashboard_combined_balance_unavailable">Частину гаманців не вдалося конвертувати (курс обміну недоступний)</string>
+
+    <string name="settings_exchange_rate">Курс обміну</string>
+    <string name="settings_exchange_rate_updated">Оновлено %1$s</string>
+    <string name="settings_exchange_rate_never">Ще не завантажено</string>
+    <string name="settings_exchange_rate_refresh">Оновити</string>
+
+    <string name="settings_budget_limits">Ліміти бюджету</string>
+    <string name="budget_limits_screen_title">Ліміти бюджету</string>
+    <string name="budget_limits_add_button">Додати ліміт</string>
+    <string name="budget_limits_empty">Ліміти ще не задані</string>
+    <string name="budget_limit_dialog_title">Задати ліміт бюджету</string>
+    <string name="budget_limit_field_category">Категорія</string>
+    <string name="budget_limit_field_amount">Місячний ліміт</string>
+    <string name="budget_limit_save_button">Зберегти</string>
+
+    <string name="settings_recurring_transactions">Регулярні платежі</string>
+    <string name="recurring_screen_title">Регулярні платежі</string>
+    <string name="recurring_add_button">Додати регулярний платіж</string>
+    <string name="recurring_empty">Регулярних платежів ще немає</string>
+    <string name="recurring_dialog_title">Новий регулярний платіж</string>
+    <string name="recurring_field_amount">Сума</string>
+    <string name="recurring_field_description">Опис</string>
+    <string name="recurring_field_category">Категорія</string>
+    <string name="recurring_field_frequency">Періодичність</string>
+    <string name="recurring_frequency_daily">Щодня</string>
+    <string name="recurring_frequency_weekly">Щотижня</string>
+    <string name="recurring_frequency_monthly">Щомісяця</string>
+    <string name="recurring_next_run">Наступний: %1$s</string>
+    <string name="recurring_save_button">Зберегти</string>
+
+    <string name="settings_security">Безпека</string>
+    <string name="security_pin_toggle">PIN-код</string>
+    <string name="security_biometric_toggle">Вхід за біометрією</string>
+    <string name="security_set_pin_title">Задайте PIN-код</string>
+    <string name="security_confirm_pin_title">Підтвердьте PIN-код</string>
+    <string name="security_enter_pin_title">Введіть PIN-код</string>
+    <string name="security_pin_mismatch">PIN-коди не збігаються. Спробуйте ще раз.</string>
+    <string name="security_wrong_pin">Невірний PIN-код</string>
+    <string name="security_use_biometric_button">Увійти за біометрією</string>
+    <string name="security_change_pin_button">Змінити PIN-код</string>
+
+    <string name="notification_budget_limit_channel_name">Сповіщення про ліміти бюджету</string>
+    <string name="notification_budget_limit_channel_description">Попереджає про наближення до ліміту бюджету категорії або його перевищення</string>
+    <string name="notification_budget_limit_approaching_title">Наближення до ліміту бюджету</string>
+    <string name="notification_budget_limit_approaching_text">Ви витратили %1$s із ліміту %2$s за категорією «%3$s» цього місяця</string>
+    <string name="notification_budget_limit_exceeded_title">Ліміт бюджету перевищено</string>
+    <string name="notification_budget_limit_exceeded_text">Ви витратили %1$s — ліміт %2$s за категорією «%3$s» цього місяця перевищено</string>
+
+    <string name="msg_exchange_rate_refresh_failed">Не вдалося оновити курс валют. Перевірте підключення до інтернету.</string>
+
+    <string name="widget_description">Баланс + швидке голосове додавання</string>
+    <string name="widget_balance_masked">••••••</string>
+    <string name="widget_add_transaction">Додати транзакцію</string>
+</resources>

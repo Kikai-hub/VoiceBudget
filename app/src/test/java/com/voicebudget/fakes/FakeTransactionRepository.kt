@@ -2,6 +2,7 @@ package com.voicebudget.fakes
 
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.repository.TransactionRepository
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
@@ -47,4 +48,20 @@ class FakeTransactionRepository(initial: List<Transaction> = emptyList()) : Tran
     }
 
     override suspend fun getLastTransactionTime(): Long? = state.value.maxOfOrNull { it.createdAt }
+
+    override suspend fun addToWallet(transaction: Transaction, walletId: Long): Long = add(transaction)
+
+    override suspend fun getAllForWallet(walletId: Long): List<Transaction> = state.value
+
+    override fun observeAllForWallet(walletId: Long): Flow<List<Transaction>> = state
+
+    override suspend fun addTransferPair(
+        out: Transaction,
+        outWalletId: Long,
+        into: Transaction,
+        intoWalletId: Long,
+    ) {
+        add(out)
+        add(into)
+    }
 }

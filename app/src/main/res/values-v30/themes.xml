@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- LAYOUT_IN_DISPLAY_CUTOUT_MODE_ALWAYS only exists from API 30 onward; see values/themes.xml. -->
+    <style name="Theme.VoiceBudget" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="android:windowLayoutInDisplayCutoutMode">always</item>
+    </style>
+</resources>

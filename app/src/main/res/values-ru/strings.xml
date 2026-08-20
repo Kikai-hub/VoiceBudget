@@ -56,6 +56,7 @@
     <string name="msg_export_failed">Ошибка экспорта: %1$s</string>
     <string name="msg_import_success">Импортировано транзакций: %1$d.</string>
     <string name="msg_import_failed">Ошибка импорта: %1$s</string>
+    <string name="msg_exchange_rate_refresh_failed">Не удалось обновить курс валют. Проверьте подключение к интернету.</string>
 
     <string name="transactions_empty_filtered">Нет транзакций, соответствующих фильтрам.</string>
     <string name="dialog_delete_transaction_title">Удалить транзакцию?</string>
@@ -195,4 +196,87 @@
     <string name="category_freelance">Фриланс</string>
     <string name="category_bonus">Премия</string>
     <string name="category_gift">Подарок</string>
+    <string name="category_transfer">Перевод</string>
+
+    <string name="onboarding_welcome_title">Добро пожаловать в VoiceBudget</string>
+    <string name="onboarding_language_step_title">Выберите язык</string>
+    <string name="onboarding_currency_step_title">Выберите валюту</string>
+    <string name="onboarding_wallet_step_title">Создайте первый кошелёк</string>
+    <string name="onboarding_wallet_name_hint">Название кошелька</string>
+    <string name="action_next">Далее</string>
+    <string name="action_create_wallet">Создать кошелёк</string>
+
+    <string name="settings_wallets">Кошельки</string>
+    <string name="wallets_screen_title">Кошельки</string>
+    <string name="wallets_add_button">Добавить кошелёк</string>
+    <string name="wallets_max_reached">Можно создать не более 2 кошельков</string>
+    <string name="wallets_active_badge">Активен</string>
+    <string name="wallets_new_dialog_title">Новый кошелёк</string>
+    <string name="wallets_field_name">Название</string>
+    <string name="wallets_field_currency">Валюта</string>
+    <string name="wallet_default_name">Кошелёк %1$d</string>
+
+    <string name="wallets_transfer_button">Перевод между кошельками</string>
+    <string name="transfer_dialog_title">Перевод между кошельками</string>
+    <string name="transfer_field_from_amount">Сумма списания (%1$s)</string>
+    <string name="transfer_field_to_amount">Сумма зачисления (%1$s)</string>
+    <string name="transfer_swap_direction">Поменять направление</string>
+    <string name="transfer_confirm_button">Перевести</string>
+    <string name="transfer_rate_unavailable">Курс недоступен — введите сумму вручную</string>
+    <string name="transaction_transfer_to">Перевод в «%1$s»</string>
+    <string name="transaction_transfer_from">Перевод из «%1$s»</string>
+
+    <string name="dashboard_combined_balance_label">Итого по всем кошелькам</string>
+    <string name="dashboard_combined_balance_unavailable">Часть кошельков не удалось конвертировать (курс недоступен)</string>
+
+    <string name="settings_exchange_rate">Курс валют</string>
+    <string name="settings_exchange_rate_updated">Обновлён %1$s</string>
+    <string name="settings_exchange_rate_never">Ещё не загружен</string>
+    <string name="settings_exchange_rate_refresh">Обновить</string>
+
+    <string name="settings_budget_limits">Лимиты бюджета</string>
+    <string name="budget_limits_screen_title">Лимиты бюджета</string>
+    <string name="budget_limits_add_button">Добавить лимит</string>
+    <string name="budget_limits_empty">Лимиты ещё не заданы</string>
+    <string name="budget_limit_dialog_title">Задать лимит бюджета</string>
+    <string name="budget_limit_field_category">Категория</string>
+    <string name="budget_limit_field_amount">Лимит в месяц</string>
+    <string name="budget_limit_save_button">Сохранить</string>
+
+    <string name="settings_recurring_transactions">Регулярные платежи</string>
+    <string name="recurring_screen_title">Регулярные платежи</string>
+    <string name="recurring_add_button">Добавить регулярный платёж</string>
+    <string name="recurring_empty">Регулярных платежей пока нет</string>
+    <string name="recurring_dialog_title">Новый регулярный платёж</string>
+    <string name="recurring_field_amount">Сумма</string>
+    <string name="recurring_field_description">Описание</string>
+    <string name="recurring_field_category">Категория</string>
+    <string name="recurring_field_frequency">Периодичность</string>
+    <string name="recurring_frequency_daily">Ежедневно</string>
+    <string name="recurring_frequency_weekly">Еженедельно</string>
+    <string name="recurring_frequency_monthly">Ежемесячно</string>
+    <string name="recurring_next_run">Следующий: %1$s</string>
+    <string name="recurring_save_button">Сохранить</string>
+
+    <string name="settings_security">Безопасность</string>
+    <string name="security_pin_toggle">PIN-код</string>
+    <string name="security_biometric_toggle">Вход по биометрии</string>
+    <string name="security_set_pin_title">Задайте PIN-код</string>
+    <string name="security_confirm_pin_title">Подтвердите PIN-код</string>
+    <string name="security_enter_pin_title">Введите PIN-код</string>
+    <string name="security_pin_mismatch">PIN-коды не совпадают. Попробуйте ещё раз.</string>
+    <string name="security_wrong_pin">Неверный PIN-код</string>
+    <string name="security_use_biometric_button">Войти по биометрии</string>
+    <string name="security_change_pin_button">Изменить PIN-код</string>
+
+    <string name="notification_budget_limit_channel_name">Уведомления о лимитах бюджета</string>
+    <string name="notification_budget_limit_channel_description">Предупреждает при приближении к лимиту бюджета по категории или его превышении</string>
+    <string name="notification_budget_limit_approaching_title">Приближение к лимиту бюджета</string>
+    <string name="notification_budget_limit_approaching_text">Вы потратили %1$s из лимита %2$s по категории «%3$s» в этом месяце</string>
+    <string name="notification_budget_limit_exceeded_title">Лимит бюджета превышен</string>
+    <string name="notification_budget_limit_exceeded_text">Вы потратили %1$s — лимит %2$s по категории «%3$s» в этом месяце превышен</string>
+
+    <string name="widget_description">Баланс + быстрое голосовое добавление</string>
+    <string name="widget_balance_masked">••••••</string>
+    <string name="widget_add_transaction">Добавить транзакцию</string>
 </resources>

@@ -58,6 +58,7 @@
     <string name="msg_export_failed">Export failed: %1$s</string>
     <string name="msg_import_success">Imported %1$d transactions.</string>
     <string name="msg_import_failed">Import failed: %1$s</string>
+    <string name="msg_exchange_rate_refresh_failed">Couldn\'t refresh exchange rates. Check your connection.</string>
 
     <string name="transactions_empty_filtered">No transactions match these filters.</string>
     <string name="dialog_delete_transaction_title">Delete transaction?</string>
@@ -197,4 +198,87 @@
     <string name="category_freelance">Freelance</string>
     <string name="category_bonus">Bonus</string>
     <string name="category_gift">Gift</string>
+    <string name="category_transfer">Transfer</string>
+
+    <string name="onboarding_welcome_title">Welcome to VoiceBudget</string>
+    <string name="onboarding_language_step_title">Choose your language</string>
+    <string name="onboarding_currency_step_title">Choose your currency</string>
+    <string name="onboarding_wallet_step_title">Create your first wallet</string>
+    <string name="onboarding_wallet_name_hint">Wallet name</string>
+    <string name="action_next">Next</string>
+    <string name="action_create_wallet">Create wallet</string>
+
+    <string name="settings_wallets">Wallets</string>
+    <string name="wallets_screen_title">Wallets</string>
+    <string name="wallets_add_button">Add wallet</string>
+    <string name="wallets_max_reached">You can have up to 2 wallets</string>
+    <string name="wallets_active_badge">Active</string>
+    <string name="wallets_new_dialog_title">New wallet</string>
+    <string name="wallets_field_name">Name</string>
+    <string name="wallets_field_currency">Currency</string>
+    <string name="wallet_default_name">Wallet %1$d</string>
+
+    <string name="wallets_transfer_button">Transfer between wallets</string>
+    <string name="transfer_dialog_title">Transfer between wallets</string>
+    <string name="transfer_field_from_amount">Amount to send (%1$s)</string>
+    <string name="transfer_field_to_amount">Amount to receive (%1$s)</string>
+    <string name="transfer_swap_direction">Swap direction</string>
+    <string name="transfer_confirm_button">Transfer</string>
+    <string name="transfer_rate_unavailable">Exchange rate unavailable — enter the amount manually</string>
+    <string name="transaction_transfer_to">Transfer to \"%1$s\"</string>
+    <string name="transaction_transfer_from">Transfer from \"%1$s\"</string>
+
+    <string name="dashboard_combined_balance_label">Total across all wallets</string>
+    <string name="dashboard_combined_balance_unavailable">Some wallets couldn\'t be converted (exchange rate unavailable)</string>
+
+    <string name="settings_exchange_rate">Exchange rate</string>
+    <string name="settings_exchange_rate_updated">Updated %1$s</string>
+    <string name="settings_exchange_rate_never">Not loaded yet</string>
+    <string name="settings_exchange_rate_refresh">Refresh</string>
+
+    <string name="settings_budget_limits">Budget limits</string>
+    <string name="budget_limits_screen_title">Budget limits</string>
+    <string name="budget_limits_add_button">Add limit</string>
+    <string name="budget_limits_empty">No limits set yet</string>
+    <string name="budget_limit_dialog_title">Set budget limit</string>
+    <string name="budget_limit_field_category">Category</string>
+    <string name="budget_limit_field_amount">Monthly limit</string>
+    <string name="budget_limit_save_button">Save</string>
+
+    <string name="settings_recurring_transactions">Recurring payments</string>
+    <string name="recurring_screen_title">Recurring payments</string>
+    <string name="recurring_add_button">Add recurring payment</string>
+    <string name="recurring_empty">No recurring payments yet</string>
+    <string name="recurring_dialog_title">New recurring payment</string>
+    <string name="recurring_field_amount">Amount</string>
+    <string name="recurring_field_description">Description</string>
+    <string name="recurring_field_category">Category</string>
+    <string name="recurring_field_frequency">Frequency</string>
+    <string name="recurring_frequency_daily">Daily</string>
+    <string name="recurring_frequency_weekly">Weekly</string>
+    <string name="recurring_frequency_monthly">Monthly</string>
+    <string name="recurring_next_run">Next: %1$s</string>
+    <string name="recurring_save_button">Save</string>
+
+    <string name="settings_security">Security</string>
+    <string name="security_pin_toggle">PIN code</string>
+    <string name="security_biometric_toggle">Unlock with biometrics</string>
+    <string name="security_set_pin_title">Set PIN</string>
+    <string name="security_confirm_pin_title">Confirm PIN</string>
+    <string name="security_enter_pin_title">Enter PIN</string>
+    <string name="security_pin_mismatch">PINs don\'t match. Try again.</string>
+    <string name="security_wrong_pin">Wrong PIN</string>
+    <string name="security_use_biometric_button">Use biometrics</string>
+    <string name="security_change_pin_button">Change PIN</string>
+
+    <string name="notification_budget_limit_channel_name">Budget limit alerts</string>
+    <string name="notification_budget_limit_channel_description">Warns when spending approaches or exceeds a category budget limit</string>
+    <string name="notification_budget_limit_approaching_title">Approaching budget limit</string>
+    <string name="notification_budget_limit_approaching_text">You\'ve spent %1$s of your %2$s limit for \"%3$s\" this month</string>
+    <string name="notification_budget_limit_exceeded_title">Budget limit exceeded</string>
+    <string name="notification_budget_limit_exceeded_text">You\'ve spent %1$s, over your %2$s limit for \"%3$s\" this month</string>
+
+    <string name="widget_description">Balance + quick voice add</string>
+    <string name="widget_balance_masked">••••••</string>
+    <string name="widget_add_transaction">Add transaction</string>
 </resources>

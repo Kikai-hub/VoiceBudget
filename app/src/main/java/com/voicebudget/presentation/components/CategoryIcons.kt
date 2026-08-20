@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.Restaurant
 import androidx.compose.material.icons.filled.Savings
 import androidx.compose.material.icons.filled.ShoppingBag
 import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.SwapHoriz
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.voicebudget.domain.model.Category
 
@@ -33,4 +34,5 @@ fun categoryIcon(category: Category): ImageVector = when (category) {
     Category.BONUS -> Icons.Filled.Star
     Category.GIFT -> Icons.Filled.CardGiftcard
     Category.OTHER_INCOME -> Icons.Filled.MoreHoriz
+    Category.TRANSFER -> Icons.Filled.SwapHoriz
 }

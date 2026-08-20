@@ -25,8 +25,8 @@ android {
     defaultConfig {
         minSdk = 28
         targetSdk = 37
-        versionCode = 11
-        versionName = "1.6.0"
+        versionCode = 13
+        versionName = "1.8.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -136,6 +136,10 @@ dependencies {
 
     implementation(libs.vico.compose)
     implementation(libs.vico.compose.m3)
+
+    implementation(libs.biometric)
+    implementation(libs.lifecycle.process)
+    implementation(libs.glance.appwidget)
 
     testImplementation(libs.junit)
     testImplementation(libs.mockk)

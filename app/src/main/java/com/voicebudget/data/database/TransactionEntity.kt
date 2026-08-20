@@ -14,4 +14,7 @@ data class TransactionEntity(
     val createdAt: Long,
     val goalId: Long? = null,
     val customCategoryId: Long? = null,
+    val walletId: Long = 0,
+    val transferGroupId: String? = null,
+    val transferDirection: String? = null,
 )

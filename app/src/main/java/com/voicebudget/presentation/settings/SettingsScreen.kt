@@ -4,12 +4,15 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
@@ -17,8 +20,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.SegmentedButton
@@ -34,6 +36,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,7 +46,11 @@ import com.voicebudget.R
 import com.voicebudget.domain.model.AppSettings
 import com.voicebudget.domain.model.Currency
 import com.voicebudget.domain.model.ThemeMode
+import com.voicebudget.presentation.components.CurrencyPickerList
+import com.voicebudget.presentation.components.LanguagePickerList
+import com.voicebudget.presentation.components.languageOptions
 import com.voicebudget.presentation.theme.VoiceBudgetTheme
+import com.voicebudget.utils.currencyLabel
 import kotlinx.coroutines.delay
 
 @Composable
@@ -70,6 +77,7 @@ fun SettingsScreen(
         onExportClick = { exportLauncher.launch("transactions.csv") },
         onImportClick = { importLauncher.launch(arrayOf("text/csv", "text/comma-separated-values", "text/plain")) },
         onClearAllData = viewModel::clearAllData,
+        onRefreshExchangeRates = viewModel::refreshExchangeRates,
         onConsumeMessage = viewModel::consumeMessage,
         modifier = modifier,
     )
@@ -85,11 +93,19 @@ private fun SettingsContent(
     onExportClick: () -> Unit,
     onImportClick: () -> Unit,
     onClearAllData: () -> Unit,
+    onRefreshExchangeRates: () -> Unit,
     onConsumeMessage: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     var showClearConfirm by remember { mutableStateOf(false) }
     var showCategoryManagement by remember { mutableStateOf(false) }
+    var showWalletManagement by remember { mutableStateOf(false) }
+    var showBudgetLimits by remember { mutableStateOf(false) }
+    var showRecurringTransactions by remember { mutableStateOf(false) }
+    var showSecuritySettings by remember { mutableStateOf(false) }
+    var showLanguagePicker by remember { mutableStateOf(false) }
+    var showCurrencyPicker by remember { mutableStateOf(false) }
+    var showThemePicker by remember { mutableStateOf(false) }
 
     Column(
         modifier = modifier
@@ -98,25 +114,63 @@ private fun SettingsContent(
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        SettingsSection(title = stringResource(R.string.settings_currency)) {
-            CurrencySelector(selected = uiState.settings.currency, onSelected = onSetCurrency)
-        }
-
-        SettingsSection(title = stringResource(R.string.settings_language)) {
-            LanguageSelector(
-                selectedTag = uiState.settings.recognitionLanguageTag,
-                onSelected = onSetRecognitionLanguage,
+        SettingsSection {
+            SettingsRowButton(
+                label = stringResource(R.string.settings_wallets),
+                onClick = { showWalletManagement = true },
+            )
+            SettingsRowButton(
+                label = stringResource(R.string.settings_language),
+                value = languageOptions.firstOrNull { it.first == uiState.settings.recognitionLanguageTag }?.second,
+                onClick = { showLanguagePicker = true },
+            )
+            SettingsRowButton(
+                label = stringResource(R.string.settings_currency),
+                value = currencyLabel(uiState.settings.currency),
+                onClick = { showCurrencyPicker = true },
+            )
+            SettingsRowButton(
+                label = stringResource(R.string.settings_theme),
+                value = stringResource(
+                    when (uiState.settings.themeMode) {
+                        ThemeMode.LIGHT -> R.string.theme_light
+                        ThemeMode.DARK -> R.string.theme_dark
+                        ThemeMode.SYSTEM -> R.string.theme_system
+                    },
+                ),
+                onClick = { showThemePicker = true },
+            )
+            SettingsRowButton(
+                label = stringResource(R.string.settings_exchange_rate),
+                value = if (uiState.isRefreshingRates) {
+                    stringResource(R.string.settings_exchange_rate_refresh) + "…"
+                } else {
+                    uiState.exchangeRateUpdatedAt?.let { stringResource(R.string.settings_exchange_rate_updated, formatRelativeTime(it)) }
+                        ?: stringResource(R.string.settings_exchange_rate_never)
+                },
+                onClick = onRefreshExchangeRates,
+                showDivider = false,
             )
         }
 
-        SettingsSection(title = stringResource(R.string.settings_theme)) {
-            ThemeSelector(selected = uiState.settings.themeMode, onSelected = onSetThemeMode)
-        }
-
-        SettingsSection(title = stringResource(R.string.settings_categories)) {
-            OutlinedButton(onClick = { showCategoryManagement = true }, modifier = Modifier.fillMaxWidth()) {
-                Text(stringResource(R.string.settings_manage_categories))
-            }
+        SettingsSection {
+            SettingsRowButton(
+                label = stringResource(R.string.settings_categories),
+                onClick = { showCategoryManagement = true },
+            )
+            SettingsRowButton(
+                label = stringResource(R.string.settings_budget_limits),
+                onClick = { showBudgetLimits = true },
+            )
+            SettingsRowButton(
+                label = stringResource(R.string.settings_recurring_transactions),
+                onClick = { showRecurringTransactions = true },
+            )
+            SettingsRowButton(
+                label = stringResource(R.string.settings_security),
+                onClick = { showSecuritySettings = true },
+                showDivider = false,
+            )
         }
 
         SettingsSection(title = stringResource(R.string.settings_data)) {
@@ -134,6 +188,81 @@ private fun SettingsContent(
 
     if (showCategoryManagement) {
         CategoryManagementHost(onDismiss = { showCategoryManagement = false })
+    }
+
+    if (showWalletManagement) {
+        WalletManagementHost(onDismiss = { showWalletManagement = false })
+    }
+
+    if (showBudgetLimits) {
+        BudgetLimitsHost(onDismiss = { showBudgetLimits = false })
+    }
+
+    if (showRecurringTransactions) {
+        RecurringTransactionsHost(onDismiss = { showRecurringTransactions = false })
+    }
+
+    if (showSecuritySettings) {
+        SecuritySettingsHost(onDismiss = { showSecuritySettings = false })
+    }
+
+    if (showLanguagePicker) {
+        AlertDialog(
+            onDismissRequest = { showLanguagePicker = false },
+            title = { Text(stringResource(R.string.settings_language)) },
+            text = {
+                LanguagePickerList(
+                    selectedTag = uiState.settings.recognitionLanguageTag,
+                    onSelected = {
+                        onSetRecognitionLanguage(it)
+                        showLanguagePicker = false
+                    },
+                    modifier = Modifier.heightIn(max = 420.dp),
+                )
+            },
+            confirmButton = {
+                TextButton(onClick = { showLanguagePicker = false }) { Text(stringResource(R.string.action_close)) }
+            },
+        )
+    }
+
+    if (showCurrencyPicker) {
+        AlertDialog(
+            onDismissRequest = { showCurrencyPicker = false },
+            title = { Text(stringResource(R.string.settings_currency)) },
+            text = {
+                CurrencyPickerList(
+                    selected = uiState.settings.currency,
+                    onSelected = {
+                        onSetCurrency(it)
+                        showCurrencyPicker = false
+                    },
+                    modifier = Modifier.heightIn(max = 420.dp),
+                )
+            },
+            confirmButton = {
+                TextButton(onClick = { showCurrencyPicker = false }) { Text(stringResource(R.string.action_close)) }
+            },
+        )
+    }
+
+    if (showThemePicker) {
+        AlertDialog(
+            onDismissRequest = { showThemePicker = false },
+            title = { Text(stringResource(R.string.settings_theme)) },
+            text = {
+                ThemeSelector(
+                    selected = uiState.settings.themeMode,
+                    onSelected = {
+                        onSetThemeMode(it)
+                        showThemePicker = false
+                    },
+                )
+            },
+            confirmButton = {
+                TextButton(onClick = { showThemePicker = false }) { Text(stringResource(R.string.action_close)) }
+            },
+        )
     }
 
     message?.let { text ->
@@ -163,49 +292,49 @@ private fun SettingsContent(
 }
 
 @Composable
-private fun SettingsSection(title: String, content: @Composable () -> Unit) {
+private fun SettingsSection(title: String? = null, content: @Composable ColumnScope.() -> Unit) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
         elevation = CardDefaults.cardElevation(defaultElevation = 0.dp),
     ) {
         Column(modifier = Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
-            Text(title, style = MaterialTheme.typography.titleMedium)
+            if (title != null) {
+                Text(title, style = MaterialTheme.typography.titleMedium)
+            }
             content()
         }
     }
 }
 
 @Composable
-private fun CurrencySelector(selected: Currency, onSelected: (Currency) -> Unit) {
-    var expanded by remember { mutableStateOf(false) }
-    Row {
-        OutlinedButton(onClick = { expanded = true }) { Text("${selected.name} (${selected.symbol})") }
-        DropdownMenu(expanded = expanded, onDismissRequest = { expanded = false }) {
-            Currency.entries.forEach { currency ->
-                DropdownMenuItem(
-                    text = { Text("${currency.name} (${currency.symbol})") },
-                    onClick = {
-                        onSelected(currency)
-                        expanded = false
-                    },
+private fun SettingsRowButton(
+    label: String,
+    onClick: () -> Unit,
+    value: String? = null,
+    showDivider: Boolean = true,
+) {
+    Column {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 4.dp),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            TextButton(onClick = onClick, contentPadding = PaddingValues(0.dp)) {
+                Text(label, style = MaterialTheme.typography.bodyLarge)
+            }
+            if (value != null) {
+                Text(
+                    text = value,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
         }
-    }
-}
-
-private val languageOptions = listOf("ru-RU" to "Русский", "en-US" to "English")
-
-@Composable
-private fun LanguageSelector(selectedTag: String, onSelected: (String) -> Unit) {
-    SingleChoiceSegmentedButtonRow(modifier = Modifier.fillMaxWidth()) {
-        languageOptions.forEachIndexed { index, (tag, label) ->
-            SegmentedButton(
-                selected = selectedTag == tag,
-                onClick = { onSelected(tag) },
-                shape = SegmentedButtonDefaults.itemShape(index, languageOptions.size),
-            ) { Text(label) }
+        if (showDivider) {
+            HorizontalDivider()
         }
     }
 }
@@ -246,7 +375,18 @@ private fun SettingsScreenPreview() {
             onExportClick = {},
             onImportClick = {},
             onClearAllData = {},
+            onRefreshExchangeRates = {},
             onConsumeMessage = {},
         )
+    }
+}
+
+private fun formatRelativeTime(epochMillis: Long): String {
+    val minutes = (System.currentTimeMillis() - epochMillis) / 60_000
+    return when {
+        minutes < 1 -> "just now"
+        minutes < 60 -> "${minutes}m"
+        minutes < 24 * 60 -> "${minutes / 60}h"
+        else -> "${minutes / (24 * 60)}d"
     }
 }
