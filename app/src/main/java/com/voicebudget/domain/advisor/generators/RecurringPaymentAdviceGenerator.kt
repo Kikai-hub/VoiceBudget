@@ -10,6 +10,7 @@ import com.voicebudget.domain.advisor.AnalysisContext
 import com.voicebudget.domain.advisor.FinancialAdvice
 import com.voicebudget.domain.advisor.calculators.RecurringPaymentDetector
 import com.voicebudget.domain.model.categoryLabelRes
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.roundToLong
@@ -26,14 +27,15 @@ class RecurringPaymentAdviceGenerator @Inject constructor(
             context.settings.analysisPeriodMonths,
         )
 
+        val localizedContext = androidContext.withAppLocale()
         return recurring.map { payment ->
             val id = "recurring_${payment.category.name}_${context.currentMonth}"
             FinancialAdvice(
                 id = id,
-                title = androidContext.getString(R.string.advice_recurring_title),
-                description = androidContext.getString(
+                title = localizedContext.getString(R.string.advice_recurring_title),
+                description = localizedContext.getString(
                     R.string.advice_recurring_desc,
-                    androidContext.getString(categoryLabelRes(payment.category)),
+                    localizedContext.getString(categoryLabelRes(payment.category)),
                     payment.typicalAmount.roundToLong(),
                     payment.monthsSeen,
                 ),

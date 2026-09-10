@@ -38,6 +38,7 @@ import com.voicebudget.R
 import com.voicebudget.domain.model.RecurrenceFrequency
 import com.voicebudget.domain.model.RecurringTransaction
 import com.voicebudget.presentation.components.categoryLabel
+import com.voicebudget.utils.currentAppLocale
 import com.voicebudget.utils.formatAmount
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -145,7 +146,7 @@ private fun frequencyLabel(frequency: RecurrenceFrequency): String = stringResou
 )
 
 private fun formatDate(epochMillis: Long): String =
-    SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(Date(epochMillis))
+    SimpleDateFormat("dd MMM yyyy", currentAppLocale() ?: Locale.getDefault()).format(Date(epochMillis))
 
 @Composable
 private fun NewRecurringDialog(

@@ -13,6 +13,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.voicebudget.MainActivity
 import com.voicebudget.R
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -22,6 +23,7 @@ class ReminderNotifier @Inject constructor(
 ) {
     fun showInactivityReminder() {
         ensureChannel()
+        val localizedContext = context.withAppLocale()
 
         val intent = Intent(context, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
@@ -35,8 +37,8 @@ class ReminderNotifier @Inject constructor(
 
         val notification = NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_notification)
-            .setContentTitle(context.getString(R.string.notification_reminder_title))
-            .setContentText(context.getString(R.string.notification_reminder_text))
+            .setContentTitle(localizedContext.getString(R.string.notification_reminder_title))
+            .setContentText(localizedContext.getString(R.string.notification_reminder_text))
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
             .build()
@@ -50,17 +52,19 @@ class ReminderNotifier @Inject constructor(
     }
 
     fun showBudgetLimitApproaching(categoryLabel: String, spentText: String, limitText: String) {
+        val localizedContext = context.withAppLocale()
         showBudgetLimitAlert(
-            title = context.getString(R.string.notification_budget_limit_approaching_title),
-            text = context.getString(R.string.notification_budget_limit_approaching_text, spentText, limitText, categoryLabel),
+            title = localizedContext.getString(R.string.notification_budget_limit_approaching_title),
+            text = localizedContext.getString(R.string.notification_budget_limit_approaching_text, spentText, limitText, categoryLabel),
             notificationId = BUDGET_NOTIFICATION_ID_BASE + categoryLabel.hashCode(),
         )
     }
 
     fun showBudgetLimitExceeded(categoryLabel: String, spentText: String, limitText: String) {
+        val localizedContext = context.withAppLocale()
         showBudgetLimitAlert(
-            title = context.getString(R.string.notification_budget_limit_exceeded_title),
-            text = context.getString(R.string.notification_budget_limit_exceeded_text, spentText, limitText, categoryLabel),
+            title = localizedContext.getString(R.string.notification_budget_limit_exceeded_title),
+            text = localizedContext.getString(R.string.notification_budget_limit_exceeded_text, spentText, limitText, categoryLabel),
             notificationId = BUDGET_NOTIFICATION_ID_BASE + categoryLabel.hashCode(),
         )
     }
@@ -95,23 +99,25 @@ class ReminderNotifier @Inject constructor(
     }
 
     private fun ensureChannel() {
+        val localizedContext = context.withAppLocale()
         val channel = NotificationChannel(
             CHANNEL_ID,
-            context.getString(R.string.notification_channel_name),
+            localizedContext.getString(R.string.notification_channel_name),
             NotificationManager.IMPORTANCE_DEFAULT,
         ).apply {
-            description = context.getString(R.string.notification_channel_description)
+            description = localizedContext.getString(R.string.notification_channel_description)
         }
         context.getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
     }
 
     private fun ensureBudgetLimitChannel() {
+        val localizedContext = context.withAppLocale()
         val channel = NotificationChannel(
             BUDGET_CHANNEL_ID,
-            context.getString(R.string.notification_budget_limit_channel_name),
+            localizedContext.getString(R.string.notification_budget_limit_channel_name),
             NotificationManager.IMPORTANCE_DEFAULT,
         ).apply {
-            description = context.getString(R.string.notification_budget_limit_channel_description)
+            description = localizedContext.getString(R.string.notification_budget_limit_channel_description)
         }
         context.getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
     }

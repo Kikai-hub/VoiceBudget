@@ -7,6 +7,7 @@ import android.speech.RecognitionListener
 import android.speech.RecognizerIntent
 import android.speech.SpeechRecognizer
 import com.voicebudget.R
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
@@ -19,7 +20,7 @@ class AndroidVoiceRecognizerService @Inject constructor(
 
     override fun listen(languageTag: String): Flow<RecognitionEvent> = callbackFlow {
         if (!SpeechRecognizer.isRecognitionAvailable(context)) {
-            trySend(RecognitionEvent.Error(context.getString(R.string.error_recognition_unavailable)))
+            trySend(RecognitionEvent.Error(context.withAppLocale().getString(R.string.error_recognition_unavailable)))
             close()
             return@callbackFlow
         }
@@ -67,13 +68,16 @@ class AndroidVoiceRecognizerService @Inject constructor(
     private fun Bundle.bestMatch(): String? =
         getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION)?.firstOrNull()
 
-    private fun describeError(error: Int): String = when (error) {
-        SpeechRecognizer.ERROR_NO_MATCH -> context.getString(R.string.error_no_speech_match)
-        SpeechRecognizer.ERROR_SPEECH_TIMEOUT -> context.getString(R.string.error_speech_timeout)
-        SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS -> context.getString(R.string.error_mic_permission)
-        SpeechRecognizer.ERROR_NETWORK, SpeechRecognizer.ERROR_NETWORK_TIMEOUT -> context.getString(R.string.error_network)
-        SpeechRecognizer.ERROR_AUDIO -> context.getString(R.string.error_audio)
-        SpeechRecognizer.ERROR_RECOGNIZER_BUSY -> context.getString(R.string.error_recognizer_busy)
-        else -> context.getString(R.string.error_recognition_generic, error)
+    private fun describeError(error: Int): String {
+        val localizedContext = context.withAppLocale()
+        return when (error) {
+            SpeechRecognizer.ERROR_NO_MATCH -> localizedContext.getString(R.string.error_no_speech_match)
+            SpeechRecognizer.ERROR_SPEECH_TIMEOUT -> localizedContext.getString(R.string.error_speech_timeout)
+            SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS -> localizedContext.getString(R.string.error_mic_permission)
+            SpeechRecognizer.ERROR_NETWORK, SpeechRecognizer.ERROR_NETWORK_TIMEOUT -> localizedContext.getString(R.string.error_network)
+            SpeechRecognizer.ERROR_AUDIO -> localizedContext.getString(R.string.error_audio)
+            SpeechRecognizer.ERROR_RECOGNIZER_BUSY -> localizedContext.getString(R.string.error_recognizer_busy)
+            else -> localizedContext.getString(R.string.error_recognition_generic, error)
+        }
     }
 }

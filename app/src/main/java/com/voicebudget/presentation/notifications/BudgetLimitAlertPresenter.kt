@@ -6,6 +6,7 @@ import com.voicebudget.domain.repository.WalletRepository
 import com.voicebudget.domain.usecase.BudgetLimitAlert
 import com.voicebudget.presentation.components.categoryLabel
 import com.voicebudget.utils.formatAmount
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.first
 import javax.inject.Inject
@@ -22,7 +23,7 @@ class BudgetLimitAlertPresenter @Inject constructor(
         val limit = alert.limit
         val categoryLabel = limit.customCategoryId?.let { id ->
             customCategoryRepository.observeAll().first().firstOrNull { it.id == id }?.name
-        } ?: limit.category?.let { categoryLabel(context, it) } ?: ""
+        } ?: limit.category?.let { categoryLabel(context.withAppLocale(), it) } ?: ""
 
         val currencySymbol = walletRepository.getWalletById(limit.walletId)?.currency?.symbol ?: ""
         return BudgetLimitAlertText(

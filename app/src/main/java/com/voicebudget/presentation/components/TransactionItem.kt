@@ -31,6 +31,7 @@ import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.TransactionType
 import com.voicebudget.domain.model.TransferDirection
 import com.voicebudget.presentation.theme.IncomeGreen
+import com.voicebudget.utils.currentAppLocale
 import com.voicebudget.utils.formatAmount
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -122,4 +123,4 @@ fun TransactionItem(
 }
 
 private fun formatDate(epochMillis: Long): String =
-    SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).format(Date(epochMillis))
+    SimpleDateFormat("dd MMM yyyy", currentAppLocale() ?: Locale.getDefault()).format(Date(epochMillis))

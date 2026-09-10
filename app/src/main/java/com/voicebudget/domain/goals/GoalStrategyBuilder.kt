@@ -8,6 +8,8 @@ import com.voicebudget.domain.advisor.calculators.MonthlyIncomeCalculator
 import com.voicebudget.domain.model.Transaction
 import com.voicebudget.domain.model.categoryLabelRes
 import com.voicebudget.domain.model.isGoalContribution
+import com.voicebudget.utils.currentAppLocale
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.time.YearMonth
 import java.time.format.TextStyle
@@ -52,17 +54,18 @@ class GoalStrategyBuilder @Inject constructor(
         val goalReached = remainingAmount <= 0.0
         val onTrack = goalReached || currentMonthlySavings >= requiredMonthlySavings
 
+        val localizedContext = androidContext.withAppLocale()
         val monthYearLabel = monthYearLabel(goal.targetMonth)
         val message = when {
-            goalReached -> androidContext.getString(R.string.goal_completed_desc, goal.name)
-            onTrack -> androidContext.getString(
+            goalReached -> localizedContext.getString(R.string.goal_completed_desc, goal.name)
+            onTrack -> localizedContext.getString(
                 R.string.goal_on_track_desc,
                 goal.name,
                 goal.targetAmount.roundToLong(),
                 monthYearLabel,
                 currentMonthlySavings.roundToLong(),
             )
-            else -> androidContext.getString(
+            else -> localizedContext.getString(
                 R.string.goal_off_track_desc,
                 goal.name,
                 goal.targetAmount.roundToLong(),
@@ -77,9 +80,9 @@ class GoalStrategyBuilder @Inject constructor(
         } else {
             categoryAnalyzer.topCategory(spendingTransactions, now)?.let { top ->
                 val cutAmount = top.amount * SUGGESTION_CUT_PERCENT / 100.0
-                androidContext.getString(
+                localizedContext.getString(
                     R.string.goal_suggestion_desc,
-                    androidContext.getString(categoryLabelRes(top.category)),
+                    localizedContext.getString(categoryLabelRes(top.category)),
                     SUGGESTION_CUT_PERCENT,
                     cutAmount.roundToLong(),
                 )
@@ -99,7 +102,7 @@ class GoalStrategyBuilder @Inject constructor(
     }
 
     private fun monthYearLabel(month: YearMonth): String {
-        val monthName = month.month.getDisplayName(TextStyle.FULL, java.util.Locale.getDefault())
+        val monthName = month.month.getDisplayName(TextStyle.FULL, currentAppLocale() ?: java.util.Locale.getDefault())
         return "$monthName ${month.year}"
     }
 }

@@ -11,6 +11,7 @@ import com.voicebudget.domain.advisor.FinancialAdvice
 import com.voicebudget.domain.advisor.calculators.MonthlyExpenseCalculator
 import com.voicebudget.domain.advisor.calculators.MonthlyIncomeCalculator
 import com.voicebudget.domain.advisor.calculators.SavingsCalculator
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.roundToInt
@@ -44,10 +45,11 @@ class SavingsAdviceGenerator @Inject constructor(
     ): FinancialAdvice {
         val id = "savings_low_${context.currentMonth}"
         val desired = income * context.settings.desiredSavingsRatePercent / 100.0
+        val localizedContext = androidContext.withAppLocale()
         return FinancialAdvice(
             id = id,
-            title = androidContext.getString(R.string.advice_savings_low_title),
-            description = androidContext.getString(
+            title = localizedContext.getString(R.string.advice_savings_low_title),
+            description = localizedContext.getString(
                 R.string.advice_savings_low_desc,
                 rate.roundToInt(),
                 context.settings.desiredSavingsRatePercent.roundToInt(),
@@ -64,10 +66,11 @@ class SavingsAdviceGenerator @Inject constructor(
 
     private fun positiveSavingsAdvice(context: AnalysisContext, rate: Double): FinancialAdvice {
         val id = "savings_positive_${context.currentMonth}"
+        val localizedContext = androidContext.withAppLocale()
         return FinancialAdvice(
             id = id,
-            title = androidContext.getString(R.string.advice_savings_positive_title),
-            description = androidContext.getString(R.string.advice_savings_positive_desc, rate.roundToInt()),
+            title = localizedContext.getString(R.string.advice_savings_positive_title),
+            description = localizedContext.getString(R.string.advice_savings_positive_desc, rate.roundToInt()),
             priority = AdvicePriority.LOW,
             icon = AdviceIcon.POSITIVE,
             type = AdviceType.POSITIVE_PROGRESS,

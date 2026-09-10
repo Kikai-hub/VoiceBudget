@@ -10,6 +10,7 @@ import com.voicebudget.domain.advisor.AnalysisContext
 import com.voicebudget.domain.advisor.FinancialAdvice
 import com.voicebudget.domain.advisor.calculators.IncomeTrendAnalyzer
 import com.voicebudget.domain.advisor.calculators.MonthlyIncomeCalculator
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.roundToInt
@@ -35,11 +36,12 @@ class IncomeTrendAdviceGenerator @Inject constructor(
         ) ?: return emptyList()
 
         val id = "income_trend_${context.currentMonth}"
+        val localizedContext = androidContext.withAppLocale()
         return listOf(
             FinancialAdvice(
                 id = id,
-                title = androidContext.getString(R.string.advice_income_trend_title),
-                description = androidContext.getString(
+                title = localizedContext.getString(R.string.advice_income_trend_title),
+                description = localizedContext.getString(
                     R.string.advice_income_trend_desc,
                     months,
                     changePercent.roundToInt(),

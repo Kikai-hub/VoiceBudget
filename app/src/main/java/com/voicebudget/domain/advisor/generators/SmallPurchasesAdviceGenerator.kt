@@ -9,6 +9,7 @@ import com.voicebudget.domain.advisor.AdviceType
 import com.voicebudget.domain.advisor.AnalysisContext
 import com.voicebudget.domain.advisor.FinancialAdvice
 import com.voicebudget.domain.advisor.calculators.SmallPurchaseAnalyzer
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
@@ -30,11 +31,12 @@ class SmallPurchasesAdviceGenerator @Inject constructor(
         val threshold = context.settings.smallPurchaseThreshold.toLong()
         val id = "small_purchases_${context.currentMonth}"
 
+        val localizedContext = androidContext.withAppLocale()
         return listOf(
             FinancialAdvice(
                 id = id,
-                title = androidContext.getString(R.string.advice_small_purchases_title),
-                description = androidContext.getString(
+                title = localizedContext.getString(R.string.advice_small_purchases_title),
+                description = localizedContext.getString(
                     R.string.advice_small_purchases_desc,
                     count,
                     threshold,

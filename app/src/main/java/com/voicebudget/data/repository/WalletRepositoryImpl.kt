@@ -16,6 +16,7 @@ import com.voicebudget.domain.model.MAX_WALLETS
 import com.voicebudget.domain.model.Wallet
 import com.voicebudget.domain.repository.WalletLimitReachedException
 import com.voicebudget.domain.repository.WalletRepository
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
@@ -83,7 +84,7 @@ class WalletRepositoryImpl @Inject constructor(
             ?.let { runCatching { Currency.valueOf(it) }.getOrNull() }
             ?: Currency.RUB
         val entity = WalletEntity(
-            name = context.getString(R.string.wallet_default_name, 1),
+            name = context.withAppLocale().getString(R.string.wallet_default_name, 1),
             currency = legacyCurrency.name,
             createdAt = System.currentTimeMillis(),
             orderIndex = 0,

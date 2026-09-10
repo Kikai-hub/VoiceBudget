@@ -13,6 +13,7 @@ import com.voicebudget.domain.usecase.ObserveActiveWalletUseCase
 import com.voicebudget.domain.usecase.ObserveWalletsUseCase
 import com.voicebudget.domain.usecase.SetActiveWalletUseCase
 import com.voicebudget.domain.usecase.TransferBetweenWalletsUseCase
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -171,10 +172,10 @@ class WalletManagementViewModel @Inject constructor(
             transferBetweenWalletsUseCase(
                 fromWalletId = draft.fromWallet.id,
                 fromAmount = fromAmount,
-                outDescription = context.getString(R.string.transaction_transfer_to, draft.toWallet.name),
+                outDescription = context.withAppLocale().getString(R.string.transaction_transfer_to, draft.toWallet.name),
                 toWalletId = draft.toWallet.id,
                 toAmount = toAmount,
-                inDescription = context.getString(R.string.transaction_transfer_from, draft.fromWallet.name),
+                inDescription = context.withAppLocale().getString(R.string.transaction_transfer_from, draft.fromWallet.name),
             )
             _dialogState.value = WalletDialogState.Closed
         }

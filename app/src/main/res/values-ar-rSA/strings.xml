@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_dashboard">لوحة التحكم</string>
+    <string name="nav_transactions">المعاملات</string>
+    <string name="nav_statistics">الإحصائيات</string>
+    <string name="nav_settings">الإعدادات</string>
+    <string name="nav_record_transaction">تسجيل معاملة</string>
+    <string name="nav_manual_transaction">إضافة معاملة يدويًا</string>
+
+    <string name="dashboard_recent_transactions">المعاملات الأخيرة</string>
+    <string name="dashboard_empty">لا توجد معاملات بعد. اضغط على الميكروفون لإضافة واحدة.</string>
+    <string name="this_month">هذا الشهر</string>
+    <string name="income">الدخل</string>
+    <string name="expenses">المصروفات</string>
+    <string name="balance">الرصيد</string>
+
+    <string name="settings_currency">العملة</string>
+    <string name="settings_language">اللغة</string>
+    <string name="settings_theme">المظهر</string>
+    <string name="settings_data">البيانات</string>
+    <string name="settings_export_csv">تصدير قاعدة البيانات (CSV)</string>
+    <string name="settings_import_csv">استيراد قاعدة البيانات (CSV)</string>
+    <string name="settings_clear_all_data">مسح جميع البيانات</string>
+    <string name="dialog_clear_all_data_title">مسح جميع البيانات؟</string>
+    <string name="dialog_clear_all_data_message">سيؤدي هذا إلى حذف جميع المعاملات نهائيًا. لا يمكن التراجع عن هذا الإجراء.</string>
+
+    <string name="settings_categories">الفئات</string>
+    <string name="settings_manage_categories">إدارة الفئات</string>
+    <string name="categories_add_new">إضافة فئة</string>
+    <string name="categories_add_title">فئة جديدة</string>
+    <string name="categories_edit_title">تعديل الفئة</string>
+    <string name="categories_empty">لم تقم بإضافة أي فئات مخصصة بعد.</string>
+    <string name="categories_field_name">اسم الفئة</string>
+    <string name="categories_field_icon">الأيقونة</string>
+    <string name="categories_field_color">اللون</string>
+    <string name="categories_delete_title">حذف الفئة؟</string>
+    <string name="categories_delete_message">"\"%1$s\" سيتم حذفها نهائيًا. ستعود المعاملات التي تستخدمها إلى \"أخرى\"."</string>
+    <string name="error_category_name_required">يرجى إدخال اسم الفئة.</string>
+
+    <string name="action_clear">مسح</string>
+    <string name="action_cancel">إلغاء</string>
+    <string name="action_delete">حذف</string>
+    <string name="action_edit">تعديل</string>
+    <string name="action_save">حفظ</string>
+    <string name="action_retry">إعادة المحاولة</string>
+    <string name="action_try_again">حاول مرة أخرى</string>
+    <string name="action_close">إغلاق</string>
+
+    <string name="theme_light">فاتح</string>
+    <string name="theme_dark">داكن</string>
+    <string name="theme_system">النظام</string>
+
+    <string name="msg_all_data_cleared">تم مسح جميع البيانات.</string>
+    <string name="msg_advisor_settings_saved">تم حفظ إعدادات المستشار.</string>
+    <string name="msg_export_success">تم التصدير بنجاح.</string>
+    <string name="msg_export_failed">فشل التصدير: %1$s</string>
+    <string name="msg_import_success">تم استيراد %1$d معاملة.</string>
+    <string name="msg_import_failed">فشل الاستيراد: %1$s</string>
+
+    <string name="transactions_empty_filtered">لا توجد معاملات مطابقة لهذه الفلاتر.</string>
+    <string name="dialog_delete_transaction_title">حذف المعاملة؟</string>
+    <string name="dialog_delete_transaction_message">"\"%1$s\" سيتم حذفها نهائيًا."</string>
+    <string name="category_all">جميع الفئات</string>
+    <string name="date_range_all_time">كل الوقت</string>
+    <string name="date_range_last_month">الشهر الماضي</string>
+    <string name="date_range_last_7_days">آخر 7 أيام</string>
+    <string name="edit_transaction_title">تعديل المعاملة</string>
+    <string name="confirm_transaction_title">تأكيد المعاملة</string>
+    <string name="manual_transaction_title">إضافة معاملة</string>
+
+    <string name="voice_start_recording">بدء التسجيل</string>
+    <string name="voice_tap_to_speak">اضغط للتحدث</string>
+    <string name="voice_listening_desc">الاستماع</string>
+    <string name="voice_listening">جارٍ الاستماع…</string>
+    <string name="voice_saving">جارٍ الحفظ…</string>
+
+    <string name="field_amount">المبلغ</string>
+    <string name="field_category">الفئة</string>
+    <string name="field_description">الوصف</string>
+    <string name="type_expense">مصروف</string>
+
+    <string name="stats_expense_breakdown">توزيع المصروفات (هذا الشهر)</string>
+    <string name="stats_no_expenses">لا توجد مصروفات مسجلة هذا الشهر.</string>
+    <string name="stats_income_vs_expenses">الدخل مقابل المصروفات (آخر 6 أشهر)</string>
+
+    <string name="goals_title">الأهداف المالية</string>
+    <string name="goals_add_goal">إضافة هدف</string>
+    <string name="goals_empty">لا توجد أهداف بعد. اضغط على \"إضافة هدف\" لبدء التخطيط لمدخراتك!</string>
+    <string name="goals_field_name">اسم الهدف</string>
+    <string name="goals_field_amount">المبلغ المستهدف</string>
+    <string name="goals_field_month">الشهر</string>
+    <string name="goals_field_year">السنة</string>
+    <string name="goals_dialog_add_title">إضافة هدف مالي</string>
+    <string name="goals_months_remaining">يتبقى %1$d شهرًا</string>
+    <string name="goals_required_monthly">المطلوب: %1$s/شهريًا</string>
+    <string name="goals_current_monthly">الحالي: %1$s/شهريًا</string>
+    <string name="goals_on_track">على المسار الصحيح</string>
+    <string name="goals_off_track">خارج المسار</string>
+    <string name="goals_completed">مكتمل</string>
+    <string name="goals_delete_title">حذف الهدف؟</string>
+    <string name="goals_delete_message">"\"%1$s\" سيتم حذفه نهائيًا."</string>
+    <string name="goals_saved_of_target">تم توفير %1$s من أصل %2$s (%3$d%%)</string>
+
+    <string name="goals_set_aside">تخصيص مبلغ</string>
+    <string name="goals_set_aside_dialog_title">تخصيص مبلغ للهدف</string>
+    <string name="goals_set_aside_field_goal">الهدف</string>
+    <string name="goals_set_aside_field_amount">المبلغ</string>
+    <string name="error_goal_contribution_invalid_amount">يرجى إدخال مبلغ صحيح.</string>
+
+    <string name="goal_on_track_desc">بمعدلك الحالي (~%4$d/شهريًا) أنت على المسار الصحيح للوصول إلى \"%1$s\" (%2$d) بحلول %3$s.</string>
+    <string name="goal_off_track_desc">للوصول إلى \"%1$s\" (%2$d) بحلول %3$s، تحتاج إلى توفير ~%4$d/شهريًا — معدلك الحالي هو ~%5$d/شهريًا.</string>
+    <string name="goal_completed_desc">لقد خصصت بالفعل ما يكفي لتحقيق \"%1$s\" — تم بلوغ الهدف!</string>
+    <string name="goal_suggestion_desc">جرّب تقليل إنفاق %1$s بنسبة %2$d%% (~%3$d/شهريًا) للمساعدة في سد الفجوة.</string>
+
+    <string name="error_goal_invalid_name">يرجى إدخال اسم الهدف.</string>
+    <string name="error_goal_invalid_amount">يرجى إدخال مبلغ مستهدف صحيح.</string>
+    <string name="error_goal_deadline_past">يجب أن يكون الموعد النهائي في المستقبل.</string>
+
+    <string name="error_invalid_amount">يرجى إدخال مبلغ صحيح.</string>
+    <string name="error_no_speech_match">لم نتمكن من فهم ذلك. يرجى المحاولة مرة أخرى.</string>
+    <string name="error_amount_not_found">"تعذّر العثور على مبلغ في \"%1$s\". يرجى المحاولة مرة أخرى."</string>
+    <string name="error_recognition_unavailable">التعرف على الصوت غير متاح على هذا الجهاز</string>
+    <string name="error_speech_timeout">لم يتم رصد أي كلام. يرجى المحاولة مرة أخرى.</string>
+    <string name="error_mic_permission">إذن الميكروفون مطلوب.</string>
+    <string name="error_network">خطأ في الشبكة أثناء التعرف على الصوت.</string>
+    <string name="error_audio">خطأ في تسجيل الصوت.</string>
+    <string name="error_recognizer_busy">أداة التعرف على الصوت مشغولة. يرجى المحاولة مرة أخرى.</string>
+    <string name="error_recognition_generic">خطأ في التعرف (%1$d).</string>
+
+    <string name="nav_advisor">المستشار</string>
+
+    <string name="advisor_title">المستشار المالي</string>
+    <string name="advisor_section_title">نصائح مالية</string>
+    <string name="advisor_empty">لا توجد توصيات حاليًا. استمر في تسجيل معاملاتك!</string>
+    <string name="advisor_dismiss">تجاهل</string>
+    <string name="advisor_view_all">عرض الكل</string>
+    <string name="advisor_potential_savings">التوفير المحتمل: %1$s</string>
+
+    <string name="priority_critical">حرج</string>
+    <string name="priority_high">مرتفع</string>
+    <string name="priority_medium">متوسط</string>
+    <string name="priority_low">منخفض</string>
+
+    <string name="settings_advisor">المستشار المالي</string>
+    <string name="advisor_settings_title">إعدادات التحليل</string>
+    <string name="advisor_settings_small_purchase">حد المشتريات الصغيرة</string>
+    <string name="advisor_settings_top_category">الحد الأقصى لحصة الفئة الأكبر من الميزانية (%)</string>
+    <string name="advisor_settings_savings_rate">معدل الادخار المطلوب (%)</string>
+    <string name="advisor_settings_period_months">فترة التحليل (بالأشهر)</string>
+
+    <string name="advice_high_spending_title">إنفاق مرتفع هذا الشهر</string>
+    <string name="advice_high_spending_desc">أنفقت هذا الشهر أكثر بنسبة %1$d%% مقارنةً بالشهر الماضي.</string>
+
+    <string name="advice_category_growth_title">ارتفاع مصروفات %1$s</string>
+    <string name="advice_category_growth_desc">زادت مصروفات %1$s بنسبة %2$d%%.</string>
+
+    <string name="advice_small_purchases_title">العديد من المشتريات الصغيرة</string>
+    <string name="advice_small_purchases_desc">أجريت %1$d عملية شراء بأقل من %2$d هذا الشهر.</string>
+
+    <string name="advice_savings_low_title">معدل ادخار منخفض</string>
+    <string name="advice_savings_low_desc">معدل ادخارك %1$d%% — أقل من هدفك البالغ %2$d%%. حاول تقليل مصروفاتك بمقدار %3$d.</string>
+
+    <string name="advice_savings_positive_title">ادخار رائع!</string>
+    <string name="advice_savings_positive_desc">لقد ادخرت %1$d%% من دخلك هذا الشهر. واصل هذا الأداء!</string>
+
+    <string name="advice_recurring_title">تم اكتشاف دفعة متكررة</string>
+    <string name="advice_recurring_desc">لديك دفعة متكررة لـ %1$s بقيمة ~%2$d لمدة %3$d أشهر متتالية.</string>
+
+    <string name="advice_income_trend_title">انخفاض في الدخل</string>
+    <string name="advice_income_trend_desc">ينخفض دخلك منذ %1$d أشهر متتالية (تغيير بنسبة %2$d%%).</string>
+
+    <string name="advice_monthly_summary_title">ملخص شهري</string>
+    <string name="advice_monthly_summary_base">الدخل: %1$d، المصروفات: %2$d.</string>
+    <string name="advice_monthly_summary_top_category">أكبر فئة: %1$s (%2$d).</string>
+    <string name="advice_monthly_summary_save_more">حاول توفير المزيد الشهر القادم.</string>
+
+    <string name="advice_top_category_title">أكبر مصروف: %1$s</string>
+    <string name="advice_top_category_desc">يستحوذ %1$s على %2$d%% من ميزانيتك. قد يؤدي تقليله بنسبة %3$d%% إلى توفير ~%4$d سنويًا.</string>
+
+    <string name="notification_channel_name">تذكيرات النشاط</string>
+    <string name="notification_channel_description">يذكّرك بتسجيل الدخل والمصروفات عند عدم النشاط لعدة أيام.</string>
+    <string name="notification_reminder_title">لا تنسَ تتبع ميزانيتك</string>
+    <string name="notification_reminder_text">لم تقم بإضافة أي دخل أو مصروفات خلال آخر 3 أيام. اضغط لإضافة معاملات اليوم.</string>
+
+    <string name="category_food">طعام</string>
+    <string name="category_cafe">مقهى</string>
+    <string name="category_transport">مواصلات</string>
+    <string name="category_shopping">تسوق</string>
+    <string name="category_health">صحة</string>
+    <string name="category_utilities">فواتير</string>
+    <string name="category_entertainment">ترفيه</string>
+    <string name="category_savings">مدخرات</string>
+    <string name="category_other">أخرى</string>
+    <string name="category_salary">راتب</string>
+    <string name="category_freelance">عمل حر</string>
+    <string name="category_bonus">مكافأة</string>
+    <string name="category_gift">هدية</string>
+
+    <string name="onboarding_welcome_title">مرحبًا بك في VoiceBudget</string>
+    <string name="onboarding_language_step_title">اختر لغتك</string>
+    <string name="onboarding_currency_step_title">اختر عملتك</string>
+    <string name="onboarding_wallet_step_title">أنشئ محفظتك الأولى</string>
+    <string name="onboarding_wallet_name_hint">اسم المحفظة</string>
+    <string name="action_next">التالي</string>
+    <string name="action_create_wallet">إنشاء محفظة</string>
+
+    <string name="settings_wallets">المحافظ</string>
+    <string name="wallets_screen_title">المحافظ</string>
+    <string name="wallets_add_button">إضافة محفظة</string>
+    <string name="wallets_max_reached">يمكنك امتلاك ما يصل إلى محفظتين</string>
+    <string name="wallets_active_badge">نشطة</string>
+    <string name="wallets_new_dialog_title">محفظة جديدة</string>
+    <string name="wallets_field_name">الاسم</string>
+    <string name="wallets_field_currency">العملة</string>
+    <string name="wallet_default_name">محفظة %1$d</string>
+
+    <string name="category_transfer">تحويل</string>
+    <string name="transaction_transfer_to">تحويل إلى \"%1$s\"</string>
+    <string name="transaction_transfer_from">تحويل من \"%1$s\"</string>
+    <string name="wallets_transfer_button">تحويل بين المحافظ</string>
+    <string name="transfer_dialog_title">تحويل بين المحافظ</string>
+    <string name="transfer_field_from_amount">المبلغ المرسل (%1$s)</string>
+    <string name="transfer_field_to_amount">المبلغ المستلم (%1$s)</string>
+    <string name="transfer_swap_direction">تبديل الاتجاه</string>
+    <string name="transfer_confirm_button">تحويل</string>
+    <string name="transfer_rate_unavailable">سعر الصرف غير متوفر — أدخل المبلغ يدويًا</string>
+
+    <string name="dashboard_combined_balance_label">الإجمالي عبر جميع المحافظ</string>
+    <string name="dashboard_combined_balance_unavailable">تعذّر تحويل بعض المحافظ (سعر الصرف غير متوفر)</string>
+
+    <string name="settings_exchange_rate">سعر الصرف</string>
+    <string name="settings_exchange_rate_updated">آخر تحديث %1$s</string>
+    <string name="settings_exchange_rate_never">لم يتم التحميل بعد</string>
+    <string name="settings_exchange_rate_refresh">تحديث</string>
+
+    <string name="settings_budget_limits">حدود الميزانية</string>
+    <string name="budget_limits_screen_title">حدود الميزانية</string>
+    <string name="budget_limits_add_button">إضافة حد</string>
+    <string name="budget_limits_empty">لم يتم تعيين أي حدود بعد</string>
+    <string name="budget_limit_dialog_title">تعيين حد الميزانية</string>
+    <string name="budget_limit_field_category">الفئة</string>
+    <string name="budget_limit_field_amount">الحد الشهري</string>
+    <string name="budget_limit_save_button">حفظ</string>
+
+    <string name="settings_recurring_transactions">المدفوعات المتكررة</string>
+    <string name="recurring_screen_title">المدفوعات المتكررة</string>
+    <string name="recurring_add_button">إضافة دفعة متكررة</string>
+    <string name="recurring_empty">لا توجد مدفوعات متكررة بعد</string>
+    <string name="recurring_dialog_title">دفعة متكررة جديدة</string>
+    <string name="recurring_field_amount">المبلغ</string>
+    <string name="recurring_field_description">الوصف</string>
+    <string name="recurring_field_category">الفئة</string>
+    <string name="recurring_field_frequency">التكرار</string>
+    <string name="recurring_frequency_daily">يوميًا</string>
+    <string name="recurring_frequency_weekly">أسبوعيًا</string>
+    <string name="recurring_frequency_monthly">شهريًا</string>
+    <string name="recurring_next_run">التالي: %1$s</string>
+    <string name="recurring_save_button">حفظ</string>
+
+    <string name="settings_security">الأمان</string>
+    <string name="security_pin_toggle">رمز PIN</string>
+    <string name="security_biometric_toggle">فتح القفل بالبصمة الحيوية</string>
+    <string name="security_set_pin_title">تعيين رمز PIN</string>
+    <string name="security_confirm_pin_title">تأكيد رمز PIN</string>
+    <string name="security_enter_pin_title">أدخل رمز PIN</string>
+    <string name="security_pin_mismatch">رمزا PIN غير متطابقين. حاول مرة أخرى.</string>
+    <string name="security_wrong_pin">رمز PIN غير صحيح</string>
+    <string name="security_use_biometric_button">استخدام البصمة الحيوية</string>
+    <string name="security_change_pin_button">تغيير رمز PIN</string>
+
+    <string name="notification_budget_limit_channel_name">تنبيهات حد الميزانية</string>
+    <string name="notification_budget_limit_channel_description">تنبّهك عندما يقترب الإنفاق من حد ميزانية الفئة أو يتجاوزه</string>
+    <string name="notification_budget_limit_approaching_title">اقتراب من حد الميزانية</string>
+    <string name="notification_budget_limit_approaching_text">لقد أنفقت %1$s من حدك البالغ %2$s لفئة \"%3$s\" هذا الشهر</string>
+    <string name="notification_budget_limit_exceeded_title">تم تجاوز حد الميزانية</string>
+    <string name="notification_budget_limit_exceeded_text">لقد أنفقت %1$s، متجاوزًا حدك البالغ %2$s لفئة \"%3$s\" هذا الشهر</string>
+
+    <string name="msg_exchange_rate_refresh_failed">تعذّر تحديث أسعار الصرف. تحقق من اتصالك.</string>
+
+    <string name="widget_description">الرصيد + إضافة صوتية سريعة</string>
+    <string name="widget_balance_masked">••••••</string>
+    <string name="widget_add_transaction">إضافة معاملة</string>
+</resources>

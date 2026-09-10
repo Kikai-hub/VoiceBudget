@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="nav_dashboard">Tổng quan</string>
+    <string name="nav_transactions">Giao dịch</string>
+    <string name="nav_statistics">Thống kê</string>
+    <string name="nav_settings">Cài đặt</string>
+    <string name="nav_record_transaction">Ghi âm giao dịch</string>
+    <string name="nav_manual_transaction">Thêm giao dịch thủ công</string>
+
+    <string name="dashboard_recent_transactions">Giao dịch gần đây</string>
+    <string name="dashboard_empty">Chưa có giao dịch nào. Nhấn vào biểu tượng micro để thêm.</string>
+    <string name="this_month">Tháng này</string>
+    <string name="income">Thu nhập</string>
+    <string name="expenses">Chi tiêu</string>
+    <string name="balance">Số dư</string>
+
+    <string name="settings_currency">Đơn vị tiền tệ</string>
+    <string name="settings_language">Ngôn ngữ</string>
+    <string name="settings_theme">Giao diện</string>
+    <string name="settings_data">Dữ liệu</string>
+    <string name="settings_export_csv">Xuất dữ liệu (CSV)</string>
+    <string name="settings_import_csv">Nhập dữ liệu (CSV)</string>
+    <string name="settings_clear_all_data">Xóa toàn bộ dữ liệu</string>
+    <string name="dialog_clear_all_data_title">Xóa toàn bộ dữ liệu?</string>
+    <string name="dialog_clear_all_data_message">Thao tác này sẽ xóa vĩnh viễn toàn bộ giao dịch. Không thể hoàn tác.</string>
+
+    <string name="settings_categories">Danh mục</string>
+    <string name="settings_manage_categories">Quản lý danh mục</string>
+    <string name="categories_add_new">Thêm danh mục</string>
+    <string name="categories_add_title">Danh mục mới</string>
+    <string name="categories_edit_title">Chỉnh sửa danh mục</string>
+    <string name="categories_empty">Bạn chưa thêm danh mục tùy chỉnh nào.</string>
+    <string name="categories_field_name">Tên danh mục</string>
+    <string name="categories_field_icon">Biểu tượng</string>
+    <string name="categories_field_color">Màu sắc</string>
+    <string name="categories_delete_title">Xóa danh mục?</string>
+    <string name="categories_delete_message">"\"%1$s\" sẽ bị xóa vĩnh viễn. Các giao dịch dùng danh mục này sẽ chuyển về \"Khác\"."</string>
+    <string name="error_category_name_required">Vui lòng nhập tên danh mục.</string>
+
+    <string name="action_clear">Xóa</string>
+    <string name="action_cancel">Hủy</string>
+    <string name="action_delete">Xóa</string>
+    <string name="action_edit">Sửa</string>
+    <string name="action_save">Lưu</string>
+    <string name="action_retry">Thử lại</string>
+    <string name="action_try_again">Thử lại</string>
+    <string name="action_close">Đóng</string>
+
+    <string name="theme_light">Sáng</string>
+    <string name="theme_dark">Tối</string>
+    <string name="theme_system">Theo hệ thống</string>
+
+    <string name="msg_all_data_cleared">Đã xóa toàn bộ dữ liệu.</string>
+    <string name="msg_advisor_settings_saved">Đã lưu cài đặt cố vấn tài chính.</string>
+    <string name="msg_export_success">Xuất dữ liệu thành công.</string>
+    <string name="msg_export_failed">Xuất dữ liệu thất bại: %1$s</string>
+    <string name="msg_import_success">Đã nhập %1$d giao dịch.</string>
+    <string name="msg_import_failed">Nhập dữ liệu thất bại: %1$s</string>
+
+    <string name="transactions_empty_filtered">Không có giao dịch nào phù hợp với bộ lọc này.</string>
+    <string name="dialog_delete_transaction_title">Xóa giao dịch?</string>
+    <string name="dialog_delete_transaction_message">"\"%1$s\" sẽ bị xóa vĩnh viễn."</string>
+    <string name="category_all">Tất cả danh mục</string>
+    <string name="date_range_all_time">Toàn bộ thời gian</string>
+    <string name="date_range_last_month">Tháng trước</string>
+    <string name="date_range_last_7_days">7 ngày qua</string>
+    <string name="edit_transaction_title">Chỉnh sửa giao dịch</string>
+    <string name="confirm_transaction_title">Xác nhận giao dịch</string>
+    <string name="manual_transaction_title">Thêm giao dịch</string>
+
+    <string name="voice_start_recording">Bắt đầu ghi âm</string>
+    <string name="voice_tap_to_speak">Nhấn để nói</string>
+    <string name="voice_listening_desc">Đang nghe</string>
+    <string name="voice_listening">Đang nghe…</string>
+    <string name="voice_saving">Đang lưu…</string>
+
+    <string name="field_amount">Số tiền</string>
+    <string name="field_category">Danh mục</string>
+    <string name="field_description">Mô tả</string>
+    <string name="type_expense">Chi tiêu</string>
+
+    <string name="stats_expense_breakdown">Phân tích chi tiêu (tháng này)</string>
+    <string name="stats_no_expenses">Chưa có khoản chi nào được ghi nhận trong tháng này.</string>
+    <string name="stats_income_vs_expenses">Thu nhập so với chi tiêu (6 tháng gần đây)</string>
+
+    <string name="goals_title">Mục tiêu tài chính</string>
+    <string name="goals_add_goal">Thêm mục tiêu</string>
+    <string name="goals_empty">Chưa có mục tiêu nào. Nhấn \"Thêm mục tiêu\" để bắt đầu lên kế hoạch tiết kiệm!</string>
+    <string name="goals_field_name">Tên mục tiêu</string>
+    <string name="goals_field_amount">Số tiền mục tiêu</string>
+    <string name="goals_field_month">Tháng</string>
+    <string name="goals_field_year">Năm</string>
+    <string name="goals_dialog_add_title">Thêm mục tiêu tài chính</string>
+    <string name="goals_months_remaining">Còn %1$d tháng</string>
+    <string name="goals_required_monthly">Cần: %1$s/tháng</string>
+    <string name="goals_current_monthly">Hiện tại: %1$s/tháng</string>
+    <string name="goals_on_track">Đúng tiến độ</string>
+    <string name="goals_off_track">Chậm tiến độ</string>
+    <string name="goals_completed">Đã hoàn thành</string>
+    <string name="goals_delete_title">Xóa mục tiêu?</string>
+    <string name="goals_delete_message">"\"%1$s\" sẽ bị xóa vĩnh viễn."</string>
+    <string name="goals_saved_of_target">Đã tiết kiệm %1$s trong tổng %2$s (%3$d%%)</string>
+
+    <string name="goals_set_aside">Dành ra</string>
+    <string name="goals_set_aside_dialog_title">Dành tiền để tiết kiệm</string>
+    <string name="goals_set_aside_field_goal">Mục tiêu</string>
+    <string name="goals_set_aside_field_amount">Số tiền</string>
+    <string name="error_goal_contribution_invalid_amount">Vui lòng nhập số tiền hợp lệ.</string>
+
+    <string name="goal_on_track_desc">Với tốc độ hiện tại (~%4$d/tháng), bạn đang đúng tiến độ để đạt mục tiêu \"%1$s\" (%2$d) trước %3$s.</string>
+    <string name="goal_off_track_desc">Để đạt mục tiêu \"%1$s\" (%2$d) trước %3$s, bạn cần tiết kiệm ~%4$d/tháng — trong khi tốc độ hiện tại của bạn chỉ khoảng ~%5$d/tháng.</string>
+    <string name="goal_completed_desc">Bạn đã dành đủ tiền cho mục tiêu \"%1$s\" — đã đạt mục tiêu!</string>
+    <string name="goal_suggestion_desc">Hãy thử cắt giảm chi tiêu cho %1$s khoảng %2$d%% (~%3$d/tháng) để rút ngắn khoảng cách này.</string>
+
+    <string name="error_goal_invalid_name">Vui lòng nhập tên mục tiêu.</string>
+    <string name="error_goal_invalid_amount">Vui lòng nhập số tiền mục tiêu hợp lệ.</string>
+    <string name="error_goal_deadline_past">Hạn chót phải là một thời điểm trong tương lai.</string>
+
+    <string name="error_invalid_amount">Vui lòng nhập số tiền hợp lệ.</string>
+    <string name="error_no_speech_match">Không nhận diện được. Vui lòng thử lại.</string>
+    <string name="error_amount_not_found">"Không tìm thấy số tiền trong \"%1$s\". Vui lòng thử lại."</string>
+    <string name="error_recognition_unavailable">Nhận diện giọng nói không khả dụng trên thiết bị này</string>
+    <string name="error_speech_timeout">Không phát hiện giọng nói. Vui lòng thử lại.</string>
+    <string name="error_mic_permission">Cần được cấp quyền sử dụng micro.</string>
+    <string name="error_network">Lỗi mạng trong quá trình nhận diện.</string>
+    <string name="error_audio">Lỗi ghi âm.</string>
+    <string name="error_recognizer_busy">Bộ nhận diện đang bận. Vui lòng thử lại.</string>
+    <string name="error_recognition_generic">Lỗi nhận diện (%1$d).</string>
+
+    <string name="nav_advisor">Cố vấn</string>
+
+    <string name="advisor_title">Cố vấn tài chính</string>
+    <string name="advisor_section_title">Mẹo tài chính</string>
+    <string name="advisor_empty">Hiện chưa có đề xuất nào. Hãy tiếp tục ghi lại giao dịch của bạn!</string>
+    <string name="advisor_dismiss">Bỏ qua</string>
+    <string name="advisor_view_all">Xem tất cả</string>
+    <string name="advisor_potential_savings">Tiềm năng tiết kiệm: %1$s</string>
+
+    <string name="priority_critical">Nghiêm trọng</string>
+    <string name="priority_high">Cao</string>
+    <string name="priority_medium">Trung bình</string>
+    <string name="priority_low">Thấp</string>
+
+    <string name="settings_advisor">Cố vấn tài chính</string>
+    <string name="advisor_settings_title">Cài đặt phân tích</string>
+    <string name="advisor_settings_small_purchase">Ngưỡng giao dịch nhỏ</string>
+    <string name="advisor_settings_top_category">Giới hạn tỷ lệ ngân sách của danh mục cao nhất (%)</string>
+    <string name="advisor_settings_savings_rate">Tỷ lệ tiết kiệm mong muốn (%)</string>
+    <string name="advisor_settings_period_months">Khoảng thời gian phân tích (tháng)</string>
+
+    <string name="advice_high_spending_title">Chi tiêu cao trong tháng này</string>
+    <string name="advice_high_spending_desc">Bạn đã chi nhiều hơn %1$d%% so với tháng trước.</string>
+
+    <string name="advice_category_growth_title">Chi tiêu cho %1$s tăng</string>
+    <string name="advice_category_growth_desc">Chi tiêu cho %1$s đã tăng %2$d%%.</string>
+
+    <string name="advice_small_purchases_title">Nhiều khoản chi nhỏ</string>
+    <string name="advice_small_purchases_desc">Bạn đã thực hiện %1$d giao dịch dưới %2$d trong tháng này.</string>
+
+    <string name="advice_savings_low_title">Tỷ lệ tiết kiệm thấp</string>
+    <string name="advice_savings_low_desc">Tỷ lệ tiết kiệm của bạn là %1$d%% — thấp hơn mục tiêu %2$d%%. Hãy thử giảm chi tiêu %3$d.</string>
+
+    <string name="advice_savings_positive_title">Tiết kiệm tốt!</string>
+    <string name="advice_savings_positive_desc">Bạn đã tiết kiệm %1$d%% thu nhập trong tháng này. Hãy tiếp tục phát huy!</string>
+
+    <string name="advice_recurring_title">Phát hiện khoản chi định kỳ</string>
+    <string name="advice_recurring_desc">Bạn có một khoản chi định kỳ cho %1$s khoảng ~%2$d trong %3$d tháng liên tiếp.</string>
+
+    <string name="advice_income_trend_title">Thu nhập giảm</string>
+    <string name="advice_income_trend_desc">Thu nhập của bạn đã giảm trong %1$d tháng liên tiếp (thay đổi %2$d%%).</string>
+
+    <string name="advice_monthly_summary_title">Tóm tắt tháng</string>
+    <string name="advice_monthly_summary_base">Thu nhập: %1$d, Chi tiêu: %2$d.</string>
+    <string name="advice_monthly_summary_top_category">Danh mục lớn nhất: %1$s (%2$d).</string>
+    <string name="advice_monthly_summary_save_more">Hãy cố gắng tiết kiệm nhiều hơn vào tháng tới.</string>
+
+    <string name="advice_top_category_title">Khoản chi lớn nhất: %1$s</string>
+    <string name="advice_top_category_desc">%1$s chiếm %2$d%% ngân sách của bạn. Giảm khoản này %3$d%% có thể giúp tiết kiệm ~%4$d mỗi năm.</string>
+
+    <string name="notification_channel_name">Nhắc nhở hoạt động</string>
+    <string name="notification_channel_description">Nhắc bạn ghi lại thu nhập và chi tiêu khi bạn không sử dụng ứng dụng trong vài ngày.</string>
+    <string name="notification_reminder_title">Đừng quên ghi lại ngân sách của bạn</string>
+    <string name="notification_reminder_text">Bạn chưa thêm khoản thu nhập hay chi tiêu nào trong 3 ngày qua. Nhấn để thêm giao dịch hôm nay.</string>
+
+    <string name="category_food">Ăn uống</string>
+    <string name="category_cafe">Cà phê</string>
+    <string name="category_transport">Di chuyển</string>
+    <string name="category_shopping">Mua sắm</string>
+    <string name="category_health">Sức khỏe</string>
+    <string name="category_utilities">Hóa đơn tiện ích</string>
+    <string name="category_entertainment">Giải trí</string>
+    <string name="category_savings">Tiết kiệm</string>
+    <string name="category_other">Khác</string>
+    <string name="category_salary">Lương</string>
+    <string name="category_freelance">Freelance</string>
+    <string name="category_bonus">Thưởng</string>
+    <string name="category_gift">Quà tặng</string>
+
+    <string name="onboarding_welcome_title">Chào mừng đến với VoiceBudget</string>
+    <string name="onboarding_language_step_title">Chọn ngôn ngữ của bạn</string>
+    <string name="onboarding_currency_step_title">Chọn đơn vị tiền tệ của bạn</string>
+    <string name="onboarding_wallet_step_title">Tạo ví đầu tiên của bạn</string>
+    <string name="onboarding_wallet_name_hint">Tên ví</string>
+    <string name="action_next">Tiếp theo</string>
+    <string name="action_create_wallet">Tạo ví</string>
+
+    <string name="settings_wallets">Ví</string>
+    <string name="wallets_screen_title">Ví</string>
+    <string name="wallets_add_button">Thêm ví</string>
+    <string name="wallets_max_reached">Bạn chỉ có thể tạo tối đa 2 ví</string>
+    <string name="wallets_active_badge">Đang dùng</string>
+    <string name="wallets_new_dialog_title">Ví mới</string>
+    <string name="wallets_field_name">Tên</string>
+    <string name="wallets_field_currency">Đơn vị tiền tệ</string>
+    <string name="wallet_default_name">Ví %1$d</string>
+
+    <string name="category_transfer">Chuyển khoản</string>
+    <string name="transaction_transfer_to">Chuyển đến \"%1$s\"</string>
+    <string name="transaction_transfer_from">Chuyển từ \"%1$s\"</string>
+    <string name="wallets_transfer_button">Chuyển khoản giữa các ví</string>
+    <string name="transfer_dialog_title">Chuyển khoản giữa các ví</string>
+    <string name="transfer_field_from_amount">Số tiền gửi (%1$s)</string>
+    <string name="transfer_field_to_amount">Số tiền nhận (%1$s)</string>
+    <string name="transfer_swap_direction">Đổi chiều</string>
+    <string name="transfer_confirm_button">Chuyển khoản</string>
+    <string name="transfer_rate_unavailable">Không có tỷ giá — vui lòng nhập số tiền thủ công</string>
+
+    <string name="dashboard_combined_balance_label">Tổng tất cả các ví</string>
+    <string name="dashboard_combined_balance_unavailable">Một số ví không thể quy đổi (không có tỷ giá)</string>
+
+    <string name="settings_exchange_rate">Tỷ giá hối đoái</string>
+    <string name="settings_exchange_rate_updated">Đã cập nhật %1$s</string>
+    <string name="settings_exchange_rate_never">Chưa được tải</string>
+    <string name="settings_exchange_rate_refresh">Làm mới</string>
+
+    <string name="settings_budget_limits">Hạn mức ngân sách</string>
+    <string name="budget_limits_screen_title">Hạn mức ngân sách</string>
+    <string name="budget_limits_add_button">Thêm hạn mức</string>
+    <string name="budget_limits_empty">Chưa có hạn mức nào được đặt</string>
+    <string name="budget_limit_dialog_title">Đặt hạn mức ngân sách</string>
+    <string name="budget_limit_field_category">Danh mục</string>
+    <string name="budget_limit_field_amount">Hạn mức hằng tháng</string>
+    <string name="budget_limit_save_button">Lưu</string>
+
+    <string name="settings_recurring_transactions">Khoản thanh toán định kỳ</string>
+    <string name="recurring_screen_title">Khoản thanh toán định kỳ</string>
+    <string name="recurring_add_button">Thêm khoản thanh toán định kỳ</string>
+    <string name="recurring_empty">Chưa có khoản thanh toán định kỳ</string>
+    <string name="recurring_dialog_title">Khoản thanh toán định kỳ mới</string>
+    <string name="recurring_field_amount">Số tiền</string>
+    <string name="recurring_field_description">Mô tả</string>
+    <string name="recurring_field_category">Danh mục</string>
+    <string name="recurring_field_frequency">Tần suất</string>
+    <string name="recurring_frequency_daily">Hằng ngày</string>
+    <string name="recurring_frequency_weekly">Hằng tuần</string>
+    <string name="recurring_frequency_monthly">Hằng tháng</string>
+    <string name="recurring_next_run">Kế tiếp: %1$s</string>
+    <string name="recurring_save_button">Lưu</string>
+
+    <string name="settings_security">Bảo mật</string>
+    <string name="security_pin_toggle">Mã PIN</string>
+    <string name="security_biometric_toggle">Mở khóa bằng sinh trắc học</string>
+    <string name="security_set_pin_title">Đặt mã PIN</string>
+    <string name="security_confirm_pin_title">Xác nhận mã PIN</string>
+    <string name="security_enter_pin_title">Nhập mã PIN</string>
+    <string name="security_pin_mismatch">Mã PIN không khớp. Vui lòng thử lại.</string>
+    <string name="security_wrong_pin">Mã PIN sai</string>
+    <string name="security_use_biometric_button">Dùng sinh trắc học</string>
+    <string name="security_change_pin_button">Đổi mã PIN</string>
+
+    <string name="notification_budget_limit_channel_name">Cảnh báo hạn mức ngân sách</string>
+    <string name="notification_budget_limit_channel_description">Cảnh báo khi chi tiêu gần đạt hoặc vượt hạn mức ngân sách của danh mục</string>
+    <string name="notification_budget_limit_approaching_title">Sắp đạt hạn mức ngân sách</string>
+    <string name="notification_budget_limit_approaching_text">Bạn đã chi %1$s trong hạn mức %2$s cho \"%3$s\" tháng này</string>
+    <string name="notification_budget_limit_exceeded_title">Đã vượt hạn mức ngân sách</string>
+    <string name="notification_budget_limit_exceeded_text">Bạn đã chi %1$s, vượt hạn mức %2$s cho \"%3$s\" tháng này</string>
+
+    <string name="msg_exchange_rate_refresh_failed">Không thể cập nhật tỷ giá hối đoái. Vui lòng kiểm tra kết nối.</string>
+
+    <string name="widget_description">Số dư + thêm nhanh bằng giọng nói</string>
+    <string name="widget_balance_masked">••••••</string>
+    <string name="widget_add_transaction">Thêm giao dịch</string>
+</resources>

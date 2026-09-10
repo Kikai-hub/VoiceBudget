@@ -10,6 +10,7 @@ import com.voicebudget.domain.usecase.ContributeToGoalUseCase
 import com.voicebudget.domain.usecase.DeleteGoalUseCase
 import com.voicebudget.domain.usecase.GetGoalsWithStrategyUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -62,17 +63,17 @@ class GoalsViewModel @Inject constructor(
         if (current !is GoalDialogState.Editing) return
 
         if (current.name.isBlank()) {
-            _dialogState.value = current.copy(error = context.getString(R.string.error_goal_invalid_name))
+            _dialogState.value = current.copy(error = context.withAppLocale().getString(R.string.error_goal_invalid_name))
             return
         }
         val amount = current.amountText.replace(',', '.').toDoubleOrNull()
         if (amount == null || amount <= 0.0) {
-            _dialogState.value = current.copy(error = context.getString(R.string.error_goal_invalid_amount))
+            _dialogState.value = current.copy(error = context.withAppLocale().getString(R.string.error_goal_invalid_amount))
             return
         }
         val targetMonth = YearMonth.of(current.year, current.month)
         if (targetMonth < YearMonth.now()) {
-            _dialogState.value = current.copy(error = context.getString(R.string.error_goal_deadline_past))
+            _dialogState.value = current.copy(error = context.withAppLocale().getString(R.string.error_goal_deadline_past))
             return
         }
 

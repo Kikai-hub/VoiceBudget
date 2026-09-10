@@ -20,6 +20,7 @@ import com.voicebudget.domain.usecase.RefreshExchangeRatesUseCase
 import com.voicebudget.domain.usecase.UpdateCurrencyUseCase
 import com.voicebudget.domain.usecase.UpdateRecognitionLanguageUseCase
 import com.voicebudget.domain.usecase.UpdateThemeModeUseCase
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -71,7 +72,7 @@ class SettingsViewModel @Inject constructor(
             val result = refreshExchangeRatesUseCase()
             _isRefreshingRates.value = false
             if (result.isFailure) {
-                _message.value = context.getString(R.string.msg_exchange_rate_refresh_failed)
+                _message.value = context.withAppLocale().getString(R.string.msg_exchange_rate_refresh_failed)
             }
         }
     }
@@ -92,7 +93,7 @@ class SettingsViewModel @Inject constructor(
     fun clearAllData() {
         viewModelScope.launch {
             clearAllDataUseCase()
-            _message.value = context.getString(R.string.msg_all_data_cleared)
+            _message.value = context.withAppLocale().getString(R.string.msg_all_data_cleared)
         }
     }
 
@@ -100,13 +101,14 @@ class SettingsViewModel @Inject constructor(
         viewModelScope.launch {
             runCatching {
                 val transactions = getTransactionsUseCase().first()
-                val csv = TransactionCsv.toCsv(transactions) { category -> categoryLabel(context, category) }
+                val localizedContext = context.withAppLocale()
+                val csv = TransactionCsv.toCsv(transactions) { category -> categoryLabel(localizedContext, category) }
                 context.contentResolver.openOutputStream(uri)?.use { it.write(csv.toByteArray()) }
                     ?: error("Could not open file for writing")
             }.onSuccess {
-                _message.value = context.getString(R.string.msg_export_success)
+                _message.value = context.withAppLocale().getString(R.string.msg_export_success)
             }.onFailure {
-                _message.value = context.getString(R.string.msg_export_failed, it.message.toString())
+                _message.value = context.withAppLocale().getString(R.string.msg_export_failed, it.message.toString())
             }
         }
     }
@@ -120,9 +122,9 @@ class SettingsViewModel @Inject constructor(
                 transactions.forEach { addTransactionUseCase(it) }
                 transactions.size
             }.onSuccess { count ->
-                _message.value = context.getString(R.string.msg_import_success, count)
+                _message.value = context.withAppLocale().getString(R.string.msg_import_success, count)
             }.onFailure {
-                _message.value = context.getString(R.string.msg_import_failed, it.message.toString())
+                _message.value = context.withAppLocale().getString(R.string.msg_import_failed, it.message.toString())
             }
         }
     }

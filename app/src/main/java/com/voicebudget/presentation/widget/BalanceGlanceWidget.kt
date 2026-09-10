@@ -28,6 +28,7 @@ import androidx.glance.unit.ColorProvider
 import com.voicebudget.MainActivity
 import com.voicebudget.R
 import com.voicebudget.utils.formatAmount
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.EntryPointAccessors
 import kotlinx.coroutines.flow.first
 
@@ -40,9 +41,10 @@ class BalanceGlanceWidget : GlanceAppWidget() {
         val balance = getCombinedBalance().first()
         val isPinSet = observeSecuritySettings().first().isPinSet
 
+        val localizedContext = context.withAppLocale()
         val balanceText = when {
             balance == null -> "--"
-            isPinSet -> context.getString(R.string.widget_balance_masked)
+            isPinSet -> localizedContext.getString(R.string.widget_balance_masked)
             else -> formatAmount(balance.amount, balance.currency.symbol)
         }
 
@@ -53,7 +55,7 @@ class BalanceGlanceWidget : GlanceAppWidget() {
 
         provideContent {
             WidgetContent(
-                appName = context.getString(R.string.app_name),
+                appName = localizedContext.getString(R.string.app_name),
                 balanceText = balanceText,
                 onOpenApp = actionStartActivity(Intent(context, MainActivity::class.java)),
                 onAddClick = actionStartActivity(addTransactionIntent),

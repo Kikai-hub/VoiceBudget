@@ -15,6 +15,7 @@ import com.voicebudget.domain.usecase.AddTransactionUseCase
 import com.voicebudget.domain.usecase.ObserveCustomCategoriesUseCase
 import com.voicebudget.domain.usecase.ObserveSettingsUseCase
 import com.voicebudget.domain.usecase.ParseVoiceInputUseCase
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Job
@@ -85,7 +86,7 @@ class AddTransactionViewModel @Inject constructor(
         if (current !is AddTransactionUiState.Confirming) return
         val amount = current.draft.amountText.replace(',', '.').toDoubleOrNull()
         if (amount == null || amount <= 0.0) {
-            _uiState.value = AddTransactionUiState.Error(context.getString(R.string.error_invalid_amount))
+            _uiState.value = AddTransactionUiState.Error(context.withAppLocale().getString(R.string.error_invalid_amount))
             return
         }
 
@@ -118,8 +119,8 @@ class AddTransactionViewModel @Inject constructor(
     }
 
     private fun failureMessage(reason: ParseFailureReason, text: String): String = when (reason) {
-        ParseFailureReason.EMPTY_INPUT -> context.getString(R.string.error_no_speech_match)
-        ParseFailureReason.AMOUNT_NOT_FOUND -> context.getString(R.string.error_amount_not_found, text)
+        ParseFailureReason.EMPTY_INPUT -> context.withAppLocale().getString(R.string.error_no_speech_match)
+        ParseFailureReason.AMOUNT_NOT_FOUND -> context.withAppLocale().getString(R.string.error_amount_not_found, text)
     }
 
     override fun onCleared() {

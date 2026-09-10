@@ -11,6 +11,7 @@ import com.voicebudget.domain.advisor.FinancialAdvice
 import com.voicebudget.domain.advisor.calculators.CategoryAnalyzer
 import com.voicebudget.domain.advisor.calculators.MonthlyExpenseCalculator
 import com.voicebudget.domain.model.categoryLabelRes
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.roundToInt
@@ -42,13 +43,14 @@ class TopCategoryBudgetAdviceGenerator @Inject constructor(
         val yearlySaving = top.amount * REDUCTION_FACTOR * MONTHS_IN_YEAR
         val id = "top_category_${top.category.name}_${context.currentMonth}"
         val priority = if (sharePercent >= 50.0) AdvicePriority.HIGH else AdvicePriority.MEDIUM
-        val displayName = androidContext.getString(categoryLabelRes(top.category))
+        val localizedContext = androidContext.withAppLocale()
+        val displayName = localizedContext.getString(categoryLabelRes(top.category))
 
         return listOf(
             FinancialAdvice(
                 id = id,
-                title = androidContext.getString(R.string.advice_top_category_title, displayName),
-                description = androidContext.getString(
+                title = localizedContext.getString(R.string.advice_top_category_title, displayName),
+                description = localizedContext.getString(
                     R.string.advice_top_category_desc,
                     displayName,
                     sharePercent.roundToInt(),

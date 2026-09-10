@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_dashboard">Dasbor</string>
+    <string name="nav_transactions">Transaksi</string>
+    <string name="nav_statistics">Statistik</string>
+    <string name="nav_settings">Pengaturan</string>
+    <string name="nav_record_transaction">Rekam transaksi</string>
+    <string name="nav_manual_transaction">Tambah transaksi manual</string>
+
+    <string name="dashboard_recent_transactions">Transaksi terbaru</string>
+    <string name="dashboard_empty">Belum ada transaksi. Ketuk mikrofon untuk menambahkan.</string>
+    <string name="this_month">Bulan ini</string>
+    <string name="income">Pemasukan</string>
+    <string name="expenses">Pengeluaran</string>
+    <string name="balance">Saldo</string>
+
+    <string name="settings_currency">Mata uang</string>
+    <string name="settings_language">Bahasa</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_data">Data</string>
+    <string name="settings_export_csv">Ekspor database (CSV)</string>
+    <string name="settings_import_csv">Impor database (CSV)</string>
+    <string name="settings_clear_all_data">Hapus semua data</string>
+    <string name="dialog_clear_all_data_title">Hapus semua data?</string>
+    <string name="dialog_clear_all_data_message">Semua transaksi akan dihapus secara permanen. Tindakan ini tidak dapat dibatalkan.</string>
+
+    <string name="settings_categories">Kategori</string>
+    <string name="settings_manage_categories">Kelola kategori</string>
+    <string name="categories_add_new">Tambah kategori</string>
+    <string name="categories_add_title">Kategori baru</string>
+    <string name="categories_edit_title">Edit kategori</string>
+    <string name="categories_empty">Anda belum menambahkan kategori khusus.</string>
+    <string name="categories_field_name">Nama kategori</string>
+    <string name="categories_field_icon">Ikon</string>
+    <string name="categories_field_color">Warna</string>
+    <string name="categories_delete_title">Hapus kategori?</string>
+    <string name="categories_delete_message">"\"%1$s\" akan dihapus secara permanen. Transaksi yang menggunakannya akan beralih ke \"Lainnya\"."</string>
+    <string name="error_category_name_required">Masukkan nama kategori.</string>
+
+    <string name="action_clear">Bersihkan</string>
+    <string name="action_cancel">Batal</string>
+    <string name="action_delete">Hapus</string>
+    <string name="action_edit">Edit</string>
+    <string name="action_save">Simpan</string>
+    <string name="action_retry">Coba lagi</string>
+    <string name="action_try_again">Coba lagi</string>
+    <string name="action_close">Tutup</string>
+
+    <string name="theme_light">Terang</string>
+    <string name="theme_dark">Gelap</string>
+    <string name="theme_system">Sistem</string>
+
+    <string name="msg_all_data_cleared">Semua data telah dihapus.</string>
+    <string name="msg_advisor_settings_saved">Pengaturan penasihat telah disimpan.</string>
+    <string name="msg_export_success">Berhasil diekspor.</string>
+    <string name="msg_export_failed">Ekspor gagal: %1$s</string>
+    <string name="msg_import_success">Berhasil mengimpor %1$d transaksi.</string>
+    <string name="msg_import_failed">Impor gagal: %1$s</string>
+
+    <string name="transactions_empty_filtered">Tidak ada transaksi yang cocok dengan filter ini.</string>
+    <string name="dialog_delete_transaction_title">Hapus transaksi?</string>
+    <string name="dialog_delete_transaction_message">"\"%1$s\" akan dihapus secara permanen."</string>
+    <string name="category_all">Semua kategori</string>
+    <string name="date_range_all_time">Sepanjang waktu</string>
+    <string name="date_range_last_month">Bulan lalu</string>
+    <string name="date_range_last_7_days">7 hari terakhir</string>
+    <string name="edit_transaction_title">Edit transaksi</string>
+    <string name="confirm_transaction_title">Konfirmasi transaksi</string>
+    <string name="manual_transaction_title">Tambah transaksi</string>
+
+    <string name="voice_start_recording">Mulai merekam</string>
+    <string name="voice_tap_to_speak">Ketuk untuk bicara</string>
+    <string name="voice_listening_desc">Mendengarkan</string>
+    <string name="voice_listening">Mendengarkan…</string>
+    <string name="voice_saving">Menyimpan…</string>
+
+    <string name="field_amount">Jumlah</string>
+    <string name="field_category">Kategori</string>
+    <string name="field_description">Deskripsi</string>
+    <string name="type_expense">Pengeluaran</string>
+
+    <string name="stats_expense_breakdown">Rincian pengeluaran (bulan ini)</string>
+    <string name="stats_no_expenses">Belum ada pengeluaran tercatat bulan ini.</string>
+    <string name="stats_income_vs_expenses">Pemasukan vs pengeluaran (6 bulan terakhir)</string>
+
+    <string name="goals_title">Tujuan Keuangan</string>
+    <string name="goals_add_goal">Tambah tujuan</string>
+    <string name="goals_empty">Belum ada tujuan. Ketuk \"Tambah tujuan\" untuk mulai merencanakan tabungan Anda!</string>
+    <string name="goals_field_name">Nama tujuan</string>
+    <string name="goals_field_amount">Jumlah target</string>
+    <string name="goals_field_month">Bulan</string>
+    <string name="goals_field_year">Tahun</string>
+    <string name="goals_dialog_add_title">Tambah tujuan keuangan</string>
+    <string name="goals_months_remaining">%1$d bulan tersisa</string>
+    <string name="goals_required_monthly">Diperlukan: %1$s/bulan</string>
+    <string name="goals_current_monthly">Saat ini: %1$s/bulan</string>
+    <string name="goals_on_track">Sesuai target</string>
+    <string name="goals_off_track">Tidak sesuai target</string>
+    <string name="goals_completed">Selesai</string>
+    <string name="goals_delete_title">Hapus tujuan?</string>
+    <string name="goals_delete_message">"\"%1$s\" akan dihapus secara permanen."</string>
+    <string name="goals_saved_of_target">%1$s dari %2$s terkumpul (%3$d%%)</string>
+
+    <string name="goals_set_aside">Sisihkan dana</string>
+    <string name="goals_set_aside_dialog_title">Sisihkan uang</string>
+    <string name="goals_set_aside_field_goal">Tujuan</string>
+    <string name="goals_set_aside_field_amount">Jumlah</string>
+    <string name="error_goal_contribution_invalid_amount">Masukkan jumlah yang valid.</string>
+
+    <string name="goal_on_track_desc">Dengan kecepatan Anda saat ini (~%4$d/bulan), Anda berada di jalur yang tepat untuk mencapai \"%1$s\" (%2$d) pada %3$s.</string>
+    <string name="goal_off_track_desc">Untuk mencapai \"%1$s\" (%2$d) pada %3$s, Anda perlu menabung ~%4$d/bulan — kecepatan Anda saat ini adalah ~%5$d/bulan.</string>
+    <string name="goal_completed_desc">Anda telah menyisihkan cukup dana untuk \"%1$s\" — tujuan tercapai!</string>
+    <string name="goal_suggestion_desc">Coba kurangi pengeluaran %1$s sebesar %2$d%% (~%3$d/bulan) untuk membantu menutup kekurangannya.</string>
+
+    <string name="error_goal_invalid_name">Masukkan nama tujuan.</string>
+    <string name="error_goal_invalid_amount">Masukkan jumlah target yang valid.</string>
+    <string name="error_goal_deadline_past">Tenggat waktu harus di masa depan.</string>
+
+    <string name="error_invalid_amount">Masukkan jumlah yang valid.</string>
+    <string name="error_no_speech_match">Tidak dapat menangkap suara. Silakan coba lagi.</string>
+    <string name="error_amount_not_found">"Tidak dapat menemukan jumlah dalam \"%1$s\". Silakan coba lagi."</string>
+    <string name="error_recognition_unavailable">Pengenalan suara tidak tersedia di perangkat ini</string>
+    <string name="error_speech_timeout">Tidak ada suara terdeteksi. Silakan coba lagi.</string>
+    <string name="error_mic_permission">Izin mikrofon diperlukan.</string>
+    <string name="error_network">Kesalahan jaringan saat pengenalan suara.</string>
+    <string name="error_audio">Kesalahan perekaman audio.</string>
+    <string name="error_recognizer_busy">Pengenal suara sedang sibuk. Silakan coba lagi.</string>
+    <string name="error_recognition_generic">Kesalahan pengenalan (%1$d).</string>
+
+    <string name="nav_advisor">Penasihat</string>
+
+    <string name="advisor_title">Penasihat Keuangan</string>
+    <string name="advisor_section_title">Tips Keuangan</string>
+    <string name="advisor_empty">Belum ada rekomendasi saat ini. Terus catat transaksi Anda!</string>
+    <string name="advisor_dismiss">Abaikan</string>
+    <string name="advisor_view_all">Lihat semua</string>
+    <string name="advisor_potential_savings">Potensi penghematan: %1$s</string>
+
+    <string name="priority_critical">Kritis</string>
+    <string name="priority_high">Tinggi</string>
+    <string name="priority_medium">Sedang</string>
+    <string name="priority_low">Rendah</string>
+
+    <string name="settings_advisor">Penasihat Keuangan</string>
+    <string name="advisor_settings_title">Pengaturan Analisis</string>
+    <string name="advisor_settings_small_purchase">Ambang batas pembelian kecil</string>
+    <string name="advisor_settings_top_category">Batas porsi anggaran kategori teratas (%)</string>
+    <string name="advisor_settings_savings_rate">Tingkat tabungan yang diinginkan (%)</string>
+    <string name="advisor_settings_period_months">Periode analisis (bulan)</string>
+
+    <string name="advice_high_spending_title">Pengeluaran tinggi bulan ini</string>
+    <string name="advice_high_spending_desc">Pengeluaran Anda bulan ini %1$d%% lebih tinggi dibandingkan bulan lalu.</string>
+
+    <string name="advice_category_growth_title">Pengeluaran %1$s meningkat</string>
+    <string name="advice_category_growth_desc">Pengeluaran %1$s meningkat sebesar %2$d%%.</string>
+
+    <string name="advice_small_purchases_title">Banyak pembelian kecil</string>
+    <string name="advice_small_purchases_desc">Anda melakukan %1$d pembelian di bawah %2$d bulan ini.</string>
+
+    <string name="advice_savings_low_title">Tingkat tabungan rendah</string>
+    <string name="advice_savings_low_desc">Tingkat tabungan Anda %1$d%% — di bawah target %2$d%%. Coba kurangi pengeluaran sebesar %3$d.</string>
+
+    <string name="advice_savings_positive_title">Tabungan yang bagus!</string>
+    <string name="advice_savings_positive_desc">Anda menabung %1$d%% dari pemasukan Anda bulan ini. Pertahankan!</string>
+
+    <string name="advice_recurring_title">Pembayaran berulang terdeteksi</string>
+    <string name="advice_recurring_desc">Anda memiliki pembayaran %1$s berulang sebesar ~%2$d selama %3$d bulan berturut-turut.</string>
+
+    <string name="advice_income_trend_title">Pemasukan menurun</string>
+    <string name="advice_income_trend_desc">Pemasukan Anda menurun selama %1$d bulan berturut-turut (perubahan %2$d%%).</string>
+
+    <string name="advice_monthly_summary_title">Ringkasan bulanan</string>
+    <string name="advice_monthly_summary_base">Pemasukan: %1$d, Pengeluaran: %2$d.</string>
+    <string name="advice_monthly_summary_top_category">Kategori terbesar: %1$s (%2$d).</string>
+    <string name="advice_monthly_summary_save_more">Coba menabung lebih banyak bulan depan.</string>
+
+    <string name="advice_top_category_title">Pengeluaran terbesar: %1$s</string>
+    <string name="advice_top_category_desc">%1$s menyumbang %2$d%% dari anggaran Anda. Menguranginya sebesar %3$d%% dapat menghemat ~%4$d per tahun.</string>
+
+    <string name="notification_channel_name">Pengingat aktivitas</string>
+    <string name="notification_channel_description">Mengingatkan Anda untuk mencatat pemasukan dan pengeluaran saat tidak aktif selama beberapa hari.</string>
+    <string name="notification_reminder_title">Jangan lupa catat anggaran Anda</string>
+    <string name="notification_reminder_text">Anda belum menambahkan pemasukan atau pengeluaran dalam 3 hari terakhir. Ketuk untuk menambahkan transaksi hari ini.</string>
+
+    <string name="category_food">Makanan</string>
+    <string name="category_cafe">Kafe</string>
+    <string name="category_transport">Transportasi</string>
+    <string name="category_shopping">Belanja</string>
+    <string name="category_health">Kesehatan</string>
+    <string name="category_utilities">Utilitas</string>
+    <string name="category_entertainment">Hiburan</string>
+    <string name="category_savings">Tabungan</string>
+    <string name="category_other">Lainnya</string>
+    <string name="category_salary">Gaji</string>
+    <string name="category_freelance">Freelance</string>
+    <string name="category_bonus">Bonus</string>
+    <string name="category_gift">Hadiah</string>
+
+    <string name="onboarding_welcome_title">Selamat datang di VoiceBudget</string>
+    <string name="onboarding_language_step_title">Pilih bahasa Anda</string>
+    <string name="onboarding_currency_step_title">Pilih mata uang Anda</string>
+    <string name="onboarding_wallet_step_title">Buat dompet pertama Anda</string>
+    <string name="onboarding_wallet_name_hint">Nama dompet</string>
+    <string name="action_next">Berikutnya</string>
+    <string name="action_create_wallet">Buat dompet</string>
+
+    <string name="settings_wallets">Dompet</string>
+    <string name="wallets_screen_title">Dompet</string>
+    <string name="wallets_add_button">Tambah dompet</string>
+    <string name="wallets_max_reached">Anda dapat memiliki maksimal 2 dompet</string>
+    <string name="wallets_active_badge">Aktif</string>
+    <string name="wallets_new_dialog_title">Dompet baru</string>
+    <string name="wallets_field_name">Nama</string>
+    <string name="wallets_field_currency">Mata uang</string>
+    <string name="wallet_default_name">Dompet %1$d</string>
+
+    <string name="category_transfer">Transfer</string>
+    <string name="transaction_transfer_to">Transfer ke \"%1$s\"</string>
+    <string name="transaction_transfer_from">Transfer dari \"%1$s\"</string>
+    <string name="wallets_transfer_button">Transfer antar dompet</string>
+    <string name="transfer_dialog_title">Transfer antar dompet</string>
+    <string name="transfer_field_from_amount">Jumlah yang dikirim (%1$s)</string>
+    <string name="transfer_field_to_amount">Jumlah yang diterima (%1$s)</string>
+    <string name="transfer_swap_direction">Tukar arah</string>
+    <string name="transfer_confirm_button">Transfer</string>
+    <string name="transfer_rate_unavailable">Kurs tidak tersedia — masukkan jumlah secara manual</string>
+
+    <string name="dashboard_combined_balance_label">Total semua dompet</string>
+    <string name="dashboard_combined_balance_unavailable">Beberapa dompet tidak dapat dikonversi (kurs tidak tersedia)</string>
+
+    <string name="settings_exchange_rate">Kurs mata uang</string>
+    <string name="settings_exchange_rate_updated">Diperbarui %1$s</string>
+    <string name="settings_exchange_rate_never">Belum dimuat</string>
+    <string name="settings_exchange_rate_refresh">Segarkan</string>
+
+    <string name="settings_budget_limits">Batas anggaran</string>
+    <string name="budget_limits_screen_title">Batas anggaran</string>
+    <string name="budget_limits_add_button">Tambah batas</string>
+    <string name="budget_limits_empty">Belum ada batas yang ditetapkan</string>
+    <string name="budget_limit_dialog_title">Tetapkan batas anggaran</string>
+    <string name="budget_limit_field_category">Kategori</string>
+    <string name="budget_limit_field_amount">Batas bulanan</string>
+    <string name="budget_limit_save_button">Simpan</string>
+
+    <string name="settings_recurring_transactions">Pembayaran berulang</string>
+    <string name="recurring_screen_title">Pembayaran berulang</string>
+    <string name="recurring_add_button">Tambah pembayaran berulang</string>
+    <string name="recurring_empty">Belum ada pembayaran berulang</string>
+    <string name="recurring_dialog_title">Pembayaran berulang baru</string>
+    <string name="recurring_field_amount">Jumlah</string>
+    <string name="recurring_field_description">Deskripsi</string>
+    <string name="recurring_field_category">Kategori</string>
+    <string name="recurring_field_frequency">Frekuensi</string>
+    <string name="recurring_frequency_daily">Harian</string>
+    <string name="recurring_frequency_weekly">Mingguan</string>
+    <string name="recurring_frequency_monthly">Bulanan</string>
+    <string name="recurring_next_run">Berikutnya: %1$s</string>
+    <string name="recurring_save_button">Simpan</string>
+
+    <string name="settings_security">Keamanan</string>
+    <string name="security_pin_toggle">Kode PIN</string>
+    <string name="security_biometric_toggle">Buka kunci dengan biometrik</string>
+    <string name="security_set_pin_title">Tetapkan PIN</string>
+    <string name="security_confirm_pin_title">Konfirmasi PIN</string>
+    <string name="security_enter_pin_title">Masukkan PIN</string>
+    <string name="security_pin_mismatch">PIN tidak cocok. Coba lagi.</string>
+    <string name="security_wrong_pin">PIN salah</string>
+    <string name="security_use_biometric_button">Gunakan biometrik</string>
+    <string name="security_change_pin_button">Ubah PIN</string>
+
+    <string name="notification_budget_limit_channel_name">Peringatan batas anggaran</string>
+    <string name="notification_budget_limit_channel_description">Memperingatkan saat pengeluaran mendekati atau melebihi batas anggaran kategori</string>
+    <string name="notification_budget_limit_approaching_title">Mendekati batas anggaran</string>
+    <string name="notification_budget_limit_approaching_text">Anda telah membelanjakan %1$s dari batas %2$s untuk \"%3$s\" bulan ini</string>
+    <string name="notification_budget_limit_exceeded_title">Batas anggaran terlampaui</string>
+    <string name="notification_budget_limit_exceeded_text">Anda telah membelanjakan %1$s, melebihi batas %2$s untuk \"%3$s\" bulan ini</string>
+
+    <string name="msg_exchange_rate_refresh_failed">Gagal memperbarui kurs mata uang. Periksa koneksi Anda.</string>
+
+    <string name="widget_description">Saldo + tambah cepat via suara</string>
+    <string name="widget_balance_masked">••••••</string>
+    <string name="widget_add_transaction">Tambah transaksi</string>
+</resources>

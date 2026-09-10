@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="nav_dashboard">แดชบอร์ด</string>
+    <string name="nav_transactions">รายการธุรกรรม</string>
+    <string name="nav_statistics">สถิติ</string>
+    <string name="nav_settings">ตั้งค่า</string>
+    <string name="nav_record_transaction">บันทึกธุรกรรม</string>
+    <string name="nav_manual_transaction">เพิ่มธุรกรรมด้วยตนเอง</string>
+
+    <string name="dashboard_recent_transactions">ธุรกรรมล่าสุด</string>
+    <string name="dashboard_empty">ยังไม่มีธุรกรรม แตะไมโครโฟนเพื่อเพิ่มรายการ</string>
+    <string name="this_month">เดือนนี้</string>
+    <string name="income">รายรับ</string>
+    <string name="expenses">รายจ่าย</string>
+    <string name="balance">ยอดคงเหลือ</string>
+
+    <string name="settings_currency">สกุลเงิน</string>
+    <string name="settings_language">ภาษา</string>
+    <string name="settings_theme">ธีม</string>
+    <string name="settings_data">ข้อมูล</string>
+    <string name="settings_export_csv">ส่งออกฐานข้อมูล (CSV)</string>
+    <string name="settings_import_csv">นำเข้าฐานข้อมูล (CSV)</string>
+    <string name="settings_clear_all_data">ล้างข้อมูลทั้งหมด</string>
+    <string name="dialog_clear_all_data_title">ล้างข้อมูลทั้งหมดหรือไม่?</string>
+    <string name="dialog_clear_all_data_message">การดำเนินการนี้จะลบธุรกรรมทั้งหมดอย่างถาวร และไม่สามารถย้อนกลับได้</string>
+
+    <string name="settings_categories">หมวดหมู่</string>
+    <string name="settings_manage_categories">จัดการหมวดหมู่</string>
+    <string name="categories_add_new">เพิ่มหมวดหมู่</string>
+    <string name="categories_add_title">หมวดหมู่ใหม่</string>
+    <string name="categories_edit_title">แก้ไขหมวดหมู่</string>
+    <string name="categories_empty">คุณยังไม่ได้เพิ่มหมวดหมู่ที่กำหนดเอง</string>
+    <string name="categories_field_name">ชื่อหมวดหมู่</string>
+    <string name="categories_field_icon">ไอคอน</string>
+    <string name="categories_field_color">สี</string>
+    <string name="categories_delete_title">ลบหมวดหมู่นี้หรือไม่?</string>
+    <string name="categories_delete_message">"\"%1$s\" จะถูกลบอย่างถาวร ธุรกรรมที่ใช้หมวดหมู่นี้จะถูกเปลี่ยนเป็น \"อื่นๆ\""</string>
+    <string name="error_category_name_required">กรุณาใส่ชื่อหมวดหมู่</string>
+
+    <string name="action_clear">ล้าง</string>
+    <string name="action_cancel">ยกเลิก</string>
+    <string name="action_delete">ลบ</string>
+    <string name="action_edit">แก้ไข</string>
+    <string name="action_save">บันทึก</string>
+    <string name="action_retry">ลองใหม่</string>
+    <string name="action_try_again">ลองอีกครั้ง</string>
+    <string name="action_close">ปิด</string>
+
+    <string name="theme_light">สว่าง</string>
+    <string name="theme_dark">มืด</string>
+    <string name="theme_system">ตามระบบ</string>
+
+    <string name="msg_all_data_cleared">ล้างข้อมูลทั้งหมดเรียบร้อยแล้ว</string>
+    <string name="msg_advisor_settings_saved">บันทึกการตั้งค่าที่ปรึกษาการเงินแล้ว</string>
+    <string name="msg_export_success">ส่งออกสำเร็จ</string>
+    <string name="msg_export_failed">ส่งออกล้มเหลว: %1$s</string>
+    <string name="msg_import_success">นำเข้าธุรกรรมแล้ว %1$d รายการ</string>
+    <string name="msg_import_failed">นำเข้าล้มเหลว: %1$s</string>
+
+    <string name="transactions_empty_filtered">ไม่พบธุรกรรมที่ตรงกับตัวกรองนี้</string>
+    <string name="dialog_delete_transaction_title">ลบธุรกรรมนี้หรือไม่?</string>
+    <string name="dialog_delete_transaction_message">"\"%1$s\" จะถูกลบอย่างถาวร"</string>
+    <string name="category_all">ทุกหมวดหมู่</string>
+    <string name="date_range_all_time">ตลอดเวลา</string>
+    <string name="date_range_last_month">เดือนที่แล้ว</string>
+    <string name="date_range_last_7_days">7 วันที่ผ่านมา</string>
+    <string name="edit_transaction_title">แก้ไขธุรกรรม</string>
+    <string name="confirm_transaction_title">ยืนยันธุรกรรม</string>
+    <string name="manual_transaction_title">เพิ่มธุรกรรม</string>
+
+    <string name="voice_start_recording">เริ่มบันทึกเสียง</string>
+    <string name="voice_tap_to_speak">แตะเพื่อพูด</string>
+    <string name="voice_listening_desc">กำลังฟัง</string>
+    <string name="voice_listening">กำลังฟัง…</string>
+    <string name="voice_saving">กำลังบันทึก…</string>
+
+    <string name="field_amount">จำนวนเงิน</string>
+    <string name="field_category">หมวดหมู่</string>
+    <string name="field_description">รายละเอียด</string>
+    <string name="type_expense">รายจ่าย</string>
+
+    <string name="stats_expense_breakdown">สัดส่วนรายจ่าย (เดือนนี้)</string>
+    <string name="stats_no_expenses">ยังไม่มีรายจ่ายในเดือนนี้</string>
+    <string name="stats_income_vs_expenses">รายรับเทียบกับรายจ่าย (6 เดือนล่าสุด)</string>
+
+    <string name="goals_title">เป้าหมายทางการเงิน</string>
+    <string name="goals_add_goal">เพิ่มเป้าหมาย</string>
+    <string name="goals_empty">"ยังไม่มีเป้าหมาย แตะ \"เพิ่มเป้าหมาย\" เพื่อเริ่มวางแผนการออมของคุณ!"</string>
+    <string name="goals_field_name">ชื่อเป้าหมาย</string>
+    <string name="goals_field_amount">จำนวนเงินเป้าหมาย</string>
+    <string name="goals_field_month">เดือน</string>
+    <string name="goals_field_year">ปี</string>
+    <string name="goals_dialog_add_title">เพิ่มเป้าหมายทางการเงิน</string>
+    <string name="goals_months_remaining">เหลืออีก %1$d เดือน</string>
+    <string name="goals_required_monthly">ต้องออม: %1$s/เดือน</string>
+    <string name="goals_current_monthly">ปัจจุบัน: %1$s/เดือน</string>
+    <string name="goals_on_track">เป็นไปตามแผน</string>
+    <string name="goals_off_track">ไม่เป็นไปตามแผน</string>
+    <string name="goals_completed">สำเร็จแล้ว</string>
+    <string name="goals_delete_title">ลบเป้าหมายนี้หรือไม่?</string>
+    <string name="goals_delete_message">"\"%1$s\" จะถูกลบอย่างถาวร"</string>
+    <string name="goals_saved_of_target">ออมแล้ว %1$s จาก %2$s (%3$d%%)</string>
+
+    <string name="goals_set_aside">กันเงินไว้</string>
+    <string name="goals_set_aside_dialog_title">กันเงินไว้สำหรับเป้าหมาย</string>
+    <string name="goals_set_aside_field_goal">เป้าหมาย</string>
+    <string name="goals_set_aside_field_amount">จำนวนเงิน</string>
+    <string name="error_goal_contribution_invalid_amount">กรุณาใส่จำนวนเงินที่ถูกต้อง</string>
+
+    <string name="goal_on_track_desc">"ด้วยอัตราการออมปัจจุบัน (~%4$d/เดือน) คุณกำลังจะไปถึงเป้าหมาย \"%1$s\" (%2$d) ภายใน %3$s ตามแผน"</string>
+    <string name="goal_off_track_desc">"เพื่อไปให้ถึงเป้าหมาย \"%1$s\" (%2$d) ภายใน %3$s คุณต้องออมประมาณ ~%4$d/เดือน แต่อัตราปัจจุบันของคุณอยู่ที่ประมาณ ~%5$d/เดือน"</string>
+    <string name="goal_completed_desc">"คุณกันเงินไว้เพียงพอสำหรับเป้าหมาย \"%1$s\" แล้ว บรรลุเป้าหมายแล้ว!"</string>
+    <string name="goal_suggestion_desc">ลองลดค่าใช้จ่ายหมวด %1$s ลง %2$d%% (~%3$d/เดือน) เพื่อช่วยให้ถึงเป้าหมายเร็วขึ้น</string>
+
+    <string name="error_goal_invalid_name">กรุณาใส่ชื่อเป้าหมาย</string>
+    <string name="error_goal_invalid_amount">กรุณาใส่จำนวนเงินเป้าหมายที่ถูกต้อง</string>
+    <string name="error_goal_deadline_past">วันครบกำหนดต้องเป็นวันในอนาคต</string>
+
+    <string name="error_invalid_amount">กรุณาใส่จำนวนเงินที่ถูกต้อง</string>
+    <string name="error_no_speech_match">ไม่เข้าใจคำพูด กรุณาลองอีกครั้ง</string>
+    <string name="error_amount_not_found">"ไม่พบจำนวนเงินใน \"%1$s\" กรุณาลองอีกครั้ง"</string>
+    <string name="error_recognition_unavailable">อุปกรณ์นี้ไม่รองรับการรู้จำเสียง</string>
+    <string name="error_speech_timeout">ไม่พบเสียงพูด กรุณาลองอีกครั้ง</string>
+    <string name="error_mic_permission">จำเป็นต้องได้รับสิทธิ์เข้าถึงไมโครโฟน</string>
+    <string name="error_network">เกิดข้อผิดพลาดเครือข่ายระหว่างการรู้จำเสียง</string>
+    <string name="error_audio">เกิดข้อผิดพลาดในการบันทึกเสียง</string>
+    <string name="error_recognizer_busy">ระบบรู้จำเสียงไม่ว่าง กรุณาลองอีกครั้ง</string>
+    <string name="error_recognition_generic">เกิดข้อผิดพลาดในการรู้จำเสียง (%1$d)</string>
+
+    <string name="nav_advisor">ที่ปรึกษาการเงิน</string>
+
+    <string name="advisor_title">ที่ปรึกษาการเงิน</string>
+    <string name="advisor_section_title">เคล็ดลับการเงิน</string>
+    <string name="advisor_empty">ยังไม่มีคำแนะนำในตอนนี้ ลองบันทึกธุรกรรมของคุณต่อไป!</string>
+    <string name="advisor_dismiss">ปิด</string>
+    <string name="advisor_view_all">ดูทั้งหมด</string>
+    <string name="advisor_potential_savings">ประหยัดได้สูงสุด: %1$s</string>
+
+    <string name="priority_critical">วิกฤต</string>
+    <string name="priority_high">สูง</string>
+    <string name="priority_medium">ปานกลาง</string>
+    <string name="priority_low">ต่ำ</string>
+
+    <string name="settings_advisor">ที่ปรึกษาการเงิน</string>
+    <string name="advisor_settings_title">ตั้งค่าการวิเคราะห์</string>
+    <string name="advisor_settings_small_purchase">เกณฑ์การซื้อรายการเล็ก</string>
+    <string name="advisor_settings_top_category">สัดส่วนงบประมาณสูงสุดของหมวดหมู่หลัก (%)</string>
+    <string name="advisor_settings_savings_rate">อัตราการออมที่ต้องการ (%)</string>
+    <string name="advisor_settings_period_months">ช่วงเวลาวิเคราะห์ (เดือน)</string>
+
+    <string name="advice_high_spending_title">ใช้จ่ายสูงในเดือนนี้</string>
+    <string name="advice_high_spending_desc">คุณใช้จ่ายเดือนนี้มากกว่าเดือนที่แล้ว %1$d%%</string>
+
+    <string name="advice_category_growth_title">รายจ่ายหมวด %1$s เพิ่มขึ้น</string>
+    <string name="advice_category_growth_desc">รายจ่ายหมวด %1$s เพิ่มขึ้น %2$d%%</string>
+
+    <string name="advice_small_purchases_title">มีการซื้อรายการเล็กจำนวนมาก</string>
+    <string name="advice_small_purchases_desc">เดือนนี้คุณซื้อของ %1$d รายการที่ต่ำกว่า %2$d</string>
+
+    <string name="advice_savings_low_title">อัตราการออมต่ำ</string>
+    <string name="advice_savings_low_desc">อัตราการออมของคุณอยู่ที่ %1$d%% ซึ่งต่ำกว่าเป้าหมาย %2$d%% ลองลดรายจ่ายลง %3$d</string>
+
+    <string name="advice_savings_positive_title">ออมเงินได้ดีมาก!</string>
+    <string name="advice_savings_positive_desc">เดือนนี้คุณออมเงินได้ %1$d%% ของรายรับ ทำได้ดีมาก รักษาระดับนี้ไว้!</string>
+
+    <string name="advice_recurring_title">พบรายการชำระเงินประจำ</string>
+    <string name="advice_recurring_desc">คุณมีรายการชำระเงิน %1$s ประมาณ %2$d ต่อเนื่องกัน %3$d เดือน</string>
+
+    <string name="advice_income_trend_title">รายรับลดลงต่อเนื่อง</string>
+    <string name="advice_income_trend_desc">รายรับของคุณลดลงต่อเนื่อง %1$d เดือน (เปลี่ยนแปลง %2$d%%)</string>
+
+    <string name="advice_monthly_summary_title">สรุปรายเดือน</string>
+    <string name="advice_monthly_summary_base">รายรับ: %1$d รายจ่าย: %2$d</string>
+    <string name="advice_monthly_summary_top_category">หมวดหมู่ที่ใช้จ่ายมากที่สุด: %1$s (%2$d)</string>
+    <string name="advice_monthly_summary_save_more">ลองออมเงินให้มากขึ้นในเดือนหน้า</string>
+
+    <string name="advice_top_category_title">รายจ่ายมากที่สุด: %1$s</string>
+    <string name="advice_top_category_desc">%1$s คิดเป็น %2$d%% ของงบประมาณของคุณ การลดลง %3$d%% อาจช่วยประหยัดได้ประมาณ %4$d ต่อปี</string>
+
+    <string name="notification_channel_name">การแจ้งเตือนกิจกรรม</string>
+    <string name="notification_channel_description">เตือนให้คุณบันทึกรายรับและรายจ่ายเมื่อไม่ได้ใช้งานเป็นเวลาสองสามวัน</string>
+    <string name="notification_reminder_title">อย่าลืมบันทึกงบประมาณของคุณ</string>
+    <string name="notification_reminder_text">คุณยังไม่ได้บันทึกรายรับหรือรายจ่ายใน 3 วันที่ผ่านมา แตะเพื่อเพิ่มธุรกรรมของวันนี้</string>
+
+    <string name="category_food">อาหาร</string>
+    <string name="category_cafe">คาเฟ่</string>
+    <string name="category_transport">การเดินทาง</string>
+    <string name="category_shopping">ช้อปปิ้ง</string>
+    <string name="category_health">สุขภาพ</string>
+    <string name="category_utilities">ค่าสาธารณูปโภค</string>
+    <string name="category_entertainment">ความบันเทิง</string>
+    <string name="category_savings">เงินออม</string>
+    <string name="category_other">อื่นๆ</string>
+    <string name="category_salary">เงินเดือน</string>
+    <string name="category_freelance">งานฟรีแลนซ์</string>
+    <string name="category_bonus">โบนัส</string>
+    <string name="category_gift">ของขวัญ</string>
+
+    <string name="onboarding_welcome_title">ยินดีต้อนรับสู่ VoiceBudget</string>
+    <string name="onboarding_language_step_title">เลือกภาษาของคุณ</string>
+    <string name="onboarding_currency_step_title">เลือกสกุลเงินของคุณ</string>
+    <string name="onboarding_wallet_step_title">สร้างกระเป๋าเงินแรกของคุณ</string>
+    <string name="onboarding_wallet_name_hint">ชื่อกระเป๋าเงิน</string>
+    <string name="action_next">ถัดไป</string>
+    <string name="action_create_wallet">สร้างกระเป๋าเงิน</string>
+
+    <string name="settings_wallets">กระเป๋าเงิน</string>
+    <string name="wallets_screen_title">กระเป๋าเงิน</string>
+    <string name="wallets_add_button">เพิ่มกระเป๋าเงิน</string>
+    <string name="wallets_max_reached">คุณสามารถมีกระเป๋าเงินได้สูงสุด 2 ใบ</string>
+    <string name="wallets_active_badge">ใช้งานอยู่</string>
+    <string name="wallets_new_dialog_title">กระเป๋าเงินใหม่</string>
+    <string name="wallets_field_name">ชื่อ</string>
+    <string name="wallets_field_currency">สกุลเงิน</string>
+    <string name="wallet_default_name">กระเป๋าเงิน %1$d</string>
+
+    <string name="category_transfer">โอนเงิน</string>
+    <string name="transaction_transfer_to">โอนไปยัง \"%1$s\"</string>
+    <string name="transaction_transfer_from">โอนจาก \"%1$s\"</string>
+    <string name="wallets_transfer_button">โอนเงินระหว่างกระเป๋าเงิน</string>
+    <string name="transfer_dialog_title">โอนเงินระหว่างกระเป๋าเงิน</string>
+    <string name="transfer_field_from_amount">จำนวนที่จะโอนออก (%1$s)</string>
+    <string name="transfer_field_to_amount">จำนวนที่จะได้รับ (%1$s)</string>
+    <string name="transfer_swap_direction">สลับทิศทาง</string>
+    <string name="transfer_confirm_button">โอนเงิน</string>
+    <string name="transfer_rate_unavailable">ไม่มีอัตราแลกเปลี่ยน — กรุณากรอกจำนวนเงินด้วยตนเอง</string>
+
+    <string name="dashboard_combined_balance_label">ยอดรวมทุกกระเป๋าเงิน</string>
+    <string name="dashboard_combined_balance_unavailable">บางกระเป๋าเงินไม่สามารถแปลงค่าได้ (ไม่มีอัตราแลกเปลี่ยน)</string>
+
+    <string name="settings_exchange_rate">อัตราแลกเปลี่ยน</string>
+    <string name="settings_exchange_rate_updated">อัปเดตเมื่อ %1$s</string>
+    <string name="settings_exchange_rate_never">ยังไม่ได้โหลด</string>
+    <string name="settings_exchange_rate_refresh">รีเฟรช</string>
+
+    <string name="settings_budget_limits">วงเงินงบประมาณ</string>
+    <string name="budget_limits_screen_title">วงเงินงบประมาณ</string>
+    <string name="budget_limits_add_button">เพิ่มวงเงิน</string>
+    <string name="budget_limits_empty">ยังไม่ได้ตั้งวงเงิน</string>
+    <string name="budget_limit_dialog_title">ตั้งวงเงินงบประมาณ</string>
+    <string name="budget_limit_field_category">หมวดหมู่</string>
+    <string name="budget_limit_field_amount">วงเงินต่อเดือน</string>
+    <string name="budget_limit_save_button">บันทึก</string>
+
+    <string name="settings_recurring_transactions">รายการชำระเงินประจำ</string>
+    <string name="recurring_screen_title">รายการชำระเงินประจำ</string>
+    <string name="recurring_add_button">เพิ่มรายการชำระเงินประจำ</string>
+    <string name="recurring_empty">ยังไม่มีรายการชำระเงินประจำ</string>
+    <string name="recurring_dialog_title">รายการชำระเงินประจำใหม่</string>
+    <string name="recurring_field_amount">จำนวนเงิน</string>
+    <string name="recurring_field_description">คำอธิบาย</string>
+    <string name="recurring_field_category">หมวดหมู่</string>
+    <string name="recurring_field_frequency">ความถี่</string>
+    <string name="recurring_frequency_daily">รายวัน</string>
+    <string name="recurring_frequency_weekly">รายสัปดาห์</string>
+    <string name="recurring_frequency_monthly">รายเดือน</string>
+    <string name="recurring_next_run">ครั้งถัดไป: %1$s</string>
+    <string name="recurring_save_button">บันทึก</string>
+
+    <string name="settings_security">ความปลอดภัย</string>
+    <string name="security_pin_toggle">รหัส PIN</string>
+    <string name="security_biometric_toggle">ปลดล็อกด้วยไบโอเมตริก</string>
+    <string name="security_set_pin_title">ตั้งรหัส PIN</string>
+    <string name="security_confirm_pin_title">ยืนยันรหัส PIN</string>
+    <string name="security_enter_pin_title">ป้อนรหัส PIN</string>
+    <string name="security_pin_mismatch">รหัส PIN ไม่ตรงกัน กรุณาลองอีกครั้ง</string>
+    <string name="security_wrong_pin">รหัส PIN ไม่ถูกต้อง</string>
+    <string name="security_use_biometric_button">ใช้ไบโอเมตริก</string>
+    <string name="security_change_pin_button">เปลี่ยนรหัส PIN</string>
+
+    <string name="notification_budget_limit_channel_name">การแจ้งเตือนวงเงินงบประมาณ</string>
+    <string name="notification_budget_limit_channel_description">แจ้งเตือนเมื่อการใช้จ่ายใกล้ถึงหรือเกินวงเงินงบประมาณของหมวดหมู่</string>
+    <string name="notification_budget_limit_approaching_title">ใกล้ถึงวงเงินงบประมาณ</string>
+    <string name="notification_budget_limit_approaching_text">คุณใช้จ่ายไป %1$s จากวงเงิน %2$s สำหรับ \"%3$s\" ในเดือนนี้</string>
+    <string name="notification_budget_limit_exceeded_title">เกินวงเงินงบประมาณ</string>
+    <string name="notification_budget_limit_exceeded_text">คุณใช้จ่ายไป %1$s เกินวงเงิน %2$s สำหรับ \"%3$s\" ในเดือนนี้</string>
+
+    <string name="msg_exchange_rate_refresh_failed">ไม่สามารถอัปเดตอัตราแลกเปลี่ยนได้ กรุณาตรวจสอบการเชื่อมต่อของคุณ</string>
+
+    <string name="widget_description">ยอดคงเหลือ + เพิ่มด้วยเสียงอย่างรวดเร็ว</string>
+    <string name="widget_balance_masked">••••••</string>
+    <string name="widget_add_transaction">เพิ่มรายการ</string>
+</resources>

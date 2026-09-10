@@ -13,6 +13,7 @@ import com.voicebudget.domain.advisor.calculators.MonthlyExpenseCalculator
 import com.voicebudget.domain.advisor.calculators.MonthlyIncomeCalculator
 import com.voicebudget.domain.advisor.calculators.SavingsCalculator
 import com.voicebudget.domain.model.categoryLabelRes
+import com.voicebudget.utils.withAppLocale
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 import kotlin.math.roundToLong
@@ -41,7 +42,7 @@ class MonthlySummaryAdviceGenerator @Inject constructor(
         return listOf(
             FinancialAdvice(
                 id = id,
-                title = androidContext.getString(R.string.advice_monthly_summary_title),
+                title = androidContext.withAppLocale().getString(R.string.advice_monthly_summary_title),
                 description = description,
                 priority = AdvicePriority.LOW,
                 icon = AdviceIcon.SUMMARY,
@@ -59,13 +60,14 @@ class MonthlySummaryAdviceGenerator @Inject constructor(
         topCategory: com.voicebudget.domain.model.CategoryAmount?,
         savingsRate: Double?,
     ): String = buildString {
-        append(androidContext.getString(R.string.advice_monthly_summary_base, income.roundToLong(), expenses.roundToLong()))
+        val localizedContext = androidContext.withAppLocale()
+        append(localizedContext.getString(R.string.advice_monthly_summary_base, income.roundToLong(), expenses.roundToLong()))
         topCategory?.let {
             append(" ")
             append(
-                androidContext.getString(
+                localizedContext.getString(
                     R.string.advice_monthly_summary_top_category,
-                    androidContext.getString(categoryLabelRes(it.category)),
+                    localizedContext.getString(categoryLabelRes(it.category)),
                     it.amount.roundToLong(),
                 ),
             )
@@ -73,7 +75,7 @@ class MonthlySummaryAdviceGenerator @Inject constructor(
         savingsRate?.let {
             if (it < 10) {
                 append(" ")
-                append(androidContext.getString(R.string.advice_monthly_summary_save_more))
+                append(localizedContext.getString(R.string.advice_monthly_summary_save_more))
             }
         }
     }

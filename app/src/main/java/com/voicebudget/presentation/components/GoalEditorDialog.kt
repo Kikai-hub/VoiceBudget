@@ -27,6 +27,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import com.voicebudget.R
+import com.voicebudget.utils.currentAppLocale
 import java.time.Month
 import java.time.YearMonth
 import java.time.format.TextStyle
@@ -91,7 +92,7 @@ fun GoalEditorDialog(
                         modifier = Modifier.weight(1f),
                     ) {
                         OutlinedTextField(
-                            value = month.getDisplayName(TextStyle.FULL, Locale.getDefault()),
+                            value = month.getDisplayName(TextStyle.FULL, currentAppLocale() ?: Locale.getDefault()),
                             onValueChange = {},
                             readOnly = true,
                             label = { Text(stringResource(R.string.goals_field_month)) },
@@ -106,7 +107,7 @@ fun GoalEditorDialog(
                         ) {
                             Month.entries.forEach { option ->
                                 DropdownMenuItem(
-                                    text = { Text(option.getDisplayName(TextStyle.FULL, Locale.getDefault())) },
+                                    text = { Text(option.getDisplayName(TextStyle.FULL, currentAppLocale() ?: Locale.getDefault())) },
                                     onClick = {
                                         onMonthChange(option)
                                         monthMenuExpanded = false
